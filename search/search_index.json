@@ -1,0 +1,119 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Welcome to MkDocs\n\n\nFor full documentation visit \nmkdocs.org\n.\n\n\nCommands\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nProject layout\n\n\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
+            "title": "Welcome to MkDocs"
+        },
+        {
+            "location": "/#welcome-to-mkdocs",
+            "text": "For full documentation visit  mkdocs.org .",
+            "title": "Welcome to MkDocs"
+        },
+        {
+            "location": "/#commands",
+            "text": "mkdocs new [dir-name]  - Create a new project.  mkdocs serve  - Start the live-reloading docs server.  mkdocs build  - Build the documentation site.  mkdocs help  - Print this help message.",
+            "title": "Commands"
+        },
+        {
+            "location": "/#project-layout",
+            "text": "mkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
+            "title": "Project layout"
+        },
+        {
+            "location": "/leetcode-0001-two-sum/",
+            "text": "two-sum\n\n\n\u539f\u9898\u6982\u8ff0\n\n\n\u4e2d\u6587\u7f51\u5740\uff1a1. \u4e24\u6570\u4e4b\u548c\n\n\n\u601d\u8def\u5206\u6790\n\n\n\u53c2\u8003\u89e3\u7b54",
+            "title": "two-sum"
+        },
+        {
+            "location": "/leetcode-0001-two-sum/#two-sum",
+            "text": "",
+            "title": "two-sum"
+        },
+        {
+            "location": "/leetcode-0001-two-sum/#_1",
+            "text": "\u4e2d\u6587\u7f51\u5740\uff1a1. \u4e24\u6570\u4e4b\u548c",
+            "title": "\u539f\u9898\u6982\u8ff0"
+        },
+        {
+            "location": "/leetcode-0001-two-sum/#_2",
+            "text": "",
+            "title": "\u601d\u8def\u5206\u6790"
+        },
+        {
+            "location": "/leetcode-0001-two-sum/#_3",
+            "text": "",
+            "title": "\u53c2\u8003\u89e3\u7b54"
+        },
+        {
+            "location": "/leetcode-0002-add-two-numbers/",
+            "text": "",
+            "title": "Leetcode 0002 add two numbers"
+        },
+        {
+            "location": "/leetcode-0092-reverse-linked-list-ii/",
+            "text": "reverse-linked-list-ii\n\n\n\u9898\u76ee\u63cf\u8ff0\u548c\u96be\u5ea6\n\n\n\n\n\u9898\u76ee\u63cf\u8ff0\uff1a\n\n\n\u9898\u76ee\u96be\u5ea6\uff1a\u7b80\u5355\u3002\u4e2d\u7b49\u3002\u56f0\u96be\n\n\n\u82f1\u6587\u7f51\u5740\uff1a\n92. Reverse Linked List II\n  \u3002\n\n\n\u4e2d\u6587\u7f51\u5740\uff1a\n92. \u53cd\u8f6c\u94fe\u8868 II\n  \u3002\n\n\n\n\n\u601d\u8def\u5206\u6790\n\n\n\u6c42\u89e3\u5173\u952e\uff1a\n\n\n\n\n\n\n\n\n\u53cd\u8f6c\u94fe\u8868\u6307\u5b9a\u7684\u90e8\u5206\uff0c\u7528\u5230\u4e86\u201c\u8bbe\u7f6e\u865a\u62df\u5934\u7ed3\u70b9\u201d\u8fd9\u4e2a\u6280\u5de7\uff0c\u53ea\u8981\u6d89\u53ca\u5230\u5934\u8282\u70b9\u7684\u524d\u4e00\u4e2a\u8282\u70b9\u7684\u64cd\u4f5c\uff0c\u4e00\u822c\u90fd\u4f1a\u7528\u5230\u865a\u62df\u5934\u7ed3\u70b9\u8fd9\u4e2a\u6280\u5de7\uff0c\u4f7f\u5f97\u6211\u4eec\u7684\u4ee3\u7801\u66f4\u52a0\u7b80\u6d01\uff0c\u4e00\u5b9a\u8981\u6ce8\u610f\uff0c\u8fd4\u56de\u7684\u65f6\u5019\uff0c\u8981\u8fd4\u56de\u865a\u62df\u5934\u7ed3\u70b9\u7684 next \u6307\u9488\u6307\u5411\u7684\u90a3\u4e2a\u5143\u7d20\u3002\n\n\n\u5173\u6ce8\u4e34\u754c\u503c\uff0c\npre\n \u8981\u5faa\u73af\u51e0\u6b21\uff0c\u94fe\u8868\u8981\u201c\u6eda\u201d\u51e0\u8f6e\uff0c\u90fd\u662f\u8fd9\u91cc\u8981\u5173\u6ce8\u7684\u70b9\uff0c\u56e0\u6b64\u4ee3\u5165\u4e00\u4e9b\u5177\u4f53\u503c\u5c31\u80fd\u907f\u514d\u51fa\u9519\uff0c\u6b63\u786e\u7684\u7ed3\u679c\u65e0\u975e\u5c31\u662f\u6211\u4eec\u4ee5\u4e3a\u7684\u90a3\u4e2a\u6570\u5b57 +1 \u6216\u8005 -1\uff1b\n\n\n\u81ea\u5df1\u5728\u7eb8\u4e0a\u753b\u51fa\u56fe\u6765\uff0c\u9a8c\u8bc1\u4e00\u4e0b\u4e24\u8f6e\u4ee5\u540e\u4ee3\u7801\u662f\u4e0d\u662f\u5f97\u5230\u6211\u4eec\u60f3\u8981\u7684\u4e00\u81f4\u7ed3\u679c\uff1b\n\n\n\u5173\u4e8e\u4ee3\u7801\uff1a\u6bcf\u201c\u6eda\u201d\u4e00\u6b21\uff0c\u5176\u5b9e \ncur\n \u7684\u6307\u9488\u90fd\u4e0d\u53d8\uff0c\npre\n \u4e5f\u4e0d\u53d8\uff0c\nnext\n \u53d8\u5316\uff0c\u4f46\u662f\u4e00\u76f4\u8ddf\u5728 \ncur\n \u7684\u540e\u9762\uff0c\u6240\u4ee5\u5b83\u7684\u4f4d\u7f6e\u5728\u5faa\u73af\u5f00\u59cb\u7684\u65f6\u5019\u786e\u5b9a\u3002\u6bcf\u6b21 \ncur\n \u7684 \nnext\n \u90fd\u4f1a\u79fb\u5230 \npre\n \u7684 \nnext\n\uff0c\u8fd9\u5c31\u662f\u5faa\u73af\u4f53\u5185\u7b2c 2 \u884c\u4ee3\u7801\u7684\u542b\u4e49\uff1b\n\n\n\u4e3a\u4e86\u4fbf\u4e8e\u6d4b\u8bd5\uff0c\u6211\u901a\u5e38\u4f1a\u7ed9 \nListNode\n \u589e\u52a0\u4e24\u4e2a\u9759\u6001\u65b9\u6cd5\uff1a\uff081\uff09\u901a\u8fc7\u4e00\u4e2a\u6570\u7ec4\u521b\u5efa\u94fe\u8868 \ncreateListNode\n\uff1b\uff082\uff09\u6253\u5370\u4e00\u4e2a\u94fe\u8868 \nprintLinkedList\n\u3002\n\n\n\n\n\u53c2\u8003\u89e3\u7b54\n\n\n\u53c2\u8003\u89e3\u7b541\n\n\nclass ListNode {\n    int val;\n    ListNode next;\n\n    ListNode(int x) {\n        val = x;\n    }\n\n    public static ListNode createListNode(int[] nums) {\n        if (nums.length == 0) {\n            return null;\n        }\n        ListNode head = new ListNode(nums[0]);\n        ListNode curr = head;\n        for (int i = 1; i < nums.length; i++) {\n            curr.next = new ListNode(nums[i]);\n            curr = curr.next;\n        }\n        return head;\n    }\n\n    public static void printLinkedList(ListNode head) {\n        ListNode cur = head;\n        while (cur != null) {\n            System.out.print(cur.val + \" -> \");\n            cur = cur.next;\n        }\n        System.out.println(\"NULL\");\n    }\n}\n\npublic class Solution {\n\n    public ListNode reverseBetween(ListNode head, int m, int n) {\n        // \u8bbe\u7f6e dummyNode \u662f\u8fd9\u4e00\u7c7b\u95ee\u9898\u7684\u4e00\u822c\u505a\u6cd5\n        ListNode dummyNode = new ListNode(-1);\n        dummyNode.next = head;\n        ListNode pre = dummyNode;\n        for (int i = 0; i < m - 1; i++) {\n            pre = pre.next;\n        }\n        ListNode cur = pre.next;\n        ListNode next;\n        for (int i = 0; i < n - m; i++) {\n            next = cur.next;\n            cur.next = next.next;\n            next.next = pre.next;\n            pre.next = next;\n        }\n        return dummyNode.next;\n    }\n\n    public static void main(String[] args) {\n        int[] nums = new int[]{1, 2, 3, 4, 5};\n        ListNode head = ListNode.createListNode(nums);\n        ListNode.printLinkedList(head);\n        System.out.println(\"\u53cd\u8f6c\u4e4b\u540e\");\n        ListNode newListNode = new Solution().reverseBetween(head, 2, 4);\n        ListNode.printLinkedList(newListNode);\n    }\n}",
+            "title": "reverse-linked-list-ii"
+        },
+        {
+            "location": "/leetcode-0092-reverse-linked-list-ii/#reverse-linked-list-ii",
+            "text": "",
+            "title": "reverse-linked-list-ii"
+        },
+        {
+            "location": "/leetcode-0092-reverse-linked-list-ii/#_1",
+            "text": "\u9898\u76ee\u63cf\u8ff0\uff1a  \u9898\u76ee\u96be\u5ea6\uff1a\u7b80\u5355\u3002\u4e2d\u7b49\u3002\u56f0\u96be  \u82f1\u6587\u7f51\u5740\uff1a 92. Reverse Linked List II   \u3002  \u4e2d\u6587\u7f51\u5740\uff1a 92. \u53cd\u8f6c\u94fe\u8868 II   \u3002",
+            "title": "\u9898\u76ee\u63cf\u8ff0\u548c\u96be\u5ea6"
+        },
+        {
+            "location": "/leetcode-0092-reverse-linked-list-ii/#_2",
+            "text": "\u6c42\u89e3\u5173\u952e\uff1a     \u53cd\u8f6c\u94fe\u8868\u6307\u5b9a\u7684\u90e8\u5206\uff0c\u7528\u5230\u4e86\u201c\u8bbe\u7f6e\u865a\u62df\u5934\u7ed3\u70b9\u201d\u8fd9\u4e2a\u6280\u5de7\uff0c\u53ea\u8981\u6d89\u53ca\u5230\u5934\u8282\u70b9\u7684\u524d\u4e00\u4e2a\u8282\u70b9\u7684\u64cd\u4f5c\uff0c\u4e00\u822c\u90fd\u4f1a\u7528\u5230\u865a\u62df\u5934\u7ed3\u70b9\u8fd9\u4e2a\u6280\u5de7\uff0c\u4f7f\u5f97\u6211\u4eec\u7684\u4ee3\u7801\u66f4\u52a0\u7b80\u6d01\uff0c\u4e00\u5b9a\u8981\u6ce8\u610f\uff0c\u8fd4\u56de\u7684\u65f6\u5019\uff0c\u8981\u8fd4\u56de\u865a\u62df\u5934\u7ed3\u70b9\u7684 next \u6307\u9488\u6307\u5411\u7684\u90a3\u4e2a\u5143\u7d20\u3002  \u5173\u6ce8\u4e34\u754c\u503c\uff0c pre  \u8981\u5faa\u73af\u51e0\u6b21\uff0c\u94fe\u8868\u8981\u201c\u6eda\u201d\u51e0\u8f6e\uff0c\u90fd\u662f\u8fd9\u91cc\u8981\u5173\u6ce8\u7684\u70b9\uff0c\u56e0\u6b64\u4ee3\u5165\u4e00\u4e9b\u5177\u4f53\u503c\u5c31\u80fd\u907f\u514d\u51fa\u9519\uff0c\u6b63\u786e\u7684\u7ed3\u679c\u65e0\u975e\u5c31\u662f\u6211\u4eec\u4ee5\u4e3a\u7684\u90a3\u4e2a\u6570\u5b57 +1 \u6216\u8005 -1\uff1b  \u81ea\u5df1\u5728\u7eb8\u4e0a\u753b\u51fa\u56fe\u6765\uff0c\u9a8c\u8bc1\u4e00\u4e0b\u4e24\u8f6e\u4ee5\u540e\u4ee3\u7801\u662f\u4e0d\u662f\u5f97\u5230\u6211\u4eec\u60f3\u8981\u7684\u4e00\u81f4\u7ed3\u679c\uff1b  \u5173\u4e8e\u4ee3\u7801\uff1a\u6bcf\u201c\u6eda\u201d\u4e00\u6b21\uff0c\u5176\u5b9e  cur  \u7684\u6307\u9488\u90fd\u4e0d\u53d8\uff0c pre  \u4e5f\u4e0d\u53d8\uff0c next  \u53d8\u5316\uff0c\u4f46\u662f\u4e00\u76f4\u8ddf\u5728  cur  \u7684\u540e\u9762\uff0c\u6240\u4ee5\u5b83\u7684\u4f4d\u7f6e\u5728\u5faa\u73af\u5f00\u59cb\u7684\u65f6\u5019\u786e\u5b9a\u3002\u6bcf\u6b21  cur  \u7684  next  \u90fd\u4f1a\u79fb\u5230  pre  \u7684  next \uff0c\u8fd9\u5c31\u662f\u5faa\u73af\u4f53\u5185\u7b2c 2 \u884c\u4ee3\u7801\u7684\u542b\u4e49\uff1b  \u4e3a\u4e86\u4fbf\u4e8e\u6d4b\u8bd5\uff0c\u6211\u901a\u5e38\u4f1a\u7ed9  ListNode  \u589e\u52a0\u4e24\u4e2a\u9759\u6001\u65b9\u6cd5\uff1a\uff081\uff09\u901a\u8fc7\u4e00\u4e2a\u6570\u7ec4\u521b\u5efa\u94fe\u8868  createListNode \uff1b\uff082\uff09\u6253\u5370\u4e00\u4e2a\u94fe\u8868  printLinkedList \u3002",
+            "title": "\u601d\u8def\u5206\u6790"
+        },
+        {
+            "location": "/leetcode-0092-reverse-linked-list-ii/#_3",
+            "text": "",
+            "title": "\u53c2\u8003\u89e3\u7b54"
+        },
+        {
+            "location": "/leetcode-0092-reverse-linked-list-ii/#1",
+            "text": "class ListNode {\n    int val;\n    ListNode next;\n\n    ListNode(int x) {\n        val = x;\n    }\n\n    public static ListNode createListNode(int[] nums) {\n        if (nums.length == 0) {\n            return null;\n        }\n        ListNode head = new ListNode(nums[0]);\n        ListNode curr = head;\n        for (int i = 1; i < nums.length; i++) {\n            curr.next = new ListNode(nums[i]);\n            curr = curr.next;\n        }\n        return head;\n    }\n\n    public static void printLinkedList(ListNode head) {\n        ListNode cur = head;\n        while (cur != null) {\n            System.out.print(cur.val + \" -> \");\n            cur = cur.next;\n        }\n        System.out.println(\"NULL\");\n    }\n}\n\npublic class Solution {\n\n    public ListNode reverseBetween(ListNode head, int m, int n) {\n        // \u8bbe\u7f6e dummyNode \u662f\u8fd9\u4e00\u7c7b\u95ee\u9898\u7684\u4e00\u822c\u505a\u6cd5\n        ListNode dummyNode = new ListNode(-1);\n        dummyNode.next = head;\n        ListNode pre = dummyNode;\n        for (int i = 0; i < m - 1; i++) {\n            pre = pre.next;\n        }\n        ListNode cur = pre.next;\n        ListNode next;\n        for (int i = 0; i < n - m; i++) {\n            next = cur.next;\n            cur.next = next.next;\n            next.next = pre.next;\n            pre.next = next;\n        }\n        return dummyNode.next;\n    }\n\n    public static void main(String[] args) {\n        int[] nums = new int[]{1, 2, 3, 4, 5};\n        ListNode head = ListNode.createListNode(nums);\n        ListNode.printLinkedList(head);\n        System.out.println(\"\u53cd\u8f6c\u4e4b\u540e\");\n        ListNode newListNode = new Solution().reverseBetween(head, 2, 4);\n        ListNode.printLinkedList(newListNode);\n    }\n}",
+            "title": "\u53c2\u8003\u89e3\u7b541"
+        },
+        {
+            "location": "/leetcode-0206-reverse-linked-list/",
+            "text": "reverse-linked-list\n\n\n\u9898\u76ee\u63cf\u8ff0\u548c\u96be\u5ea6\n\n\n\n\n\u9898\u76ee\u63cf\u8ff0\uff1a\u53cd\u8f6c\u4e00\u4e2a\u5355\u94fe\u8868\u3002\n\n\n\u9898\u76ee\u96be\u5ea6\uff1a\u7b80\u5355\u3002\n\n\n\u82f1\u6587\u7f51\u5740\uff1a\n206. reverse-linked-list\n  \u3002\n\n\n\u4e2d\u6587\u7f51\u5740\uff1a\n206. \u53cd\u8f6c\u94fe\u8868\n  \u3002\n\n\n\n\n\u601d\u8def\u5206\u6790\n\n\n\u6c42\u89e3\u5173\u952e\uff1a\u753b\u56fe\uff0c\u8fd9\u6837\u601d\u8def\u548c\u4ee3\u7801\u90fd\u4f1a\u5f88\u6e05\u6670\u3002  \n\n\n\n\n\n\n\u9700\u8981\u4e09\u4e2a\u6307\u9488 \npre\n\u3001\ncur\n\u3001\nnext\n\uff0c\u5176\u4e2d \nnext\n \u53ef\u4ee5\u5728 \ncur\n \u786e\u5b9a\u4ee5\u540e\u521d\u59cb\u5316\uff1b  \n\n\n\u753b\u56fe\u5206\u6790 \nnext\n \u6307\u9488\u7684\u6307\u5411\uff0c\u6211\u4eec\u6ce8\u610f\u5230\u6211\u4eec\u5206\u6790\u51fa\u6765\u7684\u6307\u9488\u6307\u5411\u7684\u5148\u540e\u987a\u5e8f\uff0c\u901a\u5e38\u8ddf\u6570\u7ec4\u7684\u5143\u7d20\u4ea4\u6362\u64cd\u4f5c\u4e00\u6837\uff0c\u7a0b\u5e8f\u5199\u51fa\u6765\u662f\u201c\u5934\u5c3e\u76f8\u8fde\u201d\u7684\uff0c\u662f\u4e0d\u662f\u5f88\u9177\uff01  \n\n\n\u6700\u540e\u4e00\u5b9a\u4e0d\u8981\u5fd8\u8bb0\uff0c\u8fd4\u56de\u7684\u662f \npre\n \u8282\u70b9\u3002\n\n\n\n\n\u53c2\u8003\u89e3\u7b54\n\n\n\u53c2\u8003\u89e3\u7b541\n\n\n// https://leetcode-cn.com/problems/reverse-linked-list/description/\nclass ListNode {\n    int val;\n    ListNode next;\n\n    ListNode(int x) {\n        val = x;\n    }\n\n    public static ListNode createListNode(int[] nums) {\n        if (nums.length == 0) {\n            return null;\n        }\n        ListNode head = new ListNode(nums[0]);\n        ListNode curr = head;\n        for (int i = 1; i < nums.length; i++) {\n            curr.next = new ListNode(nums[i]);\n            curr = curr.next;\n        }\n        return head;\n    }\n\n    public static void printLinkedList(ListNode head) {\n        ListNode cur = head;\n        while (cur != null) {\n            System.out.print(cur.val + \" -> \");\n            cur = cur.next;\n        }\n        System.out.println(\"NULL\");\n    }\n}\n\n// \u5f88\u5e38\u89c4\u7684\u4e00\u9053\u95ee\u9898\uff0c\u5173\u952e\u5728\u4e8e\u753b\u56fe\u5206\u6790\n// \u6bcf\u4e00\u6b21\u904d\u5386\u90fd\u8981\u4fdd\u8bc1\u8bbe\u7acb\u7684 3 \u4e2a\u6307\u9488\u7684\u76f8\u5bf9\u5173\u7cfb\n// \u6ce8\u610f\uff0c\u6700\u540e\u5e94\u8be5\u628a pre \u6307\u9488\u8fd4\u56de\n\n// \u8fd9\u4e2a\u89e3\u6cd5\u7684\u65f6\u95f4\u590d\u6742\u5ea6\u662f O(n)\uff0c\u56e0\u4e3a\u5b83\u4ec5\u4ec5\u904d\u5386\u4e86\u4e00\u6b21\u94fe\u8868\uff0c\u7a7a\u95f4\u590d\u6742\u5ea6\u662f O(1)\uff0c\u56e0\u4e3a\u8fd9\u91cc\u4ec5\u4ec5\u4f7f\u7528\u4e86\u6709\u9650\u4e2a\u7684\u201c\u6307\u9488\u201d\uff0c\u5e2e\u52a9\u6211\u4eec\u5b8c\u6210\u4e86\u94fe\u8868\u7684\u53cd\u8f6c\u64cd\u4f5c\u3002\npublic class Solution {\n\n    public ListNode reverseList(ListNode head) {\n        // \u521d\u59cb\u5316\u4e0a\u4e00\u4e2a\u6307\u9488\n        ListNode pre = null;\n        // \u521d\u59cb\u5316\u5f53\u524d\u6307\u9488\n        ListNode cur = head;\n        ListNode next;\n        while (cur != null) {\n            // \u7b2c 1 \u6b65\uff1a\u521d\u59cb\u5316 next \u6307\u9488\n            next = cur.next;\n            // \u7b2c 2 \u6b65\uff1a\u5b9e\u73b0\u5f53\u524d\u8282\u70b9\u7684 next \u6307\u9488\u7684\u53cd\u8f6c\n            cur.next = pre;\n            // \u7b2c 3 \u6b65\uff1a\u91cd\u65b0\u5b9a\u4e49\u4e0b\u4e00\u8f6e\u8fed\u4ee3\u7684\u5faa\u73af\u53d8\u91cf\n            pre = cur;\n            cur = next;\n        }\n        // \u904d\u5386\u5b8c\u6210\u4ee5\u540e\uff0c\u539f\u6765\u7684\u6700\u540e\u4e00\u4e2a\u8282\u70b9\u5c31\u6210\u4e3a\u4e86 pre\n        // \u8fd9\u4e2a pre \u5c31\u662f\u53cd\u8f6c\u4ee5\u540e\u7684\u65b0\u7684\u94fe\u8868\u7684\u5934\u6307\u9488\n        return pre;\n    }\n\n    public static void main(String[] args) {\n        int[] nums = {1, 2, 3, 4, 5};\n        ListNode head = ListNode.createListNode(nums);\n        ListNode.printLinkedList(head);\n        Solution solution = new Solution();\n        ListNode reverseList = solution.reverseList(head);\n        System.out.println(\"\u53cd\u8f6c\u4e4b\u540e\");\n        ListNode.printLinkedList(reverseList);\n    }\n}",
+            "title": "reverse-linked-list"
+        },
+        {
+            "location": "/leetcode-0206-reverse-linked-list/#reverse-linked-list",
+            "text": "",
+            "title": "reverse-linked-list"
+        },
+        {
+            "location": "/leetcode-0206-reverse-linked-list/#_1",
+            "text": "\u9898\u76ee\u63cf\u8ff0\uff1a\u53cd\u8f6c\u4e00\u4e2a\u5355\u94fe\u8868\u3002  \u9898\u76ee\u96be\u5ea6\uff1a\u7b80\u5355\u3002  \u82f1\u6587\u7f51\u5740\uff1a 206. reverse-linked-list   \u3002  \u4e2d\u6587\u7f51\u5740\uff1a 206. \u53cd\u8f6c\u94fe\u8868   \u3002",
+            "title": "\u9898\u76ee\u63cf\u8ff0\u548c\u96be\u5ea6"
+        },
+        {
+            "location": "/leetcode-0206-reverse-linked-list/#_2",
+            "text": "\u6c42\u89e3\u5173\u952e\uff1a\u753b\u56fe\uff0c\u8fd9\u6837\u601d\u8def\u548c\u4ee3\u7801\u90fd\u4f1a\u5f88\u6e05\u6670\u3002      \u9700\u8981\u4e09\u4e2a\u6307\u9488  pre \u3001 cur \u3001 next \uff0c\u5176\u4e2d  next  \u53ef\u4ee5\u5728  cur  \u786e\u5b9a\u4ee5\u540e\u521d\u59cb\u5316\uff1b    \u753b\u56fe\u5206\u6790  next  \u6307\u9488\u7684\u6307\u5411\uff0c\u6211\u4eec\u6ce8\u610f\u5230\u6211\u4eec\u5206\u6790\u51fa\u6765\u7684\u6307\u9488\u6307\u5411\u7684\u5148\u540e\u987a\u5e8f\uff0c\u901a\u5e38\u8ddf\u6570\u7ec4\u7684\u5143\u7d20\u4ea4\u6362\u64cd\u4f5c\u4e00\u6837\uff0c\u7a0b\u5e8f\u5199\u51fa\u6765\u662f\u201c\u5934\u5c3e\u76f8\u8fde\u201d\u7684\uff0c\u662f\u4e0d\u662f\u5f88\u9177\uff01    \u6700\u540e\u4e00\u5b9a\u4e0d\u8981\u5fd8\u8bb0\uff0c\u8fd4\u56de\u7684\u662f  pre  \u8282\u70b9\u3002",
+            "title": "\u601d\u8def\u5206\u6790"
+        },
+        {
+            "location": "/leetcode-0206-reverse-linked-list/#_3",
+            "text": "",
+            "title": "\u53c2\u8003\u89e3\u7b54"
+        },
+        {
+            "location": "/leetcode-0206-reverse-linked-list/#1",
+            "text": "// https://leetcode-cn.com/problems/reverse-linked-list/description/\nclass ListNode {\n    int val;\n    ListNode next;\n\n    ListNode(int x) {\n        val = x;\n    }\n\n    public static ListNode createListNode(int[] nums) {\n        if (nums.length == 0) {\n            return null;\n        }\n        ListNode head = new ListNode(nums[0]);\n        ListNode curr = head;\n        for (int i = 1; i < nums.length; i++) {\n            curr.next = new ListNode(nums[i]);\n            curr = curr.next;\n        }\n        return head;\n    }\n\n    public static void printLinkedList(ListNode head) {\n        ListNode cur = head;\n        while (cur != null) {\n            System.out.print(cur.val + \" -> \");\n            cur = cur.next;\n        }\n        System.out.println(\"NULL\");\n    }\n}\n\n// \u5f88\u5e38\u89c4\u7684\u4e00\u9053\u95ee\u9898\uff0c\u5173\u952e\u5728\u4e8e\u753b\u56fe\u5206\u6790\n// \u6bcf\u4e00\u6b21\u904d\u5386\u90fd\u8981\u4fdd\u8bc1\u8bbe\u7acb\u7684 3 \u4e2a\u6307\u9488\u7684\u76f8\u5bf9\u5173\u7cfb\n// \u6ce8\u610f\uff0c\u6700\u540e\u5e94\u8be5\u628a pre \u6307\u9488\u8fd4\u56de\n\n// \u8fd9\u4e2a\u89e3\u6cd5\u7684\u65f6\u95f4\u590d\u6742\u5ea6\u662f O(n)\uff0c\u56e0\u4e3a\u5b83\u4ec5\u4ec5\u904d\u5386\u4e86\u4e00\u6b21\u94fe\u8868\uff0c\u7a7a\u95f4\u590d\u6742\u5ea6\u662f O(1)\uff0c\u56e0\u4e3a\u8fd9\u91cc\u4ec5\u4ec5\u4f7f\u7528\u4e86\u6709\u9650\u4e2a\u7684\u201c\u6307\u9488\u201d\uff0c\u5e2e\u52a9\u6211\u4eec\u5b8c\u6210\u4e86\u94fe\u8868\u7684\u53cd\u8f6c\u64cd\u4f5c\u3002\npublic class Solution {\n\n    public ListNode reverseList(ListNode head) {\n        // \u521d\u59cb\u5316\u4e0a\u4e00\u4e2a\u6307\u9488\n        ListNode pre = null;\n        // \u521d\u59cb\u5316\u5f53\u524d\u6307\u9488\n        ListNode cur = head;\n        ListNode next;\n        while (cur != null) {\n            // \u7b2c 1 \u6b65\uff1a\u521d\u59cb\u5316 next \u6307\u9488\n            next = cur.next;\n            // \u7b2c 2 \u6b65\uff1a\u5b9e\u73b0\u5f53\u524d\u8282\u70b9\u7684 next \u6307\u9488\u7684\u53cd\u8f6c\n            cur.next = pre;\n            // \u7b2c 3 \u6b65\uff1a\u91cd\u65b0\u5b9a\u4e49\u4e0b\u4e00\u8f6e\u8fed\u4ee3\u7684\u5faa\u73af\u53d8\u91cf\n            pre = cur;\n            cur = next;\n        }\n        // \u904d\u5386\u5b8c\u6210\u4ee5\u540e\uff0c\u539f\u6765\u7684\u6700\u540e\u4e00\u4e2a\u8282\u70b9\u5c31\u6210\u4e3a\u4e86 pre\n        // \u8fd9\u4e2a pre \u5c31\u662f\u53cd\u8f6c\u4ee5\u540e\u7684\u65b0\u7684\u94fe\u8868\u7684\u5934\u6307\u9488\n        return pre;\n    }\n\n    public static void main(String[] args) {\n        int[] nums = {1, 2, 3, 4, 5};\n        ListNode head = ListNode.createListNode(nums);\n        ListNode.printLinkedList(head);\n        Solution solution = new Solution();\n        ListNode reverseList = solution.reverseList(head);\n        System.out.println(\"\u53cd\u8f6c\u4e4b\u540e\");\n        ListNode.printLinkedList(reverseList);\n    }\n}",
+            "title": "\u53c2\u8003\u89e3\u7b541"
+        },
+        {
+            "location": "/leetcode-articles-template/",
+            "text": "",
+            "title": "Leetcode articles template"
+        }
+    ]
+}

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>reverse-linked-list-ii - LeetCode Solution</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "reverse-linked-list-ii";
+    var mkdocs_page_input_path = "leetcode-0092-reverse-linked-list-ii.md";
+    var mkdocs_page_url = "/leetcode-0092-reverse-linked-list-ii/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> LeetCode Solution</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Welcome to MkDocs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0001-two-sum/">two-sum</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0002-add-two-numbers/">Leetcode 0002 add two numbers</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">reverse-linked-list-ii</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#reverse-linked-list-ii">reverse-linked-list-ii</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#_1">题目描述和难度</a></li>
+        
+            <li><a class="toctree-l3" href="#_2">思路分析</a></li>
+        
+            <li><a class="toctree-l3" href="#_3">参考解答</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0206-reverse-linked-list/">Leetcode 0206 reverse linked list</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-articles-template/">Leetcode articles template</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LeetCode Solution</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>reverse-linked-list-ii</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0092-reverse-linked-list-ii.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="reverse-linked-list-ii">reverse-linked-list-ii</h1>
+<h2 id="_1">题目描述和难度</h2>
+<ul>
+<li>题目描述：</li>
+<li>题目难度：简单。中等。困难</li>
+<li>英文网址：<a href="https://leetcode.com/problems/reverse-linked-list-ii/description/">92. Reverse Linked List II</a>  。</li>
+<li>中文网址：<a href="https://leetcode-cn.com/problems/reverse-linked-list-ii/description/">92. 反转链表 II</a>  。</li>
+</ul>
+<h2 id="_2">思路分析</h2>
+<p>求解关键：</p>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/92-1.jpg" width="500"></p>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/92-2.jpg" width="500"></p>
+<ol>
+<li>反转链表指定的部分，用到了“设置虚拟头结点”这个技巧，只要涉及到头节点的前一个节点的操作，一般都会用到虚拟头结点这个技巧，使得我们的代码更加简洁，一定要注意，返回的时候，要返回虚拟头结点的 next 指针指向的那个元素。</li>
+<li>关注临界值，<code>pre</code> 要循环几次，链表要“滚”几轮，都是这里要关注的点，因此代入一些具体值就能避免出错，正确的结果无非就是我们以为的那个数字 +1 或者 -1；</li>
+<li>自己在纸上画出图来，验证一下两轮以后代码是不是得到我们想要的一致结果；</li>
+<li>关于代码：每“滚”一次，其实 <code>cur</code> 的指针都不变，<code>pre</code> 也不变，<code>next</code> 变化，但是一直跟在 <code>cur</code> 的后面，所以它的位置在循环开始的时候确定。每次 <code>cur</code> 的 <code>next</code> 都会移到 <code>pre</code> 的 <code>next</code>，这就是循环体内第 2 行代码的含义；</li>
+<li>为了便于测试，我通常会给 <code>ListNode</code> 增加两个静态方法：（1）通过一个数组创建链表 <code>createListNode</code>；（2）打印一个链表 <code>printLinkedList</code>。</li>
+</ol>
+<h2 id="_3">参考解答</h2>
+<h3 id="1">参考解答1</h3>
+<pre><code class="java">class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode(int x) {
+        val = x;
+    }
+
+    public static ListNode createListNode(int[] nums) {
+        if (nums.length == 0) {
+            return null;
+        }
+        ListNode head = new ListNode(nums[0]);
+        ListNode curr = head;
+        for (int i = 1; i &lt; nums.length; i++) {
+            curr.next = new ListNode(nums[i]);
+            curr = curr.next;
+        }
+        return head;
+    }
+
+    public static void printLinkedList(ListNode head) {
+        ListNode cur = head;
+        while (cur != null) {
+            System.out.print(cur.val + &quot; -&gt; &quot;);
+            cur = cur.next;
+        }
+        System.out.println(&quot;NULL&quot;);
+    }
+}
+
+public class Solution {
+
+    public ListNode reverseBetween(ListNode head, int m, int n) {
+        // 设置 dummyNode 是这一类问题的一般做法
+        ListNode dummyNode = new ListNode(-1);
+        dummyNode.next = head;
+        ListNode pre = dummyNode;
+        for (int i = 0; i &lt; m - 1; i++) {
+            pre = pre.next;
+        }
+        ListNode cur = pre.next;
+        ListNode next;
+        for (int i = 0; i &lt; n - m; i++) {
+            next = cur.next;
+            cur.next = next.next;
+            next.next = pre.next;
+            pre.next = next;
+        }
+        return dummyNode.next;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = new int[]{1, 2, 3, 4, 5};
+        ListNode head = ListNode.createListNode(nums);
+        ListNode.printLinkedList(head);
+        System.out.println(&quot;反转之后&quot;);
+        ListNode newListNode = new Solution().reverseBetween(head, 2, 4);
+        ListNode.printLinkedList(newListNode);
+    }
+}
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../leetcode-0206-reverse-linked-list/" class="btn btn-neutral float-right" title="Leetcode 0206 reverse linked list">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../leetcode-0002-add-two-numbers/" class="btn btn-neutral" title="Leetcode 0002 add two numbers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/liweiwei1419/leetcode-solution.git/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../leetcode-0002-add-two-numbers/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../leetcode-0206-reverse-linked-list/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>
