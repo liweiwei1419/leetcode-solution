@@ -27,26 +27,28 @@ class ListNode {
         val = x;
     }
 
-    public static ListNode createListNode(int[] nums) {
-        if (nums.length == 0) {
-            return null;
+    public ListNode(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            throw new IllegalArgumentException("arr can not be empty");
         }
-        ListNode head = new ListNode(nums[0]);
-        ListNode curr = head;
+        this.val = nums[0];
+        ListNode curr = this;
         for (int i = 1; i < nums.length; i++) {
             curr.next = new ListNode(nums[i]);
             curr = curr.next;
         }
-        return head;
     }
 
-    public static void printLinkedList(ListNode head) {
-        ListNode cur = head;
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        ListNode cur = this;
         while (cur != null) {
-            System.out.print(cur.val + " -> ");
+            s.append(cur.val + " -> ");
             cur = cur.next;
         }
-        System.out.println("NULL");
+        s.append("NULL");
+        return s.toString();
     }
 }
 
@@ -79,12 +81,12 @@ public class Solution {
 
     public static void main(String[] args) {
         int[] nums = {1, 2, 3, 4, 5};
-        ListNode head = ListNode.createListNode(nums);
-        ListNode.printLinkedList(head);
+        ListNode head = new  ListNode(nums);
+        System.out.println(head);
         Solution solution = new Solution();
         ListNode reverseList = solution.reverseList(head);
         System.out.println("反转之后");
-        ListNode.printLinkedList(reverseList);
+        System.out.println(reverseList);
     }
 }
 ```
