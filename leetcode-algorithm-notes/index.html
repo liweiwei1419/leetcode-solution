@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>填写 - LeetCode Solution</title>
+  <title>未完成的部分 - LeetCode Solution</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u586b\u5199";
-    var mkdocs_page_input_path = "leetcode-articles-template.md";
-    var mkdocs_page_url = "/leetcode-articles-template/";
+    var mkdocs_page_name = "\u672a\u5b8c\u6210\u7684\u90e8\u5206";
+    var mkdocs_page_input_path = "leetcode-algorithm-notes.md";
+    var mkdocs_page_url = "/leetcode-algorithm-notes/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -97,30 +97,26 @@
     <a class="" href="../leetcode-0328-odd-even-linked-list/">odd-even-linked-list</a>
 	    </li>
           
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-algorithm-notes/">未完成的部分</a>
-	    </li>
-          
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">填写</a>
+    <a class="current" href="./">未完成的部分</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#_1">填写</a></li>
+    <li class="toctree-l2"><a href="#_1">未完成的部分</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#_2">题目描述和难度</a></li>
-        
-            <li><a class="toctree-l3" href="#_3">思路分析</a></li>
-        
-            <li><a class="toctree-l3" href="#_4">参考解答</a></li>
+            <li><a class="toctree-l3" href="#300">300 最长上升子序列()</a></li>
         
         </ul>
     
 
     </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-articles-template/">Leetcode articles template</a>
 	    </li>
           
         </ul>
@@ -145,10 +141,10 @@
     
       
     
-    <li>填写</li>
+    <li>未完成的部分</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-articles-template.md"
+        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-algorithm-notes.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -158,21 +154,63 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="_1">填写</h1>
-<h2 id="_2">题目描述和难度</h2>
+                <h1 id="_1">未完成的部分</h1>
+<h2 id="300">300 最长上升子序列()</h2>
 <ul>
-<li>题目描述：</li>
-<li>题目难度：简单。中等。困难</li>
-<li>英文网址：<a href=""></a>  。</li>
-<li>中文网址：<a href=""></a>  。</li>
+<li>有 nlogn 复杂度的解法</li>
+<li>记忆化搜索的解法</li>
 </ul>
-<h2 id="_3">思路分析</h2>
-<p>求解关键：</p>
-<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/" width="600"></p>
-<h2 id="_4">参考解答</h2>
-<h3 id="1">参考解答1</h3>
-<pre><code class="java">
-</code></pre>
+<p>tyvj：http://www.joyoi.cn/
+topcoder
+poj、杭电
+Google Sheet
+codeforces</p>
+<ol>
+<li>两数相加 https://leetcode-cn.com/problems/add-two-numbers/description/</li>
+<li>
+<p>Add Two Numbers
+https://leetcode.com/problems/add-two-numbers/description/</p>
+</li>
+<li>
+<p>Add Two Numbers II
+https://leetcode.com/problems/add-two-numbers-ii/description/</p>
+</li>
+<li>
+<p>两数相加 II
+https://leetcode-cn.com/problems/add-two-numbers-ii/description/</p>
+</li>
+</ol>
+<p>组合问题可以使用动态规划来求解。</p>
+<p>思路1：因为很可能头结点被删除，为了避免处理删除头结点的一些复杂的讨论工作，设置虚拟头结点一般是这类问题常见的做法。
+思路2：使用递归的方式删除。</p>
+<p>BAT机器学习面试1000题系列：七月在线：
+https://blog.csdn.net/v_july_v/article/details/7041827</p>
+<p>基本概念：
+文本、模式、前缀、后缀、匹配、失配、字母表。</p>
+<p>1、暴力匹配（朴素匹配）
+算法是十分好理解，并且是显而易见的。暴力匹配法的缺点在于：在一轮匹配中，我们已经匹配了很多字符，但是只有一个不匹配的话，我们就会前功尽弃，一下子打回原形，继续开始下一轮。
+暴力匹配，就相当于选择排序一样，每一轮都选出一个最小元素，下一轮，重新开始跑，这种算法不能观察到字符串本身有的特点，让算法更快地完成。</p>
+<p>类比与插入排序，对于大致有序的数组，插入排序就可以很快完成。</p>
+<p>2、KMP 
+next 数组代表当前字符<strong>之前</strong>的字符串中，有多大长度的相同前缀后缀。</p>
+<p>376</p>
+<p>《算法导论》红黑树学习笔记 http://www.cnblogs.com/Anker/archive/2013/01/30/2882773.html
+BST 中找一个元素的前驱和后继</p>
+<p>KMP 算法理解相关文章：</p>
+<p><a href="http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html">阮一峰《字符串匹配的KMP算法》</a>
+<a href="https://blog.csdn.net/v_july_v/article/details/7041827">七月《https://blog.csdn.net/v_july_v/article/details/7041827》</a></p>
+<p><a href="https://www.youtube.com/watch?v=dgPabAsTFa8">黄浩劫视频讲解</a></p>
+<p>http://www.cnblogs.com/golove/p/3222096.html 这篇博客告诉我们，标准 ASCII 码有 256 个字符。</p>
+<p>Rabin-Karp 算法讲解比较细致的一篇文章：http://www.cnblogs.com/golove/p/3234673.html
+Rabin-Karp 算法 Java 实现： https://blog.csdn.net/tyler_download/article/details/52457108</p>
+<p>算法——字符串匹配之Rabin-Karp算法
+https://blog.csdn.net/chenhanzhun/article/details/39895077
+算法导论上的例子：
+https://www.geeksforgeeks.org/searching-for-patterns-set-3-rabin-karp-algorithm/</p>
+<p>算法数据结构,如何面试进入google
+http://study.163.com/course/introduction.htm?courseId=1002942008#/courseDetail?tab=1</p>
+<p>LintCode 题解：
+https://github.com/awangdev/LintCode/blob/master/Java/Median.java</p>
               
             </div>
           </div>
@@ -180,8 +218,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="../leetcode-articles-template/" class="btn btn-neutral float-right" title="Leetcode articles template">Next <span class="icon icon-circle-arrow-right"></span></a>
       
-        <a href="../leetcode-algorithm-notes/" class="btn btn-neutral" title="未完成的部分"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+        <a href="../leetcode-0328-odd-even-linked-list/" class="btn btn-neutral" title="odd-even-linked-list"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -209,8 +249,10 @@
           <a href="https://github.com/liweiwei1419/leetcode-solution.git/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../leetcode-algorithm-notes/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../leetcode-0328-odd-even-linked-list/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
+      
+        <span style="margin-left: 15px"><a href="../leetcode-articles-template/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>reverse-linked-list-ii - LeetCode Solution</title>
+  <title>odd-even-linked-list - LeetCode Solution</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "reverse-linked-list-ii";
-    var mkdocs_page_input_path = "leetcode-0092-reverse-linked-list-ii.md";
-    var mkdocs_page_url = "/leetcode-0092-reverse-linked-list-ii/";
+    var mkdocs_page_name = "odd-even-linked-list";
+    var mkdocs_page_input_path = "leetcode-0328-odd-even-linked-list.md";
+    var mkdocs_page_url = "/leetcode-0328-odd-even-linked-list/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -72,12 +72,32 @@
     <a class="" href="../leetcode-0086-partition-list/">partition-list</a>
 	    </li>
           
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0092-reverse-linked-list-ii/">reverse-linked-list-ii</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0203-remove-linked-list-elements/">填写</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0206-reverse-linked-list/">reverse-linked-list</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0300-longest-increasing-subsequence/">longest-increasing-subsequence</a>
+	    </li>
+          
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">reverse-linked-list-ii</a>
+    <a class="current" href="./">odd-even-linked-list</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#reverse-linked-list-ii">reverse-linked-list-ii</a></li>
+    <li class="toctree-l2"><a href="#odd-even-linked-list">odd-even-linked-list</a></li>
     
         <ul>
         
@@ -91,26 +111,6 @@
     
 
     </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0203-remove-linked-list-elements/">Leetcode 0203 remove linked list elements</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0206-reverse-linked-list/">Leetcode 0206 reverse linked list</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0300-longest-increasing-subsequence/">Leetcode 0300 longest increasing subsequence</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0328-odd-even-linked-list/">Leetcode 0328 odd even linked list</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -145,10 +145,10 @@
     
       
     
-    <li>reverse-linked-list-ii</li>
+    <li>odd-even-linked-list</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0092-reverse-linked-list-ii.md"
+        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0328-odd-even-linked-list.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -158,30 +158,21 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="reverse-linked-list-ii">reverse-linked-list-ii</h1>
+                <h1 id="odd-even-linked-list">odd-even-linked-list</h1>
 <h2 id="_1">题目描述和难度</h2>
 <ul>
-<li>题目描述：</li>
-<li>题目难度：简单。中等。困难</li>
-<li>英文网址：<a href="https://leetcode.com/problems/reverse-linked-list-ii/description/">92. Reverse Linked List II</a>  。</li>
-<li>中文网址：<a href="https://leetcode-cn.com/problems/reverse-linked-list-ii/description/">92. 反转链表 II</a>  。</li>
+<li>题目描述：给定一个单链表，把所有的奇数节点和偶数节点分别排在一起。请注意，这里的奇数节点和偶数节点指的是节点编号的奇偶性，而不是节点的值的奇偶性。请尝试使用<strong>原地算法</strong>完成。你的算法的空间复杂度应为 O(1)，时间复杂度应为 O(nodes)，nodes为节点总数。</li>
+<li>题目难度：中等。</li>
+<li>英文网址：<a href="https://leetcode.com/problems/odd-even-linked-list/description/">328. Odd Even Linked List</a>  。</li>
+<li>中文网址：<a href="https://leetcode-cn.com/problems/odd-even-linked-list/description/">328. 奇偶链表</a>  。</li>
 </ul>
 <h2 id="_2">思路分析</h2>
-<p>求解关键：一定要画图分析，否则很难分析出正确的“穿针引线”步骤。</p>
-<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/92-1.jpg" width="700"></p>
-<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/92-2.jpg" width="700"></p>
-<ol>
-<li>反转链表指定的部分，用到了“设置虚拟头结点”这个技巧，只要涉及到头节点的前一个节点的操作，一般都会用到虚拟头结点这个技巧，使得我们的代码更加简洁，一定要注意，返回的时候，要返回虚拟头结点的 next 指针指向的那个元素。</li>
-<li>关注临界值，<code>pre</code> 要循环几次，链表要“滚”几轮，都是这里要关注的点，因此代入一些具体值就能避免出错，正确的结果无非就是我们以为的那个数字 +1 或者 -1；</li>
-<li>自己在纸上画出图来，验证一下两轮以后代码是不是得到我们想要的一致结果；</li>
-<li>关于代码：每“滚”一次，其实 <code>cur</code> 的指针都不变，<code>pre</code> 也不变，<code>next</code> 变化，但是一直跟在 <code>cur</code> 的后面，所以它的位置在循环开始的时候确定。每次 <code>cur</code> 的 <code>next</code> 都会移到 <code>pre</code> 的 <code>next</code>，这就是循环体内第 2 行代码的含义；</li>
-<li>为了便于测试，我通常会给 <code>ListNode</code> 增加两个静态方法：（1）通过一个数组创建链表 <code>createListNode</code>；（2）打印一个链表 <code>printLinkedList</code>。</li>
-</ol>
+<p>求解关键：题目要求<strong>原地算法</strong>完成，那么就一定得“穿针引线”了。
++ 思路1：可以使用 <a href="https://liweiwei1419.github.io/leetcode-solution/leetcode-0086-partition-list/">LeetCode 第 86 题题解思路 2 </a> 完成。<br />
++ 思路2：同样使用两个指针，一次跳过一个节点完成“穿针引线”，特别注意要一些边界情况的判断。</p>
 <h2 id="_3">参考解答</h2>
 <h3 id="1">参考解答1</h3>
-<pre><code class="java">// 参考资料：https://www.youtube.com/watch?v=EJeyuYtvcEA
-// https://www.jianshu.com/p/fbe6012c9e52
-class ListNode {
+<pre><code class="java">class ListNode {
     int val;
     ListNode next;
 
@@ -215,33 +206,61 @@ class ListNode {
 }
 
 public class Solution {
-
-    public ListNode reverseBetween(ListNode head, int m, int n) {
-        // 设置 dummyNode 是这一类问题的一般做法
-        ListNode dummyNode = new ListNode(-1);
-        dummyNode.next = head;
-        ListNode pre = dummyNode;
-        for (int i = 0; i &lt; m - 1; i++) {
-            pre = pre.next;
+    public ListNode oddEvenList(ListNode head) {
+        ListNode dummyNodeOdd = new ListNode(-1);
+        ListNode dummyNodeEven = new ListNode(-1);
+        ListNode curOdd = dummyNodeOdd;
+        ListNode curEven = dummyNodeEven;
+        int count = 0;
+        while (head != null) {
+            if (count % 2 == 0) {
+                curOdd.next = head;
+                curOdd = curOdd.next;
+            } else {
+                curEven.next = head;
+                curEven = curEven.next;
+            }
+            head = head.next;
+            count++;
         }
-        ListNode cur = pre.next;
-        ListNode next;
-        for (int i = 0; i &lt; n - m; i++) {
-            next = cur.next;
-            cur.next = next.next;
-            next.next = pre.next;
-            pre.next = next;
-        }
-        return dummyNode.next;
+        curOdd.next = dummyNodeEven.next;
+        // 特别注意：最后这一步不能忘记，否则会产生一个循环链表
+        curEven.next = null;
+        return dummyNodeOdd.next;
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{1, 2, 3, 4, 5};
+        int[] nums = {1, 2, 3, 4, 5};
         ListNode head = new ListNode(nums);
-        System.out.println(head);
-        System.out.println(&quot;反转之后&quot;);
-        ListNode reverseBetween = new Solution().reverseBetween(head, 2, 4);
-        System.out.println(reverseBetween);
+        Solution solution = new Solution();
+        ListNode oddEvenList = solution.oddEvenList(head);
+        System.out.println(oddEvenList);
+    }
+}
+</code></pre>
+
+<h3 id="2">参考解答2（推荐）</h3>
+<pre><code class="java">public class Solution2 {
+
+    public ListNode oddEvenList(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode oddHead = head;
+        ListNode evenHead = head.next;
+
+        ListNode oddCur = oddHead;
+        ListNode evenCur = evenHead;
+        // 执行循环的条件不能写错
+        while (evenCur != null &amp;&amp; evenCur.next != null) {
+            oddCur.next = oddCur.next.next;
+            evenCur.next = evenCur.next.next;
+
+            oddCur = oddCur.next;
+            evenCur = evenCur.next;
+        }
+        oddCur.next = evenHead;
+        return oddHead;
     }
 }
 </code></pre>
@@ -252,10 +271,10 @@ public class Solution {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../leetcode-0203-remove-linked-list-elements/" class="btn btn-neutral float-right" title="Leetcode 0203 remove linked list elements">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../leetcode-algorithm-notes/" class="btn btn-neutral float-right" title="Leetcode algorithm notes">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../leetcode-0086-partition-list/" class="btn btn-neutral" title="partition-list"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../leetcode-0300-longest-increasing-subsequence/" class="btn btn-neutral" title="longest-increasing-subsequence"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -283,10 +302,10 @@ public class Solution {
           <a href="https://github.com/liweiwei1419/leetcode-solution.git/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../leetcode-0086-partition-list/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../leetcode-0300-longest-increasing-subsequence/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../leetcode-0203-remove-linked-list-elements/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../leetcode-algorithm-notes/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

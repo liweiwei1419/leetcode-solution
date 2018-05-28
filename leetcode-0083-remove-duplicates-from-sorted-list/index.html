@@ -95,7 +95,27 @@
           
             <li class="toctree-l1">
 		
+    <a class="" href="../leetcode-0203-remove-linked-list-elements/">Leetcode 0203 remove linked list elements</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
     <a class="" href="../leetcode-0206-reverse-linked-list/">Leetcode 0206 reverse linked list</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0300-longest-increasing-subsequence/">Leetcode 0300 longest increasing subsequence</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0328-odd-even-linked-list/">Leetcode 0328 odd even linked list</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-algorithm-notes/">Leetcode algorithm notes</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -167,26 +187,28 @@
         val = x;
     }
 
-    public static ListNode createListNode(int[] nums) {
-        if (nums.length == 0) {
-            return null;
+    public ListNode(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            throw new IllegalArgumentException(&quot;arr can not be empty&quot;);
         }
-        ListNode head = new ListNode(nums[0]);
-        ListNode curr = head;
+        this.val = nums[0];
+        ListNode curr = this;
         for (int i = 1; i &lt; nums.length; i++) {
             curr.next = new ListNode(nums[i]);
             curr = curr.next;
         }
-        return head;
     }
 
-    public static void printLinkedList(ListNode head) {
-        ListNode cur = head;
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        ListNode cur = this;
         while (cur != null) {
-            System.out.print(cur.val + &quot; -&gt; &quot;);
+            s.append(cur.val + &quot; -&gt; &quot;);
             cur = cur.next;
         }
-        System.out.println(&quot;NULL&quot;);
+        s.append(&quot;NULL&quot;);
+        return s.toString();
     }
 }
 
@@ -212,11 +234,11 @@ public class Solution {
 
     public static void main(String[] args) {
         int[] nums = {1, 1, 2, 3, 3};
-        ListNode head = ListNode.createListNode(nums);
+        ListNode head = new ListNode(nums);
         Solution solution = new Solution();
         System.out.println(&quot;删除排序链表中的重复元素以后：&quot;);
         ListNode deleteDuplicates = solution.deleteDuplicates(head);
-        ListNode.printLinkedList(deleteDuplicates);
+        System.out.println(deleteDuplicates);
     }
 }
 </code></pre>
