@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>reverse-linked-list - LeetCode Solution</title>
+  <title>remove-duplicates-from-sorted-list - LeetCode Solution</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "reverse-linked-list";
-    var mkdocs_page_input_path = "leetcode-0206-reverse-linked-list.md";
-    var mkdocs_page_url = "/leetcode-0206-reverse-linked-list/";
+    var mkdocs_page_name = "remove-duplicates-from-sorted-list";
+    var mkdocs_page_input_path = "leetcode-0083-remove-duplicates-from-sorted-list.md";
+    var mkdocs_page_url = "/leetcode-0083-remove-duplicates-from-sorted-list/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -62,27 +62,12 @@
     <a class="" href="../leetcode-0002-add-two-numbers/">Leetcode 0002 add two numbers</a>
 	    </li>
           
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0083-remove-duplicates-from-sorted-list/">remove-duplicates-from-sorted-list</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0086-partition-list/">partition-list</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0092-reverse-linked-list-ii/">reverse-linked-list-ii</a>
-	    </li>
-          
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">reverse-linked-list</a>
+    <a class="current" href="./">remove-duplicates-from-sorted-list</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#reverse-linked-list">reverse-linked-list</a></li>
+    <li class="toctree-l2"><a href="#remove-duplicates-from-sorted-list">remove-duplicates-from-sorted-list</a></li>
     
         <ul>
         
@@ -96,6 +81,21 @@
     
 
     </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0086-partition-list/">Leetcode 0086 partition list</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0092-reverse-linked-list-ii/">Leetcode 0092 reverse linked list ii</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0206-reverse-linked-list/">Leetcode 0206 reverse linked list</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -125,10 +125,10 @@
     
       
     
-    <li>reverse-linked-list</li>
+    <li>remove-duplicates-from-sorted-list</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0206-reverse-linked-list.md"
+        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0083-remove-duplicates-from-sorted-list.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -138,26 +138,28 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="reverse-linked-list">reverse-linked-list</h1>
+                <h1 id="remove-duplicates-from-sorted-list">remove-duplicates-from-sorted-list</h1>
 <h2 id="_1">题目描述和难度</h2>
 <ul>
-<li>题目描述：反转一个单链表。</li>
+<li>题目描述：给定一个排序链表，删除所有重复的元素，使得每个元素只出现一次。</li>
 <li>题目难度：简单。</li>
-<li>英文网址：<a href="">206. reverse-linked-list</a>  。</li>
-<li>中文网址：<a href="https://leetcode-cn.com/problems/reverse-linked-list/description/">206. 反转链表</a>  。</li>
+<li>英文网址：<a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/description/">83. Remove Duplicates from Sorted List</a>  。</li>
+<li>中文网址：<a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-list/description/">83. 删除排序链表中的重复元素</a>  。</li>
 </ul>
 <h2 id="_2">思路分析</h2>
-<p>求解关键：画图，这样思路和代码都会很清晰。  </p>
-<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/206-1.jpg" width="500"></p>
+<p>求解关键：画图。</p>
+<ul>
+<li>只要画出分析的图，代码的实现就是水到渠成的事情了。</li>
+</ul>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/83-1.jpg" width="600"></p>
 <ol>
-<li>需要三个指针 <code>pre</code>、<code>cur</code>、<code>next</code>，其中 <code>next</code> 可以在 <code>cur</code> 确定以后初始化；  </li>
-<li>画图分析 <code>next</code> 指针的指向，我们注意到我们分析出来的指针指向的先后顺序，通常跟数组的元素交换操作一样，程序写出来是“头尾相连”的，是不是很酷！  </li>
-<li>最后一定不要忘记，返回的是 <code>pre</code> 节点。</li>
+<li>空的情况不要忘记写在最开始，最简单的情况最容易忽略；  </li>
+<li>这里不会涉及头结点的前一个节点的操作，因此不需要设立虚拟的头结点；  </li>
+<li>删除链表中的节点的固定的套路是 <code>while(cur.next!=null)</code>，即去判断当前节点的下一个节点是不是我们要删除的节点，如果是，则当前节点的下一个节点的指向跳过它，所以这里只要 <code>cur</code> 和 <code>next</code> 就可以了，不用 <code>pre</code>。</li>
 </ol>
 <h2 id="_3">参考解答</h2>
 <h3 id="1">参考解答1</h3>
-<pre><code class="java">// https://leetcode-cn.com/problems/reverse-linked-list/description/
-class ListNode {
+<pre><code class="java">class ListNode {
     int val;
     ListNode next;
 
@@ -188,41 +190,33 @@ class ListNode {
     }
 }
 
-// 很常规的一道问题，关键在于画图分析
-// 每一次遍历都要保证设立的 3 个指针的相对关系
-// 注意，最后应该把 pre 指针返回
-
-// 这个解法的时间复杂度是 O(n)，因为它仅仅遍历了一次链表，空间复杂度是 O(1)，因为这里仅仅使用了有限个的“指针”，帮助我们完成了链表的反转操作。
 public class Solution {
 
-    public ListNode reverseList(ListNode head) {
-        // 初始化上一个指针
-        ListNode pre = null;
-        // 初始化当前指针
+    public ListNode deleteDuplicates(ListNode head) {
+        if (head == null) {
+            return null;
+        }
         ListNode cur = head;
         ListNode next;
-        while (cur != null) {
-            // 第 1 步：初始化 next 指针
+        while (cur.next != null) {
             next = cur.next;
-            // 第 2 步：实现当前节点的 next 指针的反转
-            cur.next = pre;
-            // 第 3 步：重新定义下一轮迭代的循环变量
-            pre = cur;
-            cur = next;
+            if (next.val == cur.val) {
+                cur.next = next.next;
+                next.next = null;
+            } else {
+                cur = cur.next;
+            }
         }
-        // 遍历完成以后，原来的最后一个节点就成为了 pre
-        // 这个 pre 就是反转以后的新的链表的头指针
-        return pre;
+        return head;
     }
 
     public static void main(String[] args) {
-        int[] nums = {1, 2, 3, 4, 5};
+        int[] nums = {1, 1, 2, 3, 3};
         ListNode head = ListNode.createListNode(nums);
-        ListNode.printLinkedList(head);
         Solution solution = new Solution();
-        ListNode reverseList = solution.reverseList(head);
-        System.out.println(&quot;反转之后&quot;);
-        ListNode.printLinkedList(reverseList);
+        System.out.println(&quot;删除排序链表中的重复元素以后：&quot;);
+        ListNode deleteDuplicates = solution.deleteDuplicates(head);
+        ListNode.printLinkedList(deleteDuplicates);
     }
 }
 </code></pre>
@@ -233,10 +227,10 @@ public class Solution {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../leetcode-articles-template/" class="btn btn-neutral float-right" title="Leetcode articles template">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../leetcode-0086-partition-list/" class="btn btn-neutral float-right" title="Leetcode 0086 partition list">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../leetcode-0092-reverse-linked-list-ii/" class="btn btn-neutral" title="reverse-linked-list-ii"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../leetcode-0002-add-two-numbers/" class="btn btn-neutral" title="Leetcode 0002 add two numbers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -264,10 +258,10 @@ public class Solution {
           <a href="https://github.com/liweiwei1419/leetcode-solution.git/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../leetcode-0092-reverse-linked-list-ii/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../leetcode-0002-add-two-numbers/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../leetcode-articles-template/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../leetcode-0086-partition-list/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

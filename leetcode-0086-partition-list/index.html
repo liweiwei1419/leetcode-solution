@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>reverse-linked-list - LeetCode Solution</title>
+  <title>partition-list - LeetCode Solution</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "reverse-linked-list";
-    var mkdocs_page_input_path = "leetcode-0206-reverse-linked-list.md";
-    var mkdocs_page_url = "/leetcode-0206-reverse-linked-list/";
+    var mkdocs_page_name = "partition-list";
+    var mkdocs_page_input_path = "leetcode-0086-partition-list.md";
+    var mkdocs_page_url = "/leetcode-0086-partition-list/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -67,22 +67,12 @@
     <a class="" href="../leetcode-0083-remove-duplicates-from-sorted-list/">remove-duplicates-from-sorted-list</a>
 	    </li>
           
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0086-partition-list/">partition-list</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0092-reverse-linked-list-ii/">reverse-linked-list-ii</a>
-	    </li>
-          
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">reverse-linked-list</a>
+    <a class="current" href="./">partition-list</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#reverse-linked-list">reverse-linked-list</a></li>
+    <li class="toctree-l2"><a href="#partition-list">partition-list</a></li>
     
         <ul>
         
@@ -96,6 +86,16 @@
     
 
     </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0092-reverse-linked-list-ii/">Leetcode 0092 reverse linked list ii</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0206-reverse-linked-list/">Leetcode 0206 reverse linked list</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -125,10 +125,10 @@
     
       
     
-    <li>reverse-linked-list</li>
+    <li>partition-list</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0206-reverse-linked-list.md"
+        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0086-partition-list.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -138,26 +138,20 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="reverse-linked-list">reverse-linked-list</h1>
+                <h1 id="partition-list">partition-list</h1>
 <h2 id="_1">题目描述和难度</h2>
 <ul>
-<li>题目描述：反转一个单链表。</li>
-<li>题目难度：简单。</li>
-<li>英文网址：<a href="">206. reverse-linked-list</a>  。</li>
-<li>中文网址：<a href="https://leetcode-cn.com/problems/reverse-linked-list/description/">206. 反转链表</a>  。</li>
+<li>题目描述：给定一个链表和一个特定值 x，对链表进行分隔，使得所有小于 x 的节点都在大于或等于 x 的节点之前。你应当保留两个分区中每个节点的初始相对位置。</li>
+<li>题目难度：中等。</li>
+<li>英文网址：<a href="https://leetcode.com/problems/partition-list/description/">86. Partition List</a>  。</li>
+<li>中文网址：<a href="https://leetcode-cn.com/problems/partition-list/description/">86. 分隔链表</a>  。</li>
 </ul>
 <h2 id="_2">思路分析</h2>
-<p>求解关键：画图，这样思路和代码都会很清晰。  </p>
-<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/206-1.jpg" width="500"></p>
-<ol>
-<li>需要三个指针 <code>pre</code>、<code>cur</code>、<code>next</code>，其中 <code>next</code> 可以在 <code>cur</code> 确定以后初始化；  </li>
-<li>画图分析 <code>next</code> 指针的指向，我们注意到我们分析出来的指针指向的先后顺序，通常跟数组的元素交换操作一样，程序写出来是“头尾相连”的，是不是很酷！  </li>
-<li>最后一定不要忘记，返回的是 <code>pre</code> 节点。</li>
-</ol>
+<p>求解关键：
+其实就是我们在数组中的 partition 这个过程，在数组中，我们要通过不断地交换元素的位置来实现 partition 。对于这道问题，穿针引线可能有些麻烦，但是我们完全可以新建两个链表，最后把它们合并在一起，这是思路1；但是我们也完全可以穿针引线，只不过要设置两个头结点，最后把它们合在一起就可以了，省去了一直 new 节点的操作，这是思路2。</p>
 <h2 id="_3">参考解答</h2>
 <h3 id="1">参考解答1</h3>
-<pre><code class="java">// https://leetcode-cn.com/problems/reverse-linked-list/description/
-class ListNode {
+<pre><code class="java">class ListNode {
     int val;
     ListNode next;
 
@@ -188,41 +182,77 @@ class ListNode {
     }
 }
 
-// 很常规的一道问题，关键在于画图分析
-// 每一次遍历都要保证设立的 3 个指针的相对关系
-// 注意，最后应该把 pre 指针返回
-
-// 这个解法的时间复杂度是 O(n)，因为它仅仅遍历了一次链表，空间复杂度是 O(1)，因为这里仅仅使用了有限个的“指针”，帮助我们完成了链表的反转操作。
 public class Solution {
 
-    public ListNode reverseList(ListNode head) {
-        // 初始化上一个指针
-        ListNode pre = null;
-        // 初始化当前指针
-        ListNode cur = head;
-        ListNode next;
-        while (cur != null) {
-            // 第 1 步：初始化 next 指针
-            next = cur.next;
-            // 第 2 步：实现当前节点的 next 指针的反转
-            cur.next = pre;
-            // 第 3 步：重新定义下一轮迭代的循环变量
-            pre = cur;
-            cur = next;
+    public ListNode partition(ListNode head, int x) {
+        ListNode dummyNodeL = new ListNode(-1); // 比 x 小的虚拟头结点
+        ListNode dummyNodeR = new ListNode(-1); // 大于等于 x 的虚拟头结点
+        ListNode curL = dummyNodeL; // 用于遍历
+        ListNode curR = dummyNodeR; // 用于遍历
+        int val;
+        while (head != null) {
+            val = head.val;
+            if (val &lt; x) { // 接在 L 的后面
+                curL.next = new ListNode(val);
+                curL = curL.next;
+            } else { // 接在 R 的后面
+                curR.next = new ListNode(val);
+                curR = curR.next;
+            }
+            head = head.next;
         }
-        // 遍历完成以后，原来的最后一个节点就成为了 pre
-        // 这个 pre 就是反转以后的新的链表的头指针
-        return pre;
+        curL.next = dummyNodeR.next; // 把较小的链表接在较大的链表后面
+        return dummyNodeL.next;
     }
 
     public static void main(String[] args) {
-        int[] nums = {1, 2, 3, 4, 5};
+        int[] nums = {1, 4, 3, 2, 5, 2};
+        int x = 3;
         ListNode head = ListNode.createListNode(nums);
-        ListNode.printLinkedList(head);
         Solution solution = new Solution();
-        ListNode reverseList = solution.reverseList(head);
-        System.out.println(&quot;反转之后&quot;);
-        ListNode.printLinkedList(reverseList);
+        System.out.println(&quot;分隔链表之后：&quot;);
+        ListNode partition = solution.partition(head, x);
+        ListNode.printLinkedList(partition);
+    }
+}
+</code></pre>
+
+<h3 id="2">参考解答2</h3>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/86-1.jpg" width="600"></p>
+<pre><code class="java">public class Solution2 {
+
+    public ListNode partition(ListNode head, int x) {
+        ListNode dummyNodeL = new ListNode(-1); // 比 x 小的虚拟头结点
+        ListNode dummyNodeR = new ListNode(-1); // 大于等于 x 的虚拟头结点
+        ListNode curL = dummyNodeL; // 用于遍历
+        ListNode curR = dummyNodeR; // 用于遍历
+        int val;
+        while (head != null) {
+            val = head.val;
+            if (val &lt; x) {
+                curL.next = head;
+                curL = curL.next;
+            } else {
+                curR.next = head;
+                curR = curR.next;
+            }
+            head = head.next;
+        }
+        curL.next = dummyNodeR.next;
+        // 特别注意：最后这一步不能忘记，否则会产生一个循环链表
+        curR.next = null;
+        return dummyNodeL.next;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {1, 4, 3, 2, 5, 2};
+        int x = 3;
+        ListNode head = ListNode.createListNode(nums);
+        Solution2 solution2 = new Solution2();
+        System.out.println(&quot;分隔链表之后：&quot;);
+        ListNode partition = solution2.partition(head, x);
+        ListNode.printLinkedList(partition);
+        ListNode.printLinkedList(head);
     }
 }
 </code></pre>
@@ -233,10 +263,10 @@ public class Solution {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../leetcode-articles-template/" class="btn btn-neutral float-right" title="Leetcode articles template">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../leetcode-0092-reverse-linked-list-ii/" class="btn btn-neutral float-right" title="Leetcode 0092 reverse linked list ii">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../leetcode-0092-reverse-linked-list-ii/" class="btn btn-neutral" title="reverse-linked-list-ii"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../leetcode-0083-remove-duplicates-from-sorted-list/" class="btn btn-neutral" title="remove-duplicates-from-sorted-list"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -264,10 +294,10 @@ public class Solution {
           <a href="https://github.com/liweiwei1419/leetcode-solution.git/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../leetcode-0092-reverse-linked-list-ii/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../leetcode-0083-remove-duplicates-from-sorted-list/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../leetcode-articles-template/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../leetcode-0092-reverse-linked-list-ii/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

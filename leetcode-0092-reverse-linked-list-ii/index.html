@@ -62,6 +62,16 @@
     <a class="" href="../leetcode-0002-add-two-numbers/">Leetcode 0002 add two numbers</a>
 	    </li>
           
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0083-remove-duplicates-from-sorted-list/">remove-duplicates-from-sorted-list</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0086-partition-list/">partition-list</a>
+	    </li>
+          
             <li class="toctree-l1 current">
 		
     <a class="current" href="./">reverse-linked-list-ii</a>
@@ -137,9 +147,9 @@
 <li>中文网址：<a href="https://leetcode-cn.com/problems/reverse-linked-list-ii/description/">92. 反转链表 II</a>  。</li>
 </ul>
 <h2 id="_2">思路分析</h2>
-<p>求解关键：</p>
-<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/92-1.jpg" width="500"></p>
-<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/92-2.jpg" width="500"></p>
+<p>求解关键：一定要画图分析，否则很难分析出正确的“穿针引线”步骤。</p>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/92-1.jpg" width="700"></p>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/92-2.jpg" width="700"></p>
 <ol>
 <li>反转链表指定的部分，用到了“设置虚拟头结点”这个技巧，只要涉及到头节点的前一个节点的操作，一般都会用到虚拟头结点这个技巧，使得我们的代码更加简洁，一定要注意，返回的时候，要返回虚拟头结点的 next 指针指向的那个元素。</li>
 <li>关注临界值，<code>pre</code> 要循环几次，链表要“滚”几轮，都是这里要关注的点，因此代入一些具体值就能避免出错，正确的结果无非就是我们以为的那个数字 +1 或者 -1；</li>
@@ -221,7 +231,7 @@ public class Solution {
         <a href="../leetcode-0206-reverse-linked-list/" class="btn btn-neutral float-right" title="Leetcode 0206 reverse linked list">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../leetcode-0002-add-two-numbers/" class="btn btn-neutral" title="Leetcode 0002 add two numbers"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../leetcode-0086-partition-list/" class="btn btn-neutral" title="partition-list"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -249,7 +259,7 @@ public class Solution {
           <a href="https://github.com/liweiwei1419/leetcode-solution.git/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../leetcode-0002-add-two-numbers/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../leetcode-0086-partition-list/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../leetcode-0206-reverse-linked-list/" style="color: #fcfcfc">Next &raquo;</a></span>

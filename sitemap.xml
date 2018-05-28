@@ -27,6 +27,22 @@
 
     
     <url>
+     <loc>/leetcode-0083-remove-duplicates-from-sorted-list/</loc>
+     <lastmod>2018-05-28</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/leetcode-0086-partition-list/</loc>
+     <lastmod>2018-05-28</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
      <loc>/leetcode-0092-reverse-linked-list-ii/</loc>
      <lastmod>2018-05-28</lastmod>
      <changefreq>daily</changefreq>
