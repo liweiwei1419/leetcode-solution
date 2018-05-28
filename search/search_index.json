@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/",
-            "text": "Welcome to MkDocs\n\n\nFor full documentation visit \nmkdocs.org\n.\n\n\nCommands\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nProject layout\n\n\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
+            "text": "Welcome to MkDocs\n\n\nFor full documentation visit \nmkdocs.org\n.\n\n\nCommands\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nProject layout\n\n\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.\n\n\n\n\u642d\u5efa\u8fd9\u4e2a\u535a\u5ba2\u7684\u53c2\u8003\u8d44\u6599\n\n\nmkdocs \u7684\u6240\u6709\u914d\u7f6e\u53c2\u6570\uff08\u6765\u81ea mkdocs \u5b98\u65b9\u4e2d\u6587\u7f51\u7ad9\uff09\n\n\n\u4e00\u4e9b\u5907\u5fd8\n\n\n\n\n\u81ea\u52a8\u53d1\u5e03\u5230 GitHub \u4e0a\uff1a\n1\u3001\u5728 mkdocs.yml \u6587\u4ef6\u4e2d\u589e\u52a0\u914d\u7f6e \nrepo_url\n \u9879\uff1a\n\n\n\n\nrepo_url: https://github.com/liweiwei1419/leetcode-solution.git\n\n\n\n\n2\u3001\u5728\u6211\u4eec\u7684 mkdocs \u9879\u76ee\u7684\u6839\u76ee\u5f55\u4e0b\u521d\u59cb\u5316 git \u9879\u76ee\uff0c\u5e76\u4e14\u6dfb\u52a0\u8fdc\u7a0b GitHub \u4ed3\u5e93\u7684\u94fe\u63a5\uff1a\n\n\ngit init\ngit remote add origin <GitHub \u4ed3\u5e93\u94fe\u63a5>\n\n\n\n\n3\u3001\u6267\u884c \nmkdocs gh-deploy\n \u547d\u4ee4\uff0c\u5c31\u53ef\u4ee5\u5c06 site \u76ee\u5f55\u4e0b\u7684\u5185\u5bb9\u53d1\u5e03\u5230 GitHub \u4ed3\u5e93\u7684 \ngh-pages \u5206\u652f\n\uff1b\n4\u3001\u901a\u8fc7\u5730\u5740 \nhttps://<GitHub \u7528\u6237\u540d>.github.io/<GitHub \u4ed3\u5e93\u540d>/\n \u53ef\u4ee5\u8bbf\u95ee\u3002\n\u4f8b\u5982\u6211\u7684\u5730\u5740\u5c31\u662f\uff1ahttps://liweiwei1419.github.io/leetcode-solution/\u3002",
             "title": "Welcome to MkDocs"
         },
         {
@@ -19,6 +19,16 @@
             "location": "/#project-layout",
             "text": "mkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
             "title": "Project layout"
+        },
+        {
+            "location": "/#_1",
+            "text": "mkdocs \u7684\u6240\u6709\u914d\u7f6e\u53c2\u6570\uff08\u6765\u81ea mkdocs \u5b98\u65b9\u4e2d\u6587\u7f51\u7ad9\uff09",
+            "title": "\u642d\u5efa\u8fd9\u4e2a\u535a\u5ba2\u7684\u53c2\u8003\u8d44\u6599"
+        },
+        {
+            "location": "/#_2",
+            "text": "\u81ea\u52a8\u53d1\u5e03\u5230 GitHub \u4e0a\uff1a\n1\u3001\u5728 mkdocs.yml \u6587\u4ef6\u4e2d\u589e\u52a0\u914d\u7f6e  repo_url  \u9879\uff1a   repo_url: https://github.com/liweiwei1419/leetcode-solution.git  2\u3001\u5728\u6211\u4eec\u7684 mkdocs \u9879\u76ee\u7684\u6839\u76ee\u5f55\u4e0b\u521d\u59cb\u5316 git \u9879\u76ee\uff0c\u5e76\u4e14\u6dfb\u52a0\u8fdc\u7a0b GitHub \u4ed3\u5e93\u7684\u94fe\u63a5\uff1a  git init\ngit remote add origin <GitHub \u4ed3\u5e93\u94fe\u63a5>  3\u3001\u6267\u884c  mkdocs gh-deploy  \u547d\u4ee4\uff0c\u5c31\u53ef\u4ee5\u5c06 site \u76ee\u5f55\u4e0b\u7684\u5185\u5bb9\u53d1\u5e03\u5230 GitHub \u4ed3\u5e93\u7684  gh-pages \u5206\u652f \uff1b\n4\u3001\u901a\u8fc7\u5730\u5740  https://<GitHub \u7528\u6237\u540d>.github.io/<GitHub \u4ed3\u5e93\u540d>/  \u53ef\u4ee5\u8bbf\u95ee\u3002\n\u4f8b\u5982\u6211\u7684\u5730\u5740\u5c31\u662f\uff1ahttps://liweiwei1419.github.io/leetcode-solution/\u3002",
+            "title": "\u4e00\u4e9b\u5907\u5fd8"
         },
         {
             "location": "/leetcode-0001-two-sum/",

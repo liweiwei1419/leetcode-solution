@@ -60,6 +60,8 @@
         
             <li><a class="toctree-l3" href="#project-layout">Project layout</a></li>
         
+            <li><a class="toctree-l3" href="#_1">搭建这个博客的参考资料</a></li>
+        
         </ul>
     
 
@@ -141,6 +143,24 @@ docs/
     index.md  # The documentation homepage.
     ...       # Other markdown pages, images and other files.
 </code></pre>
+<h2 id="_1">搭建这个博客的参考资料</h2>
+<p><a href="http://markdown-docs-zh.readthedocs.io/zh_CN/latest/user-guide/configuration/">mkdocs 的所有配置参数（来自 mkdocs 官方中文网站）</a></p>
+<h3 id="_2">一些备忘</h3>
+<ul>
+<li>自动发布到 GitHub 上：
+1、在 mkdocs.yml 文件中增加配置 <code>repo_url</code> 项：</li>
+</ul>
+<pre><code>repo_url: https://github.com/liweiwei1419/leetcode-solution.git
+</code></pre>
+
+<p>2、在我们的 mkdocs 项目的根目录下初始化 git 项目，并且添加远程 GitHub 仓库的链接：</p>
+<pre><code>git init
+git remote add origin &lt;GitHub 仓库链接&gt;
+</code></pre>
+
+<p>3、执行 <code>mkdocs gh-deploy</code> 命令，就可以将 site 目录下的内容发布到 GitHub 仓库的 <strong>gh-pages 分支</strong>；
+4、通过地址 <code>https://&lt;GitHub 用户名&gt;.github.io/&lt;GitHub 仓库名&gt;/</code> 可以访问。
+例如我的地址就是：https://liweiwei1419.github.io/leetcode-solution/。</p>
               
             </div>
           </div>
@@ -192,5 +212,5 @@ docs/
 
 <!--
 MkDocs version : 0.17.3
-Build Date UTC : 2018-05-28 05:05:27
+Build Date UTC : 2018-05-28 05:15:23
 -->
