@@ -81,6 +81,11 @@ public class Solution {
 }
 ```
 ### 参考解答2（推荐）
++ 注意1：我们采用一次跳过一个节点“穿针引线”的办法来完成这个问题；
++ 注意2：在 `while` 循环体中，如果结点个数是奇数的话，偶数索引的最后一个元素的 `next` 指针会指向一个 `null` （因为跳过一个结点改变 `next` 指针的操作是一起进行的），这一点完全可以分类讨论，因为就两种情况，如下图所示：
+
+<img src="https://liweiwei1419.github.io/images/leetcode-solution/328-1.jpg" width="600">
+
 ```java
 public class Solution2 {
 

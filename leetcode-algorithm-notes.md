@@ -16,17 +16,9 @@ codeforces
 
 
 
-2. 两数相加 https://leetcode-cn.com/problems/add-two-numbers/description/
-2. Add Two Numbers
-https://leetcode.com/problems/add-two-numbers/description/
 
 
 
-445. Add Two Numbers II
-https://leetcode.com/problems/add-two-numbers-ii/description/
-
-445. 两数相加 II
-https://leetcode-cn.com/problems/add-two-numbers-ii/description/
 
 组合问题可以使用动态规划来求解。
 

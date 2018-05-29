@@ -17,8 +17,18 @@ For full documentation visit [mkdocs.org](http://mkdocs.org).
         ...       # Other markdown pages, images and other files.
 
 ## 搭建这个博客的参考资料
-
+[mkdocs 官方中文网站](https://markdown-docs-zh.readthedocs.io/zh_CN/latest/#_10)
 [mkdocs 的所有配置参数（来自 mkdocs 官方中文网站）](http://markdown-docs-zh.readthedocs.io/zh_CN/latest/user-guide/configuration/)
+
+
+http://yangfangs.github.io/2016/08/09/install-build-mkdocs/
+https://www.jianshu.com/p/d78e9f741a79
+https://blog.csdn.net/Marksinoberg/article/details/51766969
+https://www.mkdocs.org/user-guide/deploying-your-docs/
+https://foreachsam.github.io/book-util-mkdocs/book/content/command/gh-deploy/
+https://tartaricacid.github.io/2017/10/29/MkdocsWiki/
+http://jimmyleeking.github.io/YouAreWellcome/env/mkdocs_github_use/
+https://blog.csdn.net/KevinDGK/article/details/52388542
 
 ### 自动发布到 GitHub 上
 1、在 mkdocs.yml 文件中增加配置 `repo_url` 项（可能连这一步都不用吧，我感觉跟下一步重复了）：
