@@ -59,7 +59,12 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../leetcode-0002-add-two-numbers/">Leetcode 0002 add two numbers</a>
+    <a class="" href="../leetcode-0002-add-two-numbers/">two-sum</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0021-merge-two-sorted-lists/">merge-two-sorted-lists</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -79,12 +84,27 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../leetcode-0203-remove-linked-list-elements/">填写</a>
+    <a class="" href="../leetcode-0100-same-tree/">same-tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0101-symmetric-tree/">symmetric-tree/</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0203-remove-linked-list-elements/">remove-linked-list-elements</a>
 	    </li>
           
             <li class="toctree-l1">
 		
     <a class="" href="../leetcode-0206-reverse-linked-list/">reverse-linked-list</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0226-invert-binary-tree/">invert-binary-tree</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -121,6 +141,11 @@
             <li class="toctree-l1">
 		
     <a class="" href="../leetcode-articles-template/">Leetcode articles template</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-summarize/">Leetcode summarize</a>
 	    </li>
           
         </ul>
@@ -240,6 +265,11 @@ public class Solution {
 </code></pre>
 
 <h3 id="2">参考解答2（推荐）</h3>
+<ul>
+<li>注意1：我们采用一次跳过一个节点“穿针引线”的办法来完成这个问题；</li>
+<li>注意2：在 <code>while</code> 循环体中，如果结点个数是奇数的话，偶数索引的最后一个元素的 <code>next</code> 指针会指向一个 <code>null</code> （因为跳过一个结点改变 <code>next</code> 指针的操作是一起进行的），这一点完全可以分类讨论，因为就两种情况，如下图所示：</li>
+</ul>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/328-1.jpg" width="600"></p>
 <pre><code class="java">public class Solution2 {
 
     public ListNode oddEvenList(ListNode head) {

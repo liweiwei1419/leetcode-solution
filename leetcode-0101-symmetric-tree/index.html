@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>remove-linked-list-elements - LeetCode Solution</title>
+  <title>symmetric-tree/ - LeetCode Solution</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "remove-linked-list-elements";
-    var mkdocs_page_input_path = "leetcode-0203-remove-linked-list-elements.md";
-    var mkdocs_page_url = "/leetcode-0203-remove-linked-list-elements/";
+    var mkdocs_page_name = "symmetric-tree/";
+    var mkdocs_page_input_path = "leetcode-0101-symmetric-tree.md";
+    var mkdocs_page_url = "/leetcode-0101-symmetric-tree/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -87,17 +87,15 @@
     <a class="" href="../leetcode-0100-same-tree/">same-tree</a>
 	    </li>
           
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0101-symmetric-tree/">symmetric-tree/</a>
-	    </li>
-          
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">remove-linked-list-elements</a>
+    <a class="current" href="./">symmetric-tree/</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#remove-linked-list-elements">remove-linked-list-elements</a></li>
+    <li class="toctree-l2"><a href="#symmetric-tree">symmetric-tree/</a></li>
+    
+
+    <li class="toctree-l2"><a href="#symmetric-tree_1">symmetric-tree</a></li>
     
         <ul>
         
@@ -111,6 +109,11 @@
     
 
     </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0203-remove-linked-list-elements/">Leetcode 0203 remove linked list elements</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -170,10 +173,10 @@
     
       
     
-    <li>remove-linked-list-elements</li>
+    <li>symmetric-tree/</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0203-remove-linked-list-elements.md"
+        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0101-symmetric-tree.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -183,131 +186,142 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="remove-linked-list-elements">remove-linked-list-elements</h1>
+                <h1 id="symmetric-tree">symmetric-tree/</h1>
+<h1 id="symmetric-tree_1">symmetric-tree</h1>
 <h2 id="_1">题目描述和难度</h2>
 <ul>
-<li>题目描述：删除链表中等于给定值 val 的所有节点。</li>
+<li>题目描述：给定一个二叉树，检查它是否是镜像对称的。</li>
 <li>题目难度：简单。</li>
-<li>英文网址：<a href="https://leetcode.com/problems/remove-linked-list-elements/description/">203. Remove Linked List Elements</a>  。</li>
-<li>中文网址：<a href="https://leetcode-cn.com/problems/remove-linked-list-elements/description/">203. 删除链表中的节点</a>  。</li>
+<li>英文网址：<a href="https://leetcode.com/problems/symmetric-tree/description/">101. Symmetric Tree</a>  。</li>
+<li>中文网址：<a href="https://leetcode-cn.com/problems/symmetric-tree/description/">101. 对称二叉树</a>  。</li>
 </ul>
 <h2 id="_2">思路分析</h2>
-<p>求解关键：常规解法画图分析指针的指向，看图直接写出代码，这是思路1。</p>
-<p>思路1：删除节点这件事情很可能发生在链表的头结点，因此需要对头结点特殊处理。常用的处理头结点的技巧是设置虚拟头结点，这样头结点的处理逻辑和非头结点就可以统一起来。</p>
-<p>思路2：使用递归删除，这样就不用处理“穿针引线”的问题了。步骤：（1）处理最简单的情况。（2）假设规模小的情况解决了，大一级（多 1 个元素）的情况的如何与之产生联系。</p>
-<p>补充说明：对于单链表的程序的测试，建议给 <code>ListNode</code> 类添加可以传入数组的构造方法，并覆盖 <code>toString()</code> 方法方便检测我们编写的程序正确与否。</p>
+<p>求解关键：</p>
+<ul>
+<li>思路1（对应参考解答1）：先拷贝一棵二叉树，再反转，将反转以后的二叉树和自己比较，看看是否相等，这个思路就转化成了以前我们解决过的问题。另外复制的时候，我们可以反着复制，然后比较。</li>
+<li>思路2（对应参考解答2）：设置一个辅助函数，递归去判断两棵子树是否镜面对称。</li>
+<li>思路3（对应参考解答3）：使用队列，并且是双端队列（链表实现）这个辅助数据结构。画出出队入队的顺序，就很清楚了。</li>
+</ul>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/101-1.jpg" width="600"></p>
 <h2 id="_3">参考解答</h2>
-<h3 id="1">参考解答1：常规解法，穿针引线</h3>
-<pre><code class="java">// Definition for singly-linked list.
-class ListNode {
-
+<h3 id="1">参考解答1</h3>
+<p>说明：注意下面的 <code>copyBinaryTree</code> 方法。</p>
+<pre><code class="java">class TreeNode {
     int val;
-    ListNode next;
+    TreeNode left;
+    TreeNode right;
 
-    ListNode(int x) {
+    TreeNode(int x) {
         val = x;
-    }
-
-    // 下面，我们将 LeetCode 中的给出的链表的节点这个类进行一些扩展，方便我们的调试
-    // 1、给出一个数字数组，通过数组构建数字链表
-    public ListNode(int[] arr) {
-        if (arr == null || arr.length == 0) {
-            throw new IllegalArgumentException(&quot;arr can not be empty&quot;);
-        }
-        // 体会这里 this 指代了什么，其实就是 head
-        // 因为这是一个构造函数，所以也无须将 head 返回
-        this.val = arr[0];
-        ListNode cur = this;
-        for (int i = 1; i &lt; arr.length; i++) {
-            cur.next = new ListNode(arr[i]);
-            cur = cur.next;
-        }
-    }
-
-    // 2、重写 toString() 方法，方便我们查看链表中的元素
-    @Override
-    public String toString() {
-        StringBuilder s = new StringBuilder();
-        ListNode cur = this; // 还是要特别注意的是，理解这里 this 的用法
-        while (cur != null) {
-            s.append(cur.val + &quot; -&gt; &quot;);
-            cur = cur.next;
-        }
-        s.append(&quot;NULL&quot;);
-        return s.toString();
     }
 }
 
 public class Solution {
-    public ListNode removeElements(ListNode head, int val) {
-        ListNode dummyNode = new ListNode(-1);
-        dummyNode.next = head;
-        ListNode cur = dummyNode;
-        ListNode next;
-        while (cur.next != null) {
-            if (cur.next.val == val) {
-                next = cur.next;
-                cur.next = next.next;
-                next.next = null;
-            } else {
-                cur = cur.next;
+    public boolean isSymmetric(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+        TreeNode copyBinaryTree = copyBinaryTree(root);
+        TreeNode invertBinaryTree = invertBinaryTree(copyBinaryTree);
+        return isSameTree(root, invertBinaryTree);
+    }
+
+    private boolean isSameTree(TreeNode t1, TreeNode t2) {
+        if (t1 == null &amp;&amp; t2 == null) {
+            return true;
+        }
+        if (t1 == null || t2 == null || t1.val != t2.val) {
+            return false;
+        }
+        return isSameTree(t1.left, t2.left) &amp;&amp; isSameTree(t1.right, t2.right);
+    }
+
+    private TreeNode invertBinaryTree(TreeNode node) {
+        if (node == null) {
+            return node;
+        }
+        invertBinaryTree(node.left);
+        invertBinaryTree(node.right);
+        TreeNode temp = node.left;
+        node.left = node.right;
+        node.right = temp;
+        return node;
+    }
+
+    // 也使用递归的方式完成（熟悉一下如何完成二叉树的复制）
+    private TreeNode copyBinaryTree(TreeNode node) {
+        if (node == null) {
+            return null;
+        }
+        TreeNode newTreeNode = new TreeNode(node.val);
+        newTreeNode.left = copyBinaryTree(node.left);
+        newTreeNode.right = copyBinaryTree(node.right);
+        return newTreeNode;
+    }
+}
+</code></pre>
+
+<h3 id="2">参考解答2（推荐）</h3>
+<pre><code class="java">public class Solution {
+
+    // 画出 4 层结构图就容易发现递归关系了
+    private boolean isSymmetric(TreeNode p1, TreeNode p2) {
+        // 左右都为空，判为相等
+        if (p1 == null &amp;&amp; p2 == null) {
+            return true;
+        }
+        // 走到这里左右之一至少非空，或者都非空，但它们的 val 不等，都不能叫做 symmetric tree
+        if (p1 == null || p2 == null || p1.val != p2.val) {
+            return false;
+        }
+        // 对称地去比较，p1 的左边和 p2 的右边
+        // p1 的右边和 p2 的左边
+        return isSymmetric(p1.left, p2.right) &amp;&amp; isSymmetric(p1.right, p2.left);
+    }
+
+    public boolean isSymmetric(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+        return isSymmetric(root.left, root.right);
+    }
+}
+</code></pre>
+
+<h3 id="3">参考解答3</h3>
+<p>参考资料：</p>
+<pre><code class="java">import java.util.LinkedList;
+
+// https://leetcode-cn.com/problems/symmetric-tree/description/
+public class Solution3 {
+
+    public boolean isSymmetric(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+        LinkedList&lt;TreeNode&gt; linkedList = new LinkedList&lt;&gt;();
+        linkedList.addFirst(root.left);
+        linkedList.addLast(root.right);
+        while (!linkedList.isEmpty()) {
+            // 出队的时候，看看是否有左右孩子，分别入队
+            TreeNode lNode = linkedList.removeFirst();
+            TreeNode rNode = linkedList.removeLast();
+            if (lNode == null &amp;&amp; rNode == null) {
+                continue;
+            }
+            if (lNode == null || rNode == null) {
+                return false;
+            }
+            linkedList.addFirst(lNode.right);
+            linkedList.addFirst(lNode.left);
+            linkedList.addLast(rNode.left);
+            linkedList.addLast(rNode.right);
+
+            if (lNode.val != rNode.val) {
+                return false;
             }
         }
-        return dummyNode.next;
-    }
-
-    public static void main(String[] args) {
-        int[] nums = {1, 2, 6, 3, 4, 5, 6};
-        ListNode head = new ListNode(nums);
-        int val = 6;
-        Solution solution = new Solution();
-        ListNode removeElements = solution.removeElements(head, val);
-        System.out.println(removeElements);
-    }
-}
-</code></pre>
-
-<h3 id="2">参考解答2：使用递归方法（个人推荐，因为不用穿针引线，代码也很简洁）</h3>
-<pre><code class="java">class Solution2 {
-
-    // 这是一个递归方法，首先处理递归到底的情况
-    public ListNode removeElements(ListNode head, int val) {
-        // 首先处理递归到底的情况
-        if (head == null) {
-            return head;
-        }
-        // 把一个问题转化为规模更小的问题
-        ListNode res = removeElements(head.next, val);
-        // 下面处理原始规模的问题如何与小规模的问题建立联系
-        if (head.val == val) {
-            // 当前这个节点必须要被删掉
-            return res;
-        } else {
-            head.next = res;
-            return head;
-        }
-    }
-
-    public static void main(String[] args) {
-        int[] nums = {1, 2, 6, 3, 4, 5, 6};
-        ListNode head = new ListNode(nums);
-        int val = 6;
-        Solution solution = new Solution();
-        ListNode removeElements = solution.removeElements(head, val);
-        System.out.println(removeElements);
-    }
-}
-</code></pre>
-
-<p>说明：更简洁的一种写法。</p>
-<pre><code class="java">public class Solution3 {
-
-    public ListNode removeElements(ListNode head, int val) {
-        if (head == null) {
-            return head;
-        }
-        head.next = removeElements(head.next, val);
-        return head.val == val ? head.next : head;
+        return true;
     }
 }
 </code></pre>
@@ -318,10 +332,10 @@ public class Solution {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../leetcode-0206-reverse-linked-list/" class="btn btn-neutral float-right" title="Leetcode 0206 reverse linked list">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../leetcode-0203-remove-linked-list-elements/" class="btn btn-neutral float-right" title="Leetcode 0203 remove linked list elements">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../leetcode-0101-symmetric-tree/" class="btn btn-neutral" title="symmetric-tree/"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../leetcode-0100-same-tree/" class="btn btn-neutral" title="same-tree"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -349,10 +363,10 @@ public class Solution {
           <a href="https://github.com/liweiwei1419/leetcode-solution.git/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../leetcode-0101-symmetric-tree/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../leetcode-0100-same-tree/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../leetcode-0206-reverse-linked-list/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../leetcode-0203-remove-linked-list-elements/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
