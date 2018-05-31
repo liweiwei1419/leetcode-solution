@@ -1,5 +1,17 @@
 # 未完成的部分
 
+剑指offer题目及答案 https://blog.csdn.net/panda_AJ/article/details/69420293
+剑指Offer 之 Java 专栏 https://blog.csdn.net/column/details/codingintervieww.html
+
+史上最简单的 IntelliJ IDEA 教程
+https://github.com/guobinhit/intellij-idea-tutorial/blob/master/README.md
+
+
+
+IntelliJ IDEA 最新注册码（截止到2019年5月4日）
+https://blog.csdn.net/qq_35246620/article/details/80522720
+
+
 ## 300 最长上升子序列()
 + 有 nlogn 复杂度的解法
 + 记忆化搜索的解法

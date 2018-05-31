@@ -114,10 +114,10 @@ public class Solution2 {
         // 假设规模小的问题已经解决，如何建立和原始规模问题之间的关系
         ListNode mergeNode;
         if (l1.val < l2.val) {
-            mergeNode = l1; // l1 被选出
+            mergeNode = l1; // l1 被选出，谁小谁在前面
             mergeNode.next = mergeTwoLists(l1.next, l2);
         } else {
-            mergeNode = l2; // l2 被选出
+            mergeNode = l2; // l2 被选出，谁小谁在前面
             mergeNode.next = mergeTwoLists(l1, l2.next);
         }
         return mergeNode;
