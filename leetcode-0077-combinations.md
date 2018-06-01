@@ -8,6 +8,12 @@
 ## 思路分析
 求解关键：按顺序查找，已经用过的数字就不会再使用，因此不用设置 marked 数组。重点分析出遍历的 i 的上界是 `n - (k - stack.size()) + 1`。
 
+<img src="https://liweiwei1419.github.io/images/leetcode-solution/77-1.jpg" width="600">
+
+下面的图展示了如何分析出循环变量中 `i` 的上界。 （如果下面的图片太小，可以在图片上右键，选择“在新标签页中打开图片”，以查看大图。）
+
+<img src="https://liweiwei1419.github.io/images/leetcode-solution/77-2.jpg" width="600">
+
 ## 参考解答
 ### 参考解答1
 
