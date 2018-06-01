@@ -1,4 +1,4 @@
-# remove-duplicates-from-sorted-list
+# Remove Duplicates from Sorted List
 
 ## 题目描述和难度
 + 题目描述：给定一个排序链表，删除所有重复的元素，使得每个元素只出现一次。

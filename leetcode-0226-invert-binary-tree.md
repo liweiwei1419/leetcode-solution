@@ -1,4 +1,4 @@
-# invert-binary-tree
+# Invert Binary Tree
 
 ## 题目描述和难度
 + 题目描述：翻转一棵二叉树。

@@ -1,4 +1,4 @@
-# add-and-search-word-data-structure-design
+# Add and Search Word - Data structure design
 
 ## 题目描述和难度
 + 题目描述：设计一个支持以下两种操作的数据结构：

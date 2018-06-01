@@ -1,5 +1,4 @@
-# symmetric-tree/
-# symmetric-tree
+# Symmetric Tree
 
 ## 题目描述和难度
 + 题目描述：给定一个二叉树，检查它是否是镜像对称的。

@@ -1,4 +1,4 @@
-# implement-trie-prefix-tree
+# Implement Trie (Prefix Tree)
 
 ## 题目描述和难度
 + 题目描述：实现一个 Trie (前缀树)，包含 `insert`, `search`, 和 `startsWith` 这三个操作。
