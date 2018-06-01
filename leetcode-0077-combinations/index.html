@@ -243,6 +243,9 @@
 </ul>
 <h2 id="_2">思路分析</h2>
 <p>求解关键：按顺序查找，已经用过的数字就不会再使用，因此不用设置 marked 数组。重点分析出遍历的 i 的上界是 <code>n - (k - stack.size()) + 1</code>。</p>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/77-1.jpg" width="600"></p>
+<p>下面的图展示了如何分析出循环变量中 <code>i</code> 的上界。 </p>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/77-2.jpg" width="600"></p>
 <h2 id="_3">参考解答</h2>
 <h3 id="1">参考解答1</h3>
 <pre><code class="java">import java.util.ArrayList;
