@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>未完成的部分 - LeetCode Solution</title>
+  <title>Map Sum Pairs - LeetCode Solution</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "\u672a\u5b8c\u6210\u7684\u90e8\u5206";
-    var mkdocs_page_input_path = "leetcode-algorithm-notes.md";
-    var mkdocs_page_url = "/leetcode-algorithm-notes/";
+    var mkdocs_page_name = "Map Sum Pairs";
+    var mkdocs_page_input_path = "leetcode-0677-map-sum-pairs.md";
+    var mkdocs_page_url = "/leetcode-0677-map-sum-pairs/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -137,26 +137,30 @@
     <a class="" href="../leetcode-0328-odd-even-linked-list/">Odd Even Linked List</a>
 	    </li>
           
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0677-map-sum-pairs/">Map Sum Pairs</a>
-	    </li>
-          
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">未完成的部分</a>
+    <a class="current" href="./">Map Sum Pairs</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#_1">未完成的部分</a></li>
+    <li class="toctree-l2"><a href="#map-sum-pairs">Map Sum Pairs</a></li>
     
         <ul>
         
-            <li><a class="toctree-l3" href="#300">300 最长上升子序列()</a></li>
+            <li><a class="toctree-l3" href="#_1">题目描述和难度</a></li>
+        
+            <li><a class="toctree-l3" href="#_2">思路分析</a></li>
+        
+            <li><a class="toctree-l3" href="#_3">参考解答</a></li>
         
         </ul>
     
 
     </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-algorithm-notes/">Leetcode algorithm notes</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -191,10 +195,10 @@
     
       
     
-    <li>未完成的部分</li>
+    <li>Map Sum Pairs</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-algorithm-notes.md"
+        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0677-map-sum-pairs.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -204,54 +208,98 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="_1">未完成的部分</h1>
-<p>剑指offer题目及答案 https://blog.csdn.net/panda_AJ/article/details/69420293
-剑指Offer 之 Java 专栏 https://blog.csdn.net/column/details/codingintervieww.html</p>
-<p>史上最简单的 IntelliJ IDEA 教程
-https://github.com/guobinhit/intellij-idea-tutorial/blob/master/README.md</p>
-<p>IntelliJ IDEA 最新注册码（截止到2019年5月4日）
-https://blog.csdn.net/qq_35246620/article/details/80522720</p>
-<h2 id="300">300 最长上升子序列()</h2>
+                <h1 id="map-sum-pairs">Map Sum Pairs</h1>
+<h2 id="_1">题目描述和难度</h2>
 <ul>
-<li>有 nlogn 复杂度的解法</li>
-<li>记忆化搜索的解法</li>
+<li>题目描述：实现一个 MapSum 类里的两个方法，insert 和 sum。对于方法 insert，你将得到一对（字符串，整数）的键值对。字符串表示键，整数表示值。如果键已经存在，那么原来的键值对将被替代成新的键值对。对于方法 sum，你将得到一个表示前缀的字符串，你需要返回所有以该前缀开头的键的值的总和。</li>
+<li>题目难度：中等。</li>
+<li>英文网址：<a href="https://leetcode.com/problems/map-sum-pairs/description/">677. Map Sum Pairs</a>  。</li>
+<li>中文网址：<a href="https://leetcode-cn.com/problems/map-sum-pairs/description/">677. 键值映射</a>  。</li>
 </ul>
-<p>tyvj：http://www.joyoi.cn/
-topcoder
-poj、杭电
-Google Sheet
-codeforces</p>
-<p>组合问题可以使用动态规划来求解。</p>
-<p>思路1：因为很可能头结点被删除，为了避免处理删除头结点的一些复杂的讨论工作，设置虚拟头结点一般是这类问题常见的做法。
-思路2：使用递归的方式删除。</p>
-<p>BAT机器学习面试1000题系列：七月在线：
-https://blog.csdn.net/v_july_v/article/details/7041827</p>
-<p>基本概念：
-文本、模式、前缀、后缀、匹配、失配、字母表。</p>
-<p>1、暴力匹配（朴素匹配）
-算法是十分好理解，并且是显而易见的。暴力匹配法的缺点在于：在一轮匹配中，我们已经匹配了很多字符，但是只有一个不匹配的话，我们就会前功尽弃，一下子打回原形，继续开始下一轮。
-暴力匹配，就相当于选择排序一样，每一轮都选出一个最小元素，下一轮，重新开始跑，这种算法不能观察到字符串本身有的特点，让算法更快地完成。</p>
-<p>类比与插入排序，对于大致有序的数组，插入排序就可以很快完成。</p>
-<p>2、KMP 
-next 数组代表当前字符<strong>之前</strong>的字符串中，有多大长度的相同前缀后缀。</p>
-<p>376</p>
-<p>《算法导论》红黑树学习笔记 http://www.cnblogs.com/Anker/archive/2013/01/30/2882773.html
-BST 中找一个元素的前驱和后继</p>
-<p>KMP 算法理解相关文章：</p>
-<p><a href="http://www.ruanyifeng.com/blog/2013/05/Knuth%E2%80%93Morris%E2%80%93Pratt_algorithm.html">阮一峰《字符串匹配的KMP算法》</a>
-<a href="https://blog.csdn.net/v_july_v/article/details/7041827">七月《https://blog.csdn.net/v_july_v/article/details/7041827》</a></p>
-<p><a href="https://www.youtube.com/watch?v=dgPabAsTFa8">黄浩劫视频讲解</a></p>
-<p>http://www.cnblogs.com/golove/p/3222096.html 这篇博客告诉我们，标准 ASCII 码有 256 个字符。</p>
-<p>Rabin-Karp 算法讲解比较细致的一篇文章：http://www.cnblogs.com/golove/p/3234673.html
-Rabin-Karp 算法 Java 实现： https://blog.csdn.net/tyler_download/article/details/52457108</p>
-<p>算法——字符串匹配之Rabin-Karp算法
-https://blog.csdn.net/chenhanzhun/article/details/39895077
-算法导论上的例子：
-https://www.geeksforgeeks.org/searching-for-patterns-set-3-rabin-karp-algorithm/</p>
-<p>算法数据结构,如何面试进入google
-http://study.163.com/course/introduction.htm?courseId=1002942008#/courseDetail?tab=1</p>
-<p>LintCode 题解：
-https://github.com/awangdev/LintCode/blob/master/Java/Median.java</p>
+<h2 id="_2">思路分析</h2>
+<p>求解关键：使用 <code>Trie</code> 单词查找树这个数据结构来完成，将原来的 <code>isWord</code> 设计成 <code>value</code> 它不但可以表达原来 <code>isWord</code> 的含义，还能表示题目中一个单词携带的整数的含义。
++ 首先先把前缀遍历完，如果前缀都不能遍历完成，就说明单词查找树中不存在以这个单词为前缀的单词，应该返回 0，否则以一个结点为根，循环遍历到所有叶子节点，途径的所有 value 值都应该加和到最终的结果里。
++ 计算 sum 设计成一个递归方法，递归方法几行就完成了计算，虽然没有显式地写出递归终止条件，但递归终止条件已经包含在方法体中了。</p>
+<h2 id="_3">参考解答</h2>
+<h3 id="1">参考解答1</h3>
+<pre><code class="java">import java.util.HashMap;
+
+public class MapSum {
+
+    private Node root;
+
+    private class Node {
+        private int value;
+        private HashMap&lt;Character, Node&gt; next;
+
+        public Node() {
+            this(0);
+        }
+
+        public Node(int value) {
+            this.value = value;
+            this.next = new HashMap&lt;&gt;();
+        }
+    }
+
+    /**
+     * Initialize your data structure here.
+     */
+    public MapSum() {
+        root = new Node();
+    }
+
+    public void insert(String key, int val) {
+        Node curNode = root;
+        for (int i = 0; i &lt; key.length(); i++) {
+            Character c = key.charAt(i);
+            if (!curNode.next.containsKey(c)) {
+                curNode.next.put(c, new Node());
+            }
+            curNode = curNode.next.get(c);
+        }
+        curNode.value = val;
+    }
+
+    // 设计一个递归函数去完成它
+    public int sum(String prefix) {
+        Node curNode = root;
+        for (int i = 0; i &lt; prefix.length(); i++) {
+            Character c = prefix.charAt(i);
+            if (curNode.next.containsKey(c)) {
+                curNode = curNode.next.get(c);
+            } else {
+                return 0;
+            }
+        }
+        return sum(curNode);
+    }
+
+    // 计算以 node 为根节点的所有 value 值的和
+    private int sum(Node node) {
+        int res = node.value;
+        for (Character key : node.next.keySet()) {
+            // 一直找到根节点
+            res += sum(node.next.get(key));
+        }
+        return res;
+    }
+
+    public static void main(String[] args) {
+        // 输入: insert(&quot;apple&quot;, 3), 输出: Null
+        // 输入: sum(&quot;ap&quot;), 输出: 3
+        // 输入: insert(&quot;app&quot;, 2), 输出: Null
+        // 输入: sum(&quot;ap&quot;), 输出: 5
+        MapSum2 mapSum = new MapSum2();
+        mapSum.insert(&quot;apple&quot;, 3);
+        int sum1 = mapSum.sum(&quot;ap&quot;);
+        System.out.println(sum1);
+        mapSum.insert(&quot;app&quot;, 2);
+        int sum2 = mapSum.sum(&quot;ap&quot;);
+        System.out.println(sum2);
+    }
+}
+</code></pre>
               
             </div>
           </div>
@@ -259,10 +307,10 @@ https://github.com/awangdev/LintCode/blob/master/Java/Median.java</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../leetcode-articles-template/" class="btn btn-neutral float-right" title="Leetcode articles template">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../leetcode-algorithm-notes/" class="btn btn-neutral float-right" title="Leetcode algorithm notes">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../leetcode-0677-map-sum-pairs/" class="btn btn-neutral" title="Map Sum Pairs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../leetcode-0328-odd-even-linked-list/" class="btn btn-neutral" title="Odd Even Linked List"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -290,10 +338,10 @@ https://github.com/awangdev/LintCode/blob/master/Java/Median.java</p>
           <a href="https://github.com/liweiwei1419/leetcode-solution.git/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../leetcode-0677-map-sum-pairs/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../leetcode-0328-odd-even-linked-list/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../leetcode-articles-template/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../leetcode-algorithm-notes/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

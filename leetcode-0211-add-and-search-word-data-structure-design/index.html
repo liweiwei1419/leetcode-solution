@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Reverse Linked List - LeetCode Solution</title>
+  <title>Add and Search Word - Data structure design - LeetCode Solution</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Reverse Linked List";
-    var mkdocs_page_input_path = "leetcode-0206-reverse-linked-list.md";
-    var mkdocs_page_url = "/leetcode-0206-reverse-linked-list/";
+    var mkdocs_page_name = "Add and Search Word - Data structure design";
+    var mkdocs_page_input_path = "leetcode-0211-add-and-search-word-data-structure-design.md";
+    var mkdocs_page_url = "/leetcode-0211-add-and-search-word-data-structure-design/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -102,12 +102,22 @@
     <a class="" href="../leetcode-0203-remove-linked-list-elements/">Remove Linked List Elements</a>
 	    </li>
           
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0206-reverse-linked-list/">Reverse Linked List</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0208-implement-trie-prefix-tree/">Implement Trie (Prefix Tree)</a>
+	    </li>
+          
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">Reverse Linked List</a>
+    <a class="current" href="./">Add and Search Word - Data structure design</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#reverse-linked-list">Reverse Linked List</a></li>
+    <li class="toctree-l2"><a href="#add-and-search-word-data-structure-design">Add and Search Word - Data structure design</a></li>
     
         <ul>
         
@@ -121,16 +131,6 @@
     
 
     </ul>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0208-implement-trie-prefix-tree/">Leetcode 0208 implement trie prefix tree</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0211-add-and-search-word-data-structure-design/">Leetcode 0211 add and search word data structure design</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -195,10 +195,10 @@
     
       
     
-    <li>Reverse Linked List</li>
+    <li>Add and Search Word - Data structure design</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0206-reverse-linked-list.md"
+        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0211-add-and-search-word-data-structure-design.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -208,100 +208,108 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="reverse-linked-list">Reverse Linked List</h1>
+                <h1 id="add-and-search-word-data-structure-design">Add and Search Word - Data structure design</h1>
 <h2 id="_1">题目描述和难度</h2>
 <ul>
-<li>题目描述：反转一个单链表。</li>
-<li>题目难度：简单。</li>
-<li>英文网址：<a href="">206. reverse-linked-list</a>  。</li>
-<li>中文网址：<a href="https://leetcode-cn.com/problems/reverse-linked-list/description/">206. 反转链表</a>  。</li>
+<li>题目描述：设计一个支持以下两种操作的数据结构：</li>
 </ul>
+<pre><code class="java">void addWord(word)
+bool search(word)
+</code></pre>
+
+<p>search(word) 可以搜索文字或正则表达式字符串，字符串只包含字母 <code>.</code> 或 <code>a-z</code> 。 <code>.</code> 可以表示任何一个字母。
++ 题目难度：中等。
++ 英文网址：<a href="https://leetcode.com/problems/add-and-search-word-data-structure-design/description/">211. Add and Search Word - Data structure design</a>  。
++ 中文网址：<a href="https://leetcode-cn.com/problems/add-and-search-word-data-structure-design/description/">211. 添加与搜索单词 - 数据结构设计</a>  。</p>
 <h2 id="_2">思路分析</h2>
-<p>求解关键：画图，这样思路和代码都会很清晰。  </p>
-<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/206-1.jpg" width="500"></p>
-<ul>
-<li>在画图的过程中，我们就可以分析出完成翻转链表这件事情，一共要用 3 个指针 <code>pre</code>、<code>cur</code>、<code>next</code>：</li>
-<li>当前遍历的 <code>cur</code> 指针不必多说，是一定有的；</li>
-<li>当前结点的 next 指针要指到它前一个结点，所以 <code>pre</code> 也必须有；</li>
-<li>
-<p>迭代要继续下去，<code>cur</code> 结点的下一个结点也得使用一个指针 <code>next</code> 保存一下，其中 <code>next</code> 可以在 <code>cur</code> 确定以后初始化；。</p>
-</li>
-<li>
-<p>画图分析 <code>next</code> 指针的指向，我们注意到我们分析出来的指针指向的先后顺序，通常跟数组的元素交换操作一样，程序写出来是“头尾相连”的，是不是很酷！  </p>
-</li>
-<li>最后一定不要忘记，返回的是 <code>pre</code> 节点。</li>
-</ul>
+<p>求解关键：<code>search</code> 方法针对匹配串中的 <code>.</code> 字符，应该设计一个递归方法。</p>
 <h2 id="_3">参考解答</h2>
 <h3 id="1">参考解答1</h3>
-<pre><code class="java">// https://leetcode-cn.com/problems/reverse-linked-list/description/
-class ListNode {
-    int val;
-    ListNode next;
+<pre><code class="java">import java.util.HashMap;
+import java.util.Set;
 
-    ListNode(int x) {
-        val = x;
-    }
+public class WordDictionary {
 
-    public ListNode(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            throw new IllegalArgumentException(&quot;arr can not be empty&quot;);
-        }
-        this.val = nums[0];
-        ListNode curr = this;
-        for (int i = 1; i &lt; nums.length; i++) {
-            curr.next = new ListNode(nums[i]);
-            curr = curr.next;
+    private Node root;
+
+    private class Node {
+        private boolean isWord;
+        private HashMap&lt;Character, Node&gt; next;
+
+        public Node() {
+            this.next = new HashMap&lt;&gt;();
         }
     }
 
-    @Override
-    public String toString() {
-        StringBuilder s = new StringBuilder();
-        ListNode cur = this;
-        while (cur != null) {
-            s.append(cur.val + &quot; -&gt; &quot;);
-            cur = cur.next;
-        }
-        s.append(&quot;NULL&quot;);
-        return s.toString();
+    /**
+     * Initialize your data structure here.
+     */
+    public WordDictionary() {
+        root = new Node();
     }
-}
 
-// 很常规的一道问题，关键在于画图分析
-// 每一次遍历都要保证设立的 3 个指针的相对关系
-// 注意，最后应该把 pre 指针返回
-
-// 这个解法的时间复杂度是 O(n)，因为它仅仅遍历了一次链表，空间复杂度是 O(1)，因为这里仅仅使用了有限个的“指针”，帮助我们完成了链表的反转操作。
-public class Solution {
-
-    public ListNode reverseList(ListNode head) {
-        // 初始化上一个指针
-        ListNode pre = null;
-        // 初始化当前指针
-        ListNode cur = head;
-        ListNode next;
-        while (cur != null) {
-            // 第 1 步：初始化 next 指针
-            next = cur.next;
-            // 第 2 步：实现当前节点的 next 指针的反转
-            cur.next = pre;
-            // 第 3 步：重新定义下一轮迭代的循环变量
-            pre = cur;
-            cur = next;
+    /**
+     * Adds a word into the data structure.
+     */
+    public void addWord(String word) {
+        Node curNode = root;
+        for (int i = 0; i &lt; word.length(); i++) {
+            Character c = word.charAt(i);
+            if (!curNode.next.containsKey(c)) {
+                curNode.next.put(c, new Node());
+            }
+            curNode = curNode.next.get(c);
         }
-        // 遍历完成以后，原来的最后一个节点就成为了 pre
-        // 这个 pre 就是反转以后的新的链表的头指针
-        return pre;
+        if (!curNode.isWord) {
+            curNode.isWord = true;
+        }
+    }
+
+    /**
+     * Returns if the word is in the data structure. A word could contain the dot character '.' to represent any one letter.
+     */
+    public boolean search(String word) {
+        return search(root, word, 0);
+    }
+
+    private boolean search(Node node, String word, int depth) {
+        if (depth == word.length()) {
+            // 只要能搜索到最后，就表示文本与模式匹配
+            // 这一步很容易被忽视
+            return node.isWord;
+        }
+        Character c = word.charAt(depth);
+        if (c == '.') {
+            Set&lt;Character&gt; keys = node.next.keySet();
+            for (Character key : keys) {
+                Node nextNode = node.next.get(key);
+                if (search(nextNode, word, depth + 1)) {
+                    return true;
+                }
+            }
+            // 循环都走完都没有找到，那就说明没有
+            return false;
+        } else {
+            if (!node.next.containsKey(c)) {
+                return false;
+            }
+            return search(node.next.get(c), word, depth + 1);
+        }
     }
 
     public static void main(String[] args) {
-        int[] nums = {1, 2, 3, 4, 5};
-        ListNode head = new  ListNode(nums);
-        System.out.println(head);
-        Solution solution = new Solution();
-        ListNode reverseList = solution.reverseList(head);
-        System.out.println(&quot;反转之后&quot;);
-        System.out.println(reverseList);
+        WordDictionary wordDictionary = new WordDictionary();
+        wordDictionary.addWord(&quot;bad&quot;);
+        wordDictionary.addWord(&quot;dad&quot;);
+        wordDictionary.addWord(&quot;mad&quot;);
+        boolean search1 = wordDictionary.search(&quot;pad&quot;);// -&gt; false
+        System.out.println(search1);
+        boolean search2 = wordDictionary.search(&quot;bad&quot;); // -&gt; true
+        System.out.println(search2);
+        boolean search3 = wordDictionary.search(&quot;.ad&quot;); // -&gt; true
+        System.out.println(search3);
+        boolean search4 = wordDictionary.search(&quot;b..&quot;); //-&gt; true
+        System.out.println(search4);
     }
 }
 </code></pre>
@@ -312,10 +320,10 @@ public class Solution {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../leetcode-0208-implement-trie-prefix-tree/" class="btn btn-neutral float-right" title="Leetcode 0208 implement trie prefix tree">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../leetcode-0226-invert-binary-tree/" class="btn btn-neutral float-right" title="Leetcode 0226 invert binary tree">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../leetcode-0203-remove-linked-list-elements/" class="btn btn-neutral" title="Remove Linked List Elements"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../leetcode-0208-implement-trie-prefix-tree/" class="btn btn-neutral" title="Implement Trie (Prefix Tree)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -343,10 +351,10 @@ public class Solution {
           <a href="https://github.com/liweiwei1419/leetcode-solution.git/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../leetcode-0203-remove-linked-list-elements/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../leetcode-0208-implement-trie-prefix-tree/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../leetcode-0208-implement-trie-prefix-tree/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../leetcode-0226-invert-binary-tree/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

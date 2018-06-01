@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>Partition List - LeetCode Solution</title>
+  <title>Merge k Sorted Lists - LeetCode Solution</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Partition List";
-    var mkdocs_page_input_path = "leetcode-0086-partition-list.md";
-    var mkdocs_page_url = "/leetcode-0086-partition-list/";
+    var mkdocs_page_name = "Merge k Sorted Lists";
+    var mkdocs_page_input_path = "leetcode-0023-merge-k-sorted-lists.md";
+    var mkdocs_page_url = "/leetcode-0023-merge-k-sorted-lists/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -57,22 +57,12 @@
     <a class="" href="../leetcode-0021-merge-two-sorted-lists/">Merge Two Sorted Lists</a>
 	    </li>
           
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0023-merge-k-sorted-lists/">Merge k Sorted Lists</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0083-remove-duplicates-from-sorted-list/">Remove Duplicates from Sorted List</a>
-	    </li>
-          
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">Partition List</a>
+    <a class="current" href="./">Merge k Sorted Lists</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#partition-list">Partition List</a></li>
+    <li class="toctree-l2"><a href="#merge-k-sorted-lists">Merge k Sorted Lists</a></li>
     
         <ul>
         
@@ -86,6 +76,16 @@
     
 
     </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0083-remove-duplicates-from-sorted-list/">Leetcode 0083 remove duplicates from sorted list</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0086-partition-list/">Leetcode 0086 partition list</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -195,10 +195,10 @@
     
       
     
-    <li>Partition List</li>
+    <li>Merge k Sorted Lists</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0086-partition-list.md"
+        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0023-merge-k-sorted-lists.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -208,20 +208,35 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="partition-list">Partition List</h1>
+                <h1 id="merge-k-sorted-lists">Merge k Sorted Lists</h1>
 <h2 id="_1">题目描述和难度</h2>
 <ul>
-<li>题目描述：给定一个链表和一个特定值 x，对链表进行分隔，使得所有小于 x 的节点都在大于或等于 x 的节点之前。你应当保留两个分区中每个节点的初始相对位置。</li>
-<li>题目难度：中等。</li>
-<li>英文网址：<a href="https://leetcode.com/problems/partition-list/description/">86. Partition List</a>  。</li>
-<li>中文网址：<a href="https://leetcode-cn.com/problems/partition-list/description/">86. 分隔链表</a>  。</li>
+<li>题目描述：合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。</li>
+<li>题目难度：困难。</li>
+<li>英文网址：<a href="https://leetcode.com/problems/merge-k-sorted-lists/description/">23. Merge k Sorted Lists</a>  。</li>
+<li>中文网址：<a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/description/">23. 合并K个排序链表</a>  。</li>
 </ul>
 <h2 id="_2">思路分析</h2>
-<p>求解关键：
-其实就是我们在数组中的 partition 这个过程，在数组中，我们要通过不断地交换元素的位置来实现 partition 。对于这道问题，穿针引线可能有些麻烦，但是我们完全可以新建两个链表，最后把它们合并在一起，这是思路1；但是我们也完全可以穿针引线，只不过要设置两个头结点，最后把它们合在一起就可以了，省去了一直 new 节点的操作，这是思路2。</p>
+<p>求解关键：这是一道类似于教科书上例题的问题。这里我们举生活中的例子来理解求解思路，其实一点都不难。
+假设有如下生活情境：假设你是一名体育老师，有 3 个班的学生，他们已经按照身高从矮到高排好成了 3 列纵队，现在要把这 3 个班的学生也按照身高从矮到高排列一列纵队。我们可以这么做：
+（1）让三个班的学生按列站在你的面前，这时你能看到站在队首的学生的全身，其余同学只能看到比前面同学脑袋高出的那部分；
+（2）每一次队首的 3 名同学，请出最矮的同学出列到“队伍4”（即我们最终认为排好序的队列），出列的这一列的后一名同学向前走一步；
+（3）重复第（2）步，直到 3 个班的同学全部出列完毕。</p>
+<p>具体实现的时候，“每一次队首的 3 名同学，请出最矮的同学”这件事情可以交给优先队列去完成。在连续的两次出队之间完成“穿针引线”的工作，是不是很酷！下面的图说明了这样的过程。</p>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/23-1.jpg" width="600"></p>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/23-2.jpg" width="600"></p>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/23-3.jpg" width="600"></p>
+<p>以上是思路1，对应参考解答1。下面介绍思路2，对应参考解答2：
+根据之前处理链表的经验，如果我们不想“穿针引线”，那么递归方法是一个不错的选择，既然是数组的“排序”问题，我们不妨借助归并排序的<strong>分治思想</strong>来解决，代码结构和归并排序可以说是同出一辙。
+1、先一分为二地解决了这个问题；
+2、再考虑如何合并，这个合并的过程也是一个递归方法。</p>
+<p>两种方法都利用到了常见的算法和基础的数据结构，值得学习和思考。</p>
 <h2 id="_3">参考解答</h2>
 <h3 id="1">参考解答1</h3>
-<pre><code class="java">class ListNode {
+<pre><code class="java">import java.util.Comparator;
+import java.util.PriorityQueue;
+
+class ListNode {
     int val;
     ListNode next;
 
@@ -229,26 +244,25 @@
         val = x;
     }
 
-    public ListNode(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            throw new IllegalArgumentException(&quot;arr can not be empty&quot;);
-        }
-        this.val = nums[0];
-        ListNode curr = this;
+    ListNode(Integer[] nums) {
+        ListNode currNode = this;
+        currNode.val = nums[0];
         for (int i = 1; i &lt; nums.length; i++) {
-            curr.next = new ListNode(nums[i]);
-            curr = curr.next;
+            currNode.next = new ListNode(nums[i]);
+            currNode = currNode.next;
         }
     }
 
     @Override
     public String toString() {
+        ListNode currNode = this;
         StringBuilder s = new StringBuilder();
-        ListNode cur = this;
-        while (cur != null) {
-            s.append(cur.val + &quot; -&gt; &quot;);
-            cur = cur.next;
+        while (currNode != null) {
+            s.append(currNode.val);
+            s.append(&quot; -&gt; &quot;);
+            currNode = currNode.next;
         }
+        // 最后添加一个 NULL 标志表示添加到末尾了
         s.append(&quot;NULL&quot;);
         return s.toString();
     }
@@ -256,67 +270,95 @@
 
 public class Solution {
 
-    public ListNode partition(ListNode head, int x) {
-        ListNode dummyNodeL = new ListNode(-1); // 比 x 小的虚拟头结点
-        ListNode dummyNodeR = new ListNode(-1); // 大于等于 x 的虚拟头结点
-        ListNode curL = dummyNodeL; // 用于遍历
-        ListNode curR = dummyNodeR; // 用于遍历
-        int val;
-        while (head != null) {
-            val = head.val;
-            if (val &lt; x) { // 接在 L 的后面
-                curL.next = new ListNode(val);
-                curL = curL.next;
-            } else { // 接在 R 的后面
-                curR.next = new ListNode(val);
-                curR = curR.next;
-            }
-            head = head.next;
+    public ListNode mergeKLists(ListNode[] lists) {
+        int len = lists.length;
+        if (len == 0) {
+            return null;
         }
-        curL.next = dummyNodeR.next; // 把较小的链表接在较大的链表后面
-        return dummyNodeL.next;
+        Comparator&lt;ListNode&gt; comparator = new Comparator&lt;ListNode&gt;() {
+            @Override
+            public int compare(ListNode o1, ListNode o2) {
+                return o1.val - o2.val;
+            }
+        };
+        PriorityQueue&lt;ListNode&gt; priorityQueue = new PriorityQueue&lt;&gt;(comparator);
+        for (int i = 0; i &lt; len; i++) {
+            // 注意：这里要注意到测试用例中，ListNode 为 null 的特殊情况，空节点是一定不能放入优先队列的，把空节点放入优先队列没有意义
+            if (lists[i] != null) {
+                priorityQueue.add(lists[i]);
+            }
+        }
+        ListNode dummyNode = new ListNode(-1);
+        ListNode cur = dummyNode;
+        while (!priorityQueue.isEmpty()) {
+            ListNode curMin = priorityQueue.poll();
+            cur.next = curMin;
+            cur = cur.next;
+            if (curMin.next != null) {
+                priorityQueue.add(curMin.next);
+            }
+        }
+        return dummyNode.next;
     }
 
     public static void main(String[] args) {
-        int[] nums = {1, 4, 3, 2, 5, 2};
-        int x = 3;
-        ListNode head = new ListNode(nums);
+        Integer[] nums1 = {1, 4, 5};
+        Integer[] nums2 = {1, 3, 4};
+        Integer[] nums3 = {2, 6};
+        ListNode head1 = new ListNode(nums1);
+        ListNode head2 = new ListNode(nums2);
+        ListNode head3 = new ListNode(nums3);
+        ListNode[] lists = new ListNode[3];
+        lists[0] = head1;
+        lists[1] = head2;
+        lists[2] = head3;
         Solution solution = new Solution();
-        System.out.println(&quot;分隔链表之后：&quot;);
-        ListNode partition = solution.partition(head, x);
-        System.out.println(partition);
+        ListNode mergeKLists = solution.mergeKLists(lists);
+        System.out.println(mergeKLists);
     }
 }
 </code></pre>
 
-<h3 id="2">参考解答2（推荐）</h3>
-<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/86-1.jpg" width="600"></p>
-<pre><code class="java">public class Solution2 {
-
-    public ListNode partition(ListNode head, int x) {
-        ListNode dummyNodeL = new ListNode(-1); // 比 x 小的虚拟头结点
-        ListNode dummyNodeR = new ListNode(-1); // 大于等于 x 的虚拟头结点
-        ListNode curL = dummyNodeL; // 用于遍历
-        ListNode curR = dummyNodeR; // 用于遍历
-        int val;
-        while (head != null) {
-            val = head.val;
-            if (val &lt; x) {
-                curL.next = head;
-                curL = curL.next;
-            } else {
-                curR.next = head;
-                curR = curR.next;
-            }
-            head = head.next;
+<h3 id="2">参考解答2</h3>
+<pre><code class="java">class Solution2 {
+    public ListNode mergeKLists(ListNode[] lists) {
+        int len = lists.length;
+        if (len == 0) {
+            return null;
         }
-        curL.next = dummyNodeR.next;
-        // 特别注意：最后这一步不能忘记，否则会产生一个循环链表
-        curR.next = null;
-        return dummyNodeL.next;
+        return mergeKLists(lists, 0, len - 1);
     }
-}
 
+    private ListNode mergeKLists(ListNode[] lists, int l, int r) {
+        if (l &gt;= r) {
+            return lists[l];
+        }
+        int mid = l + (r - l) / 2;
+        ListNode listNode1 = mergeKLists(lists, l, mid);
+        ListNode listNode2 = mergeKLists(lists, mid + 1, r);
+        return mergeOfTwoListNode(listNode1, listNode2);
+    }
+
+    private ListNode mergeOfTwoListNode(ListNode listNode1, ListNode listNode2) {
+        // 先处理递归到底的情况
+        if (listNode1 == null) {
+            return listNode2;
+        }
+        if (listNode2 == null) {
+            return listNode1;
+        }
+        if (listNode1.val &lt; listNode2.val) {
+            // 把问题转化为一个更小的问题
+            listNode1.next = mergeOfTwoListNode(listNode1.next, listNode2);
+            return listNode1;
+        } else {
+            // 把问题转化为一个更小的问题
+            listNode2.next = mergeOfTwoListNode(listNode1, listNode2.next);
+            return listNode2;
+        }
+    }
+
+}
 </code></pre>
               
             </div>
@@ -325,10 +367,10 @@ public class Solution {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../leetcode-0092-reverse-linked-list-ii/" class="btn btn-neutral float-right" title="Leetcode 0092 reverse linked list ii">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../leetcode-0083-remove-duplicates-from-sorted-list/" class="btn btn-neutral float-right" title="Leetcode 0083 remove duplicates from sorted list">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../leetcode-0083-remove-duplicates-from-sorted-list/" class="btn btn-neutral" title="Remove Duplicates from Sorted List"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../leetcode-0021-merge-two-sorted-lists/" class="btn btn-neutral" title="Merge Two Sorted Lists"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -356,10 +398,10 @@ public class Solution {
           <a href="https://github.com/liweiwei1419/leetcode-solution.git/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../leetcode-0083-remove-duplicates-from-sorted-list/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../leetcode-0021-merge-two-sorted-lists/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../leetcode-0092-reverse-linked-list-ii/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../leetcode-0083-remove-duplicates-from-sorted-list/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
