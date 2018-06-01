@@ -1,4 +1,4 @@
-# Longest Increasing Subsequence
+# 300. Longest Increasing Subsequence
 
 ## 题目描述和难度
 + 题目描述：给定一个无序的整数数组，找到其中最长上升子序列的长度。

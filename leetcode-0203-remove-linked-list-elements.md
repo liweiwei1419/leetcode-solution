@@ -1,4 +1,4 @@
-# Remove Linked List Elements
+# 203. Remove Linked List Elements
 
 ## 题目描述和难度
 + 题目描述：删除链表中等于给定值 val 的所有节点。
