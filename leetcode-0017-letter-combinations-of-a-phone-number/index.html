@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>23. Merge k Sorted Lists - LeetCode Solution</title>
+  <title>17. Letter Combinations of a Phone Number - LeetCode Solution</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "23. Merge k Sorted Lists";
-    var mkdocs_page_input_path = "leetcode-0023-merge-k-sorted-lists.md";
-    var mkdocs_page_url = "/leetcode-0023-merge-k-sorted-lists/";
+    var mkdocs_page_name = "17. Letter Combinations of a Phone Number";
+    var mkdocs_page_input_path = "leetcode-0017-letter-combinations-of-a-phone-number.md";
+    var mkdocs_page_url = "/leetcode-0017-letter-combinations-of-a-phone-number/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -52,22 +52,12 @@
     <a class="" href="..">Welcome to MkDocs</a>
 	    </li>
           
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0017-letter-combinations-of-a-phone-number/">17. Letter Combinations of a Phone Number</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0021-merge-two-sorted-lists/">21. Merge Two Sorted Lists</a>
-	    </li>
-          
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">23. Merge k Sorted Lists</a>
+    <a class="current" href="./">17. Letter Combinations of a Phone Number</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#23-merge-k-sorted-lists">23. Merge k Sorted Lists</a></li>
+    <li class="toctree-l2"><a href="#17-letter-combinations-of-a-phone-number">17. Letter Combinations of a Phone Number</a></li>
     
         <ul>
         
@@ -81,6 +71,16 @@
     
 
     </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0021-merge-two-sorted-lists/">Leetcode 0021 merge two sorted lists</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0023-merge-k-sorted-lists/">Leetcode 0023 merge k sorted lists</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -220,10 +220,10 @@
     
       
     
-    <li>23. Merge k Sorted Lists</li>
+    <li>17. Letter Combinations of a Phone Number</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0023-merge-k-sorted-lists.md"
+        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0017-letter-combinations-of-a-phone-number.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -233,156 +233,69 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="23-merge-k-sorted-lists">23. Merge k Sorted Lists</h1>
+                <h1 id="17-letter-combinations-of-a-phone-number">17. Letter Combinations of a Phone Number</h1>
 <h2 id="_1">题目描述和难度</h2>
 <ul>
-<li>题目描述：合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。</li>
-<li>题目难度：困难。</li>
-<li>英文网址：<a href="https://leetcode.com/problems/merge-k-sorted-lists/description/">23. Merge k Sorted Lists</a>  。</li>
-<li>中文网址：<a href="https://leetcode-cn.com/problems/merge-k-sorted-lists/description/">23. 合并K个排序链表</a>  。</li>
+<li>题目描述：电话号码的字母组合。给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。</li>
+<li>题目难度：中等。</li>
+<li>英文网址：<a href="https://leetcode.com/problems/letter-combinations-of-a-phone-number/description/">17. Letter Combinations of a Phone Number</a>  。</li>
+<li>中文网址：<a href="https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number/description/">17. 电话号码的字母组合</a>  。</li>
 </ul>
 <h2 id="_2">思路分析</h2>
-<p>求解关键：这是一道类似于教科书上例题的问题。这里我们举生活中的例子来理解求解思路，其实一点都不难。
-假设有如下生活情境：假设你是一名体育老师，有 3 个班的学生，他们已经按照身高从矮到高排好成了 3 列纵队，现在要把这 3 个班的学生也按照身高从矮到高排列一列纵队。我们可以这么做：
-（1）让三个班的学生按列站在你的面前，这时你能看到站在队首的学生的全身，其余同学只能看到比前面同学脑袋高出的那部分；
-（2）每一次队首的 3 名同学，请出最矮的同学出列到“队伍4”（即我们最终认为排好序的队列），出列的这一列的后一名同学向前走一步；
-（3）重复第（2）步，直到 3 个班的同学全部出列完毕。</p>
-<p>具体实现的时候，“每一次队首的 3 名同学，请出最矮的同学”这件事情可以交给优先队列去完成。在连续的两次出队之间完成“穿针引线”的工作，是不是很酷！下面的图说明了这样的过程。</p>
-<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/23-1.jpg" width="600"></p>
-<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/23-2.jpg" width="600"></p>
-<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/23-3.jpg" width="600"></p>
-<p>以上是思路1，对应参考解答1。下面介绍思路2，对应参考解答2：
-根据之前处理链表的经验，如果我们不想“穿针引线”，那么递归方法是一个不错的选择，既然是数组的“排序”问题，我们不妨借助归并排序的<strong>分治思想</strong>来解决，代码结构和归并排序可以说是同出一辙。
-1、先一分为二地解决了这个问题；
-2、再考虑如何合并，这个合并的过程也是一个递归方法。</p>
-<p>两种方法都利用到了常见的算法和基础的数据结构，值得学习和思考。</p>
+<p>求解关键：使用回溯的方式进行搜索求解。</p>
+<p>对于问题的考虑：
+1、字符串的合法性（能出现什么样的字符串，“@”可以吗？“1”可以吗？）：不可以，只能出现 2、3、4、5、6、7、8、9。
+2、空字符串（如果给出的是空字符串，返回什么）：返回空列表，即元素个数为 0 的列表。
+3、多个解的顺序？题目已经告诉了我们，这个问题中对顺序没有要求。
+我认为，这个问题更像数学问题中的乘法计数原理：第 1 步，考虑数字 2 能表达的三个字母；第 2 步，考虑 3 能表达的三个字母。于是，我们最容易想到用多重循环来解决这个问题。但是在步数很多的时候，循环就变得低效了。此时，递归回溯这个技巧就可以派上用场了。</p>
+<p>思考总结：
+1、为什么我们要再写一个函数，而不是直接在原来的 letterCombinations 函数中书写呢？递归过程是把一个规模较大的问题一步一步地转化成为一个规模更小的问题，而我们发现的递归关系并不能用 letterCombinations 函数来描述，也就是说这个规模更小的问题，不能使用 letterCombinations() 来表述；
+2、细节考虑要周到：我们在使用递归方法解决问题的时候，一定不能忽略边界的情况的处理；同时递归终止条件要仔细考虑，特别是对边界的情况；
+3、如何设计递归方法其实是有固定模式的，参数的设定也是有规律的，无非是弄清楚之前是什么，当前是什么，然后把当前的加到之前的；
+4、对于数字字符转换为数字，这里使用的是 <code>digits.charAt(index) - '0'</code>；
+5、严格意义上说，还要对所输入的数字字符的合法性作判断，例如：<code>assert c &gt;= '0' || c &lt;= '9' || c != '1';</code>；
+6、findCombination 函数中的 digitsMap 可以写成成员变量；
+7、这里因为 String 是不可变对象，所以每一次的方法调用，其实都是新的对象传递下去，这一点在我们后续的练习中要留意（这句话表达比较隐晦，要深刻理解这个事实还要做后面的练习，当 result 是其它类型的对象的时候，就不能简单的 add 操作了）。
+8、可以看到，递归回溯的结果是很整齐的，在后序的学习中我们就会看到，递归回溯是深度优先遍历的一种体现。</p>
 <h2 id="_3">参考解答</h2>
 <h3 id="1">参考解答1</h3>
-<pre><code class="java">import java.util.Comparator;
-import java.util.PriorityQueue;
-
-class ListNode {
-    int val;
-    ListNode next;
-
-    ListNode(int x) {
-        val = x;
-    }
-
-    ListNode(Integer[] nums) {
-        ListNode currNode = this;
-        currNode.val = nums[0];
-        for (int i = 1; i &lt; nums.length; i++) {
-            currNode.next = new ListNode(nums[i]);
-            currNode = currNode.next;
-        }
-    }
-
-    @Override
-    public String toString() {
-        ListNode currNode = this;
-        StringBuilder s = new StringBuilder();
-        while (currNode != null) {
-            s.append(currNode.val);
-            s.append(&quot; -&gt; &quot;);
-            currNode = currNode.next;
-        }
-        // 最后添加一个 NULL 标志表示添加到末尾了
-        s.append(&quot;NULL&quot;);
-        return s.toString();
-    }
-}
+<pre><code class="java">import java.util.ArrayList;
+import java.util.List;
 
 public class Solution {
 
-    public ListNode mergeKLists(ListNode[] lists) {
-        int len = lists.length;
-        if (len == 0) {
-            return null;
+    private List&lt;String&gt; res = new ArrayList&lt;&gt;();
+    private String[] digitsMap = {
+            &quot; &quot;, &quot;&quot;, &quot;abc&quot;, &quot;def&quot;, &quot;ghi&quot;, &quot;jkl&quot;, &quot;mno&quot;,
+            &quot;pqrs&quot;, &quot;tuv&quot;, &quot;wxyz&quot;
+    };
+
+    private void findCombinations(String digits, int begin, String pre) {
+        // 先写递归终止条件
+        if (begin == digits.length()) {
+            res.add(pre);
+            return;
         }
-        Comparator&lt;ListNode&gt; comparator = new Comparator&lt;ListNode&gt;() {
-            @Override
-            public int compare(ListNode o1, ListNode o2) {
-                return o1.val - o2.val;
-            }
-        };
-        PriorityQueue&lt;ListNode&gt; priorityQueue = new PriorityQueue&lt;&gt;(comparator);
-        for (int i = 0; i &lt; len; i++) {
-            // 注意：这里要注意到测试用例中，ListNode 为 null 的特殊情况，空节点是一定不能放入优先队列的，把空节点放入优先队列没有意义
-            if (lists[i] != null) {
-                priorityQueue.add(lists[i]);
-            }
+        String nextStr = digitsMap[digits.charAt(begin) - '0'];
+        // 理解这段代码的时候，一定要结合题意，因为那个数字所对应的字符串中的每个字符都要考虑到，所以要使用循环
+        for (int i = 0; i &lt; nextStr.length(); i++) {
+            findCombinations(digits, begin + 1, pre + nextStr.charAt(i));
         }
-        ListNode dummyNode = new ListNode(-1);
-        ListNode cur = dummyNode;
-        while (!priorityQueue.isEmpty()) {
-            ListNode curMin = priorityQueue.poll();
-            cur.next = curMin;
-            cur = cur.next;
-            if (curMin.next != null) {
-                priorityQueue.add(curMin.next);
-            }
+    }
+
+    public List&lt;String&gt; letterCombinations(String digits) {
+        if (digits.length() == 0) {
+            return res;
         }
-        return dummyNode.next;
+        findCombinations(digits, 0, &quot;&quot;);
+        return res;
     }
 
     public static void main(String[] args) {
-        Integer[] nums1 = {1, 4, 5};
-        Integer[] nums2 = {1, 3, 4};
-        Integer[] nums3 = {2, 6};
-        ListNode head1 = new ListNode(nums1);
-        ListNode head2 = new ListNode(nums2);
-        ListNode head3 = new ListNode(nums3);
-        ListNode[] lists = new ListNode[3];
-        lists[0] = head1;
-        lists[1] = head2;
-        lists[2] = head3;
         Solution solution = new Solution();
-        ListNode mergeKLists = solution.mergeKLists(lists);
-        System.out.println(mergeKLists);
+        List&lt;String&gt; letterCombinations = solution.letterCombinations(&quot;23&quot;);
+        System.out.println(letterCombinations);
     }
-}
-</code></pre>
-
-<h3 id="2">参考解答2</h3>
-<pre><code class="java">class Solution2 {
-    public ListNode mergeKLists(ListNode[] lists) {
-        int len = lists.length;
-        if (len == 0) {
-            return null;
-        }
-        return mergeKLists(lists, 0, len - 1);
-    }
-
-    private ListNode mergeKLists(ListNode[] lists, int l, int r) {
-        if (l &gt;= r) {
-            return lists[l];
-        }
-        int mid = l + (r - l) / 2;
-        ListNode listNode1 = mergeKLists(lists, l, mid);
-        ListNode listNode2 = mergeKLists(lists, mid + 1, r);
-        return mergeOfTwoListNode(listNode1, listNode2);
-    }
-
-    private ListNode mergeOfTwoListNode(ListNode listNode1, ListNode listNode2) {
-        // 先处理递归到底的情况
-        if (listNode1 == null) {
-            return listNode2;
-        }
-        if (listNode2 == null) {
-            return listNode1;
-        }
-        if (listNode1.val &lt; listNode2.val) {
-            // 把问题转化为一个更小的问题
-            listNode1.next = mergeOfTwoListNode(listNode1.next, listNode2);
-            return listNode1;
-        } else {
-            // 把问题转化为一个更小的问题
-            listNode2.next = mergeOfTwoListNode(listNode1, listNode2.next);
-            return listNode2;
-        }
-    }
-
 }
 </code></pre>
               
@@ -392,10 +305,10 @@ public class Solution {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../leetcode-0046-permutations/" class="btn btn-neutral float-right" title="Leetcode 0046 permutations">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../leetcode-0021-merge-two-sorted-lists/" class="btn btn-neutral float-right" title="Leetcode 0021 merge two sorted lists">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../leetcode-0021-merge-two-sorted-lists/" class="btn btn-neutral" title="21. Merge Two Sorted Lists"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href=".." class="btn btn-neutral" title="Welcome to MkDocs"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -423,10 +336,10 @@ public class Solution {
           <a href="https://github.com/liweiwei1419/leetcode-solution.git/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../leetcode-0021-merge-two-sorted-lists/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../leetcode-0046-permutations/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../leetcode-0021-merge-two-sorted-lists/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

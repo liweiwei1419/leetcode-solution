@@ -11,6 +11,14 @@
 
     
     <url>
+     <loc>/leetcode-0017-letter-combinations-of-a-phone-number/</loc>
+     <lastmod>2018-06-01</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
      <loc>/leetcode-0021-merge-two-sorted-lists/</loc>
      <lastmod>2018-06-01</lastmod>
      <changefreq>daily</changefreq>
@@ -20,6 +28,22 @@
     
     <url>
      <loc>/leetcode-0023-merge-k-sorted-lists/</loc>
+     <lastmod>2018-06-01</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/leetcode-0046-permutations/</loc>
+     <lastmod>2018-06-01</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/leetcode-0077-combinations/</loc>
      <lastmod>2018-06-01</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -44,6 +68,14 @@
     
     <url>
      <loc>/leetcode-0092-reverse-linked-list-ii/</loc>
+     <lastmod>2018-06-01</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/leetcode-0093-restore-ip-addresses/</loc>
      <lastmod>2018-06-01</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -140,6 +172,14 @@
     
     <url>
      <loc>/leetcode-0328-odd-even-linked-list/</loc>
+     <lastmod>2018-06-01</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/leetcode-0377-combination-sum-iv/</loc>
      <lastmod>2018-06-01</lastmod>
      <changefreq>daily</changefreq>
     </url>
