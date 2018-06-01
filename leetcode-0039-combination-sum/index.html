@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>46. Permutations - LeetCode Solution</title>
+  <title>39. Combination Sum - LeetCode Solution</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "46. Permutations";
-    var mkdocs_page_input_path = "leetcode-0046-permutations.md";
-    var mkdocs_page_url = "/leetcode-0046-permutations/";
+    var mkdocs_page_name = "39. Combination Sum";
+    var mkdocs_page_input_path = "leetcode-0039-combination-sum.md";
+    var mkdocs_page_url = "/leetcode-0039-combination-sum/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -67,22 +67,12 @@
     <a class="" href="../leetcode-0023-merge-k-sorted-lists/">23. Merge k Sorted Lists</a>
 	    </li>
           
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0039-combination-sum/">39. Combination Sum</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0040-combination-sum-ii/">40. Combination Sum II</a>
-	    </li>
-          
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">46. Permutations</a>
+    <a class="current" href="./">39. Combination Sum</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#46-permutations">46. Permutations</a></li>
+    <li class="toctree-l2"><a href="#39-combination-sum">39. Combination Sum</a></li>
     
         <ul>
         
@@ -96,6 +86,16 @@
     
 
     </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0040-combination-sum-ii/">Leetcode 0040 combination sum ii</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0046-permutations/">Leetcode 0046 permutations</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -230,10 +230,10 @@
     
       
     
-    <li>46. Permutations</li>
+    <li>39. Combination Sum</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0046-permutations.md"
+        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0039-combination-sum.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -243,68 +243,112 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="46-permutations">46. Permutations</h1>
+                <h1 id="39-combination-sum">39. Combination Sum</h1>
 <h2 id="_1">题目描述和难度</h2>
 <ul>
-<li>题目描述：
-给定一个没有重复数字的序列，返回其所有可能的全排列。</li>
+<li>题目描述：给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。candidates 中的数字可以无限制重复被选取。说明：所有数字（包括 target）都是正整数。解集不能包含重复的组合。 </li>
 <li>题目难度：中等。</li>
-<li>英文网址：<a href="https://leetcode.com/problems/permutations/description/">46. Permutations</a>  。</li>
-<li>中文网址：<a href="https://leetcode-cn.com/problems/permutations/description/">46. 全排列</a>  。</li>
+<li>英文网址：<a href="https://leetcode.com/problems/combination-sum/description/">39. Combination Sum</a>  。</li>
+<li>中文网址：<a href="https://leetcode-cn.com/problems/combination-sum/description/">39. 组合总和</a>  。</li>
 </ul>
 <h2 id="_2">思路分析</h2>
-<p>求解关键：画图理解题意并且打印出一些信息观察程序的执行流程。</p>
-<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/46-1.jpg" width="600"></p>
+<p>求解关键：注意分析题意，找到可以减少判断的条件：
+（1）这道题猛地一看好像跟前面的问题搭不上关系，因为题目中说“candidates 中的数字可以无限制重复被选取”；<br />
+（2）但其实仔细想想就会发现，我们每次取数字的时候，还从原点开始取就行了呀，是不是很酷；<br />
+（3）为了达到提前判断循环结束的效果，我们可以先对数组排个序，如果起点数字比剩下的和还要大，后面的循环就没有必要进行下去了。此时，我们在 for 循环里加判断，尽量减少了系统栈的调用深度。</p>
 <h2 id="_3">参考解答</h2>
-<h3 id="1">参考解答1</h3>
+<h3 id="1">参考解答1（没有做优化剪枝的版本）</h3>
 <pre><code class="java">import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-// https://leetcode-cn.com/problems/permutations/description/
 public class Solution {
 
     private List&lt;List&lt;Integer&gt;&gt; res = new ArrayList&lt;&gt;();
-    // 设置是否使用的数组，也是套路了
-    private int[] nums;
-    private boolean[] marked;
+    private int[] candidates;
+    private int len;
 
-    // hasUsedCount 表示已经使用的数组元素的个数
-    private void findPermutions(int hasUsedCount, Stack&lt;Integer&gt; stack) {
-        // 这一行代码是调试信息，可以帮助我们观察程序的执行流程
-        // System.out.println(Arrays.toString(used));
-        if (hasUsedCount == nums.length) {
-            // 添加到结果集中
-            res.add(new ArrayList&lt;&gt;(stack));
+    // residue 定义为剩余，这个剩余一开始等于 target，在递归中，它的值会越来越小
+    // 因为题目中说了&quot;所有数字（包括 target）都是正整数&quot;。
+    private void findCombinationSum(int residue, int start, Stack&lt;Integer&gt; pre) {
+        // 因为可以无限选取，所以 residue 只能小于 0 或者等于 0
+        if (residue &lt; 0) {
             return;
         }
-        for (int i = 0; i &lt; nums.length; i++) {
-            if (!marked[i]) {
-                marked[i] = true;
-                stack.push(nums[i]);
-                findPermutions(hasUsedCount + 1, stack);
-                stack.pop();
-                marked[i] = false;
-            }
+        // 一定是剩下的那个数为 0 了，才表示我们所选的数字的和刚好等于 target
+        if (residue == 0) {
+            res.add(new ArrayList&lt;&gt;(pre));
+            return;
+        }
+        for (int i = start; i &lt; len; i++) {
+            // 每个数有选择和不选择，因此尝试了一种解的可能以后要进行状态重置
+            pre.add(candidates[i]);
+            // 【关键】因为元素可以重复使用，这里递归传递下去的是 i 而不是 i + 1
+            findCombinationSum(residue - candidates[i], i, pre);
+            pre.pop();
         }
     }
 
-    public List&lt;List&lt;Integer&gt;&gt; permute(int[] nums) {
-        int len = nums.length;
+    public List&lt;List&lt;Integer&gt;&gt; combinationSum(int[] candidates, int target) {
+        int len = candidates.length;
         if (len == 0) {
             return res;
         }
-        this.nums = nums;
-        marked = new boolean[len];
-        findPermutions(0, new Stack&lt;&gt;());
+        this.len = len;
+        this.candidates = candidates;
+        findCombinationSum(target, 0, new Stack&lt;&gt;());
         return res;
     }
 
     public static void main(String[] args) {
-        int[] nums = {1, 2, 3};
+        int[] candidates = {2, 3, 6, 7};
+        int target = 7;
         Solution solution = new Solution();
-        List&lt;List&lt;Integer&gt;&gt; permute = solution.permute(nums);
-        System.out.println(permute);
+        List&lt;List&lt;Integer&gt;&gt; combinationSum = solution.combinationSum(candidates, target);
+        System.out.println(combinationSum);
+    }
+}
+</code></pre>
+
+<h3 id="2">参考解答2（推荐）</h3>
+<pre><code class="java">import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Stack;
+
+public class Solution2 {
+
+    private List&lt;List&lt;Integer&gt;&gt; res = new ArrayList&lt;&gt;();
+    private int[] candidates;
+    private int len;
+
+    private void findCombinationSum(int residue, int start, Stack&lt;Integer&gt; pre) {
+        if (residue == 0) {
+            res.add(new ArrayList&lt;&gt;(pre));
+            return;
+        }
+        // 优化添加的代码2：在循环的时候做判断，尽量避免系统栈的深度
+        // residue - candidates[i] 表示下一轮的剩余，如果下一轮的剩余都小于 0 ，就没有必要进行后面的循环了
+        // 这一点基于原始数组是排序数组的前提，因为如果计算后面的剩余，只会越来越小
+        for (int i = start; i &lt; len &amp;&amp; residue - candidates[i] &gt;= 0; i++) {
+            pre.add(candidates[i]);
+            // 【关键】因为元素可以重复使用，这里递归传递下去的是 i 而不是 i + 1
+            findCombinationSum(residue - candidates[i], i, pre);
+            pre.pop();
+        }
+    }
+
+    public List&lt;List&lt;Integer&gt;&gt; combinationSum(int[] candidates, int target) {
+        int len = candidates.length;
+        if (len == 0) {
+            return res;
+        }
+        // 优化添加的代码1：先对数组排序，可以提前终止判断
+        Arrays.sort(candidates);
+        this.len = len;
+        this.candidates = candidates;
+        findCombinationSum(target, 0, new Stack&lt;&gt;());
+        return res;
     }
 }
 </code></pre>
@@ -315,10 +359,10 @@ public class Solution {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../leetcode-0077-combinations/" class="btn btn-neutral float-right" title="Leetcode 0077 combinations">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../leetcode-0040-combination-sum-ii/" class="btn btn-neutral float-right" title="Leetcode 0040 combination sum ii">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../leetcode-0040-combination-sum-ii/" class="btn btn-neutral" title="40. Combination Sum II"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../leetcode-0023-merge-k-sorted-lists/" class="btn btn-neutral" title="23. Merge k Sorted Lists"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -346,10 +390,10 @@ public class Solution {
           <a href="https://github.com/liweiwei1419/leetcode-solution.git/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../leetcode-0040-combination-sum-ii/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../leetcode-0023-merge-k-sorted-lists/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../leetcode-0077-combinations/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../leetcode-0040-combination-sum-ii/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>
