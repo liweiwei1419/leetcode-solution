@@ -1,0 +1,133 @@
+# 147. Insertion Sort List
+
+## 题目描述和难度
++ 题目描述：对链表进行插入排序。 
+
+![](https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif)
+
+插入排序的动画演示如上。从第一个元素开始，该链表可以被认为已经部分排序（用黑色表示）。
+每次迭代时，从输入数据中移除一个元素（用红色表示），并原地将其插入到已排好序的链表中。
+
+**插入排序算法：**
+
+1. 插入排序是迭代的，每次只移动一个元素，直到所有元素可以形成一个有序的输出列表。
+2. 每次迭代中，插入排序只从输入数据中移除一个待排序的元素，找到它在序列中适当的位置，并将其插入。
+3. 重复直到所有输入数据插入完为止。
+ 
+**示例 1：**
+
+```
+输入: 4->2->1->3
+输出: 1->2->3->4
+```
+
+**示例 2：**
+
+```
+输入: -1->5->3->4->0
+输出: -1->0->3->4->5
+```
+
++ 题目难度：中等。
++ 英文网址：[147. Insertion Sort List](https://leetcode.com/problems/insertion-sort-list/description/)  。
++ 中文网址：[147. 对链表进行插入排序](https://leetcode-cn.com/problems/insertion-sort-list/description/)  。
+## 思路分析
+求解关键：这道题的题意我们感觉有那么些误导我们的意思，我们能想到从头开始找结点应该插入的位置，但感觉这种做法又不像插入排序。解决这个问题不要太死板，不要怕麻烦我觉得是解这道问题的关键（这句话感觉跟没说一个样，^_^）。  
+1. 插入排序每次会将遍历到的一个元素插入到已经排序的部分；  
+2. 熟悉插入排序的朋友们都知道，这种插入过程是从后向前的，但是对于单链表来说，只保存了当前结点到下一个结点的 next 指针，并没有保存从当前结点到上一个节点的 pre 指针；  
+3. 我们就要变换思路了，每次都要从链表的第 1 个元素开始，找到新遍历的节点适合插入的位置，进行穿针引线；  
+4. 具体来说对于单链表的第 1 个元素，涉及到头结点的操作的时候，我们的做法往往是设计一个虚拟头结点，以简化编码。  
+综上所述，想清楚上面的问题，写出正确的代码应该不是难事。  
+
+<img src="https://liweiwei1419.github.io/images/leetcode-solution/147-1.jpg" width="600">
+
+## 参考解答
+### 参考解答1
+
+```java
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode(int x) {
+        val = x;
+    }
+
+    public ListNode(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            throw new IllegalArgumentException("arr can not be empty");
+        }
+        this.val = nums[0];
+        ListNode curr = this;
+        for (int i = 1; i < nums.length; i++) {
+            curr.next = new ListNode(nums[i]);
+            curr = curr.next;
+        }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        ListNode cur = this;
+        while (cur != null) {
+            s.append(cur.val + " -> ");
+            cur = cur.next;
+        }
+        s.append("NULL");
+        return s.toString();
+    }
+}
+
+public class Solution {
+
+    public ListNode insertionSortList(ListNode head) {
+        // 先写最特殊的情况
+        if (head == null) {
+            return null;
+        }
+        ListNode dummyNode = new ListNode(-1);
+        dummyNode.next = head;
+        ListNode curNode = head;
+        ListNode pre;
+        ListNode next;
+        while (true) {
+            // 如果遍历下去，是顺序排列的话，那最简单了，curNode 指针向前就行了
+            // 这一步是一个循环的过程
+            // 暂存当前结点的下一结点
+            while (curNode.next != null && curNode.val <= curNode.next.val) {
+                curNode = curNode.next;
+            }
+            // 下面针对上一步跳出循环的两个条件进行特殊处理
+            if (curNode.next == null) {
+                // 如果后面没有元素了，那就说明，此时链表已经有序，可以结束我们的排序逻辑了
+                break;
+            } else {
+                // 否则就一定满足 curNode.val > curNode.next.val; 为真
+                // pre 打回到起点
+                pre = dummyNode;
+                next = curNode.next;
+                // 把 pre 挪到可以放置 next 结点的上一个位置
+                while (pre.next.val < next.val) {
+                    pre = pre.next;
+                }
+                // 穿针引线的 3 个步骤，请见图 https://liweiwei1419.github.io/images/leetcode-solution/147-1.jpg
+                // 穿针引线步骤 1
+                curNode.next = next.next;
+                // 穿针引线步骤 2
+                next.next = pre.next;
+                // 穿针引线步骤 2
+                pre.next = next;
+            }
+        }
+        return dummyNode.next;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = new int[]{3, 7, 9, 10, 8};
+        ListNode head = new ListNode(nums);
+        Solution solution = new Solution();
+        ListNode insertionSortList = solution.insertionSortList(head);
+        System.out.println(insertionSortList);
+    }
+}
+```
