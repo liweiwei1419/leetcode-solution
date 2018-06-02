@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>226. Invert Binary Tree - LeetCode Solution</title>
+  <title>147. Insertion Sort List - LeetCode Solution</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "226. Invert Binary Tree";
-    var mkdocs_page_input_path = "leetcode-0226-invert-binary-tree.md";
-    var mkdocs_page_url = "/leetcode-0226-invert-binary-tree/";
+    var mkdocs_page_name = "147. Insertion Sort List";
+    var mkdocs_page_input_path = "leetcode-0147-insertion-sort-list.md";
+    var mkdocs_page_url = "/leetcode-0147-insertion-sort-list/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -132,42 +132,12 @@
     <a class="" href="../leetcode-0111-minimum-depth-of-binary-tree/">111. Minimum Depth of Binary Tree</a>
 	    </li>
           
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0147-insertion-sort-list/">147. Insertion Sort List</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0148-sort-list/">148. Sort List</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0203-remove-linked-list-elements/">203. Remove Linked List Elements</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0206-reverse-linked-list/">206. reverse-linked-list</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0208-implement-trie-prefix-tree/">208. Implement Trie (Prefix Tree)</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0211-add-and-search-word-data-structure-design/">211. Add and Search Word - Data structure design</a>
-	    </li>
-          
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">226. Invert Binary Tree</a>
+    <a class="current" href="./">147. Insertion Sort List</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#226-invert-binary-tree">226. Invert Binary Tree</a></li>
+    <li class="toctree-l2"><a href="#147-insertion-sort-list">147. Insertion Sort List</a></li>
     
         <ul>
         
@@ -181,6 +151,36 @@
     
 
     </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0148-sort-list/">Leetcode 0148 sort list</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0203-remove-linked-list-elements/">Leetcode 0203 remove linked list elements</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0206-reverse-linked-list/">Leetcode 0206 reverse linked list</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0208-implement-trie-prefix-tree/">Leetcode 0208 implement trie prefix tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0211-add-and-search-word-data-structure-design/">Leetcode 0211 add and search word data structure design</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0226-invert-binary-tree/">Leetcode 0226 invert binary tree</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -245,10 +245,10 @@
     
       
     
-    <li>226. Invert Binary Tree</li>
+    <li>147. Insertion Sort List</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0226-invert-binary-tree.md"
+        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0147-insertion-sort-list.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -258,85 +258,128 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="226-invert-binary-tree">226. Invert Binary Tree</h1>
+                <h1 id="147-insertion-sort-list">147. Insertion Sort List</h1>
 <h2 id="_1">题目描述和难度</h2>
 <ul>
-<li>题目描述：翻转一棵二叉树。</li>
-<li>题目难度：简单。</li>
-<li>英文网址：<a href="https://leetcode.com/problems/invert-binary-tree/description/">226. Invert Binary Tree</a>  。</li>
-<li>中文网址：<a href="https://leetcode-cn.com/problems/invert-binary-tree/description/">226. 翻转二叉树</a>  。</li>
+<li>题目描述：对链表进行插入排序。 </li>
+</ul>
+<p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Insertion-sort-example-300px.gif" /></p>
+<p>插入排序的动画演示如上。从第一个元素开始，该链表可以被认为已经部分排序（用黑色表示）。
+每次迭代时，从输入数据中移除一个元素（用红色表示），并原地将其插入到已排好序的链表中。</p>
+<p><strong>插入排序算法：</strong></p>
+<ol>
+<li>插入排序是迭代的，每次只移动一个元素，直到所有元素可以形成一个有序的输出列表。</li>
+<li>每次迭代中，插入排序只从输入数据中移除一个待排序的元素，找到它在序列中适当的位置，并将其插入。</li>
+<li>重复直到所有输入数据插入完为止。</li>
+</ol>
+<p><strong>示例 1：</strong></p>
+<pre><code>输入: 4-&gt;2-&gt;1-&gt;3
+输出: 1-&gt;2-&gt;3-&gt;4
+</code></pre>
+
+<p><strong>示例 2：</strong></p>
+<pre><code>输入: -1-&gt;5-&gt;3-&gt;4-&gt;0
+输出: -1-&gt;0-&gt;3-&gt;4-&gt;5
+</code></pre>
+
+<ul>
+<li>题目难度：中等。</li>
+<li>英文网址：<a href="https://leetcode.com/problems/insertion-sort-list/description/">147. Insertion Sort List</a>  。</li>
+<li>中文网址：<a href="https://leetcode-cn.com/problems/insertion-sort-list/description/">147. 对链表进行插入排序</a>  。</li>
 </ul>
 <h2 id="_2">思路分析</h2>
-<p>求解关键：这道问题可以说是一个经典的问题。LeetCode 上有如下备注：</p>
-<blockquote>
-<p>这个问题是受到 Max Howell 的 原问题 启发的 ：</p>
-<p>谷歌：我们90％的工程师使用您编写的软件(Homebrew)，但是您却无法在面试时在白板上写出翻转二叉树这道题，这太糟糕了。</p>
-</blockquote>
-<p>思路1：我们可以使用递归方法来完成，我们写好之后，会发现其实就是完成了一次深度优先遍历，并且是前序遍历，有的朋友可能写出来的后序遍历，那么我们不禁要问，中序遍历可不可以，答案是不可以，因为中序遍历很可能一个结点会被翻转两次，这与我们的要求是违背的。</p>
-<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/226-1.jpg" width="600"></p>
-<p>那么广度优先遍历可以吗？事实上是可以的，这也就是我们的非递归的解决方案。
-思路2：如果不让我们用递归，我们完全可以按照递归的思路模拟递归完成。</p>
+<p>求解关键：这道题的题意我们感觉有那么些误导我们的意思，我们能想到从头开始找结点应该插入的位置，但感觉这种做法又不像插入排序。解决这个问题不要太死板，不要怕麻烦我觉得是解这道问题的关键（这句话感觉跟没说一个样，^_^）。<br />
+1. 插入排序每次会将遍历到的一个元素插入到已经排序的部分；<br />
+2. 熟悉插入排序的朋友们都知道，这种插入过程是从后向前的，但是对于单链表来说，只保存了当前结点到下一个结点的 next 指针，并没有保存从当前结点到上一个节点的 pre 指针；<br />
+3. 我们就要变换思路了，每次都要从链表的第 1 个元素开始，找到新遍历的节点适合插入的位置，进行穿针引线；<br />
+4. 具体来说对于单链表的第 1 个元素，涉及到头结点的操作的时候，我们的做法往往是设计一个虚拟头结点，以简化编码。<br />
+综上所述，想清楚上面的问题，写出正确的代码应该不是难事。  </p>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/147-1.jpg" width="600"></p>
 <h2 id="_3">参考解答</h2>
 <h3 id="1">参考解答1</h3>
-<pre><code class="java">
-class TreeNode {
+<pre><code class="java">class ListNode {
     int val;
-    TreeNode left;
-    TreeNode right;
+    ListNode next;
 
-    TreeNode(int x) {
+    ListNode(int x) {
         val = x;
+    }
+
+    public ListNode(int[] nums) {
+        if (nums == null || nums.length == 0) {
+            throw new IllegalArgumentException(&quot;arr can not be empty&quot;);
+        }
+        this.val = nums[0];
+        ListNode curr = this;
+        for (int i = 1; i &lt; nums.length; i++) {
+            curr.next = new ListNode(nums[i]);
+            curr = curr.next;
+        }
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder s = new StringBuilder();
+        ListNode cur = this;
+        while (cur != null) {
+            s.append(cur.val + &quot; -&gt; &quot;);
+            cur = cur.next;
+        }
+        s.append(&quot;NULL&quot;);
+        return s.toString();
     }
 }
 
 public class Solution {
 
-    public TreeNode invertTree(TreeNode root) {
-        if (root == null) {
+    public ListNode insertionSortList(ListNode head) {
+        // 先写最特殊的情况
+        if (head == null) {
             return null;
         }
-        // 左子树和右子树交换，即使左右子树都空也不影响正确性
-        TreeNode temp = root.left;
-        root.left = root.right;
-        root.right = temp;
-        // 递归翻转左右子树
-        invertTree(root.left);
-        invertTree(root.right);
-        return root;
-    }
-}
-</code></pre>
-
-<h3 id="2">参考解答2</h3>
-<pre><code class="java">import java.util.LinkedList;
-
-public class Solution2 {
-
-    public TreeNode invertTree(TreeNode root) {
-        // 结点为空的特殊情况要先考虑
-        if (root == null) {
-            return null;
-        }
-        LinkedList&lt;TreeNode&gt; queue = new LinkedList&lt;&gt;();
-        queue.addLast(root);
-        while (!queue.isEmpty()) {
-            TreeNode curNode = queue.removeFirst();
-            // 只要其中之一非空，我都交换，并且把非空的添加到队列里
-            if (curNode.left != null || curNode.right != null) {
-                // 先翻转
-                TreeNode temp = curNode.left;
-                curNode.left = curNode.right;
-                curNode.right = temp;
-                // 把非空的节点加入队列
-                if (curNode.left != null) {
-                    queue.addLast(curNode.left);
+        ListNode dummyNode = new ListNode(-1);
+        dummyNode.next = head;
+        ListNode curNode = head;
+        ListNode pre;
+        ListNode next;
+        while (true) {
+            // 如果遍历下去，是顺序排列的话，那最简单了，curNode 指针向前就行了
+            // 这一步是一个循环的过程
+            // 暂存当前结点的下一结点
+            while (curNode.next != null &amp;&amp; curNode.val &lt;= curNode.next.val) {
+                curNode = curNode.next;
+            }
+            // 下面针对上一步跳出循环的两个条件进行特殊处理
+            if (curNode.next == null) {
+                // 如果后面没有元素了，那就说明，此时链表已经有序，可以结束我们的排序逻辑了
+                break;
+            } else {
+                // 否则就一定满足 curNode.val &gt; curNode.next.val; 为真
+                // pre 打回到起点
+                pre = dummyNode;
+                next = curNode.next;
+                // 把 pre 挪到可以放置 next 结点的上一个位置
+                while (pre.next.val &lt; next.val) {
+                    pre = pre.next;
                 }
-                if (curNode.right != null) {
-                    queue.addLast(curNode.right);
-                }
+                // 穿针引线的 3 个步骤，请见图 https://liweiwei1419.github.io/images/leetcode-solution/147-1.jpg
+                // 穿针引线步骤 1
+                curNode.next = next.next;
+                // 穿针引线步骤 2
+                next.next = pre.next;
+                // 穿针引线步骤 2
+                pre.next = next;
             }
         }
-        return root;
+        return dummyNode.next;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = new int[]{3, 7, 9, 10, 8};
+        ListNode head = new ListNode(nums);
+        Solution solution = new Solution();
+        ListNode insertionSortList = solution.insertionSortList(head);
+        System.out.println(insertionSortList);
     }
 }
 </code></pre>
@@ -347,10 +390,10 @@ public class Solution2 {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../leetcode-0230-kth-smallest-element-in-a-bst/" class="btn btn-neutral float-right" title="Leetcode 0230 kth smallest element in a bst">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../leetcode-0148-sort-list/" class="btn btn-neutral float-right" title="Leetcode 0148 sort list">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../leetcode-0211-add-and-search-word-data-structure-design/" class="btn btn-neutral" title="211. Add and Search Word - Data structure design"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../leetcode-0111-minimum-depth-of-binary-tree/" class="btn btn-neutral" title="111. Minimum Depth of Binary Tree"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -378,10 +421,10 @@ public class Solution2 {
           <a href="https://github.com/liweiwei1419/leetcode-solution.git/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../leetcode-0211-add-and-search-word-data-structure-design/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../leetcode-0111-minimum-depth-of-binary-tree/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../leetcode-0230-kth-smallest-element-in-a-bst/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../leetcode-0148-sort-list/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

@@ -8,7 +8,7 @@
   
   
   <link rel="shortcut icon" href="../img/favicon.ico">
-  <title>206. reverse-linked-list - LeetCode Solution</title>
+  <title>148. Sort List - LeetCode Solution</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="../css/theme.css" type="text/css" />
@@ -17,9 +17,9 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "206. reverse-linked-list";
-    var mkdocs_page_input_path = "leetcode-0206-reverse-linked-list.md";
-    var mkdocs_page_url = "/leetcode-0206-reverse-linked-list/";
+    var mkdocs_page_name = "148. Sort List";
+    var mkdocs_page_input_path = "leetcode-0148-sort-list.md";
+    var mkdocs_page_url = "/leetcode-0148-sort-list/";
   </script>
   
   <script src="../js/jquery-2.1.1.min.js"></script>
@@ -137,22 +137,12 @@
     <a class="" href="../leetcode-0147-insertion-sort-list/">147. Insertion Sort List</a>
 	    </li>
           
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0148-sort-list/">148. Sort List</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0203-remove-linked-list-elements/">203. Remove Linked List Elements</a>
-	    </li>
-          
             <li class="toctree-l1 current">
 		
-    <a class="current" href="./">206. reverse-linked-list</a>
+    <a class="current" href="./">148. Sort List</a>
     <ul class="subnav">
             
-    <li class="toctree-l2"><a href="#206-reverse-linked-list">206. reverse-linked-list</a></li>
+    <li class="toctree-l2"><a href="#148-sort-list">148. Sort List</a></li>
     
         <ul>
         
@@ -162,10 +152,22 @@
         
             <li><a class="toctree-l3" href="#_3">参考解答</a></li>
         
+            <li><a class="toctree-l3" href="#_4">参考解答</a></li>
+        
         </ul>
     
 
     </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0203-remove-linked-list-elements/">Leetcode 0203 remove linked list elements</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0206-reverse-linked-list/">Leetcode 0206 reverse linked list</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -245,10 +247,10 @@
     
       
     
-    <li>206. reverse-linked-list</li>
+    <li>148. Sort List</li>
     <li class="wy-breadcrumbs-aside">
       
-        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0206-reverse-linked-list.md"
+        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0148-sort-list.md"
           class="icon icon-github"> Edit on GitHub</a>
       
     </li>
@@ -258,33 +260,33 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="206-reverse-linked-list">206. reverse-linked-list</h1>
+                <h1 id="148-sort-list">148. Sort List</h1>
 <h2 id="_1">题目描述和难度</h2>
 <ul>
-<li>题目描述：反转一个单链表。</li>
-<li>题目难度：简单。</li>
-<li>英文网址：<a href="https://leetcode.com/problems/reverse-linked-list/description/">206. Reverse Linked List</a>  。</li>
-<li>中文网址：<a href="https://leetcode-cn.com/problems/reverse-linked-list/description/">206. 反转链表</a>  。</li>
+<li>题目描述：在 O(n log n) 时间复杂度和常数级空间复杂度下，对链表进行排序。</li>
+<li>题目难度：中等。</li>
+<li>英文网址：<a href="https://leetcode.com/problems/sort-list/description/">148. Sort List</a>  。</li>
+<li>中文网址：<a href="https://leetcode-cn.com/problems/sort-list/description/">148. 排序链表</a>  。</li>
 </ul>
 <h2 id="_2">思路分析</h2>
-<p>求解关键：画图，这样思路和代码都会很清晰。  </p>
-<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/206-1.jpg" width="500"></p>
+<p>求解关键：题目中已经提示了，要在 O(n log n) 时间复杂度下完成单链表的排序，那么归并排序就是一个很不错的选择。归并排序有自上而下和自下而上的归并排序，它们的区别是：自上而下的归并排序是待排序的子数组越来越小的过程，而自下而上的归并排序是待归并的子数组越来越大的过程。下面我们就分别介绍这两种思路。</p>
 <ul>
-<li>在画图的过程中，我们就可以分析出完成翻转链表这件事情，一共要用 3 个指针 <code>pre</code>、<code>cur</code>、<code>next</code>：</li>
-<li>当前遍历的 <code>cur</code> 指针不必多说，是一定有的；</li>
-<li>当前结点的 next 指针要指到它前一个结点，所以 <code>pre</code> 也必须有；</li>
-<li>
-<p>迭代要继续下去，<code>cur</code> 结点的下一个结点也得使用一个指针 <code>next</code> 保存一下，其中 <code>next</code> 可以在 <code>cur</code> 确定以后初始化；。</p>
-</li>
-<li>
-<p>画图分析 <code>next</code> 指针的指向，我们注意到我们分析出来的指针指向的先后顺序，通常跟数组的元素交换操作一样，程序写出来是“头尾相连”的，是不是很酷！  </p>
-</li>
-<li>最后一定不要忘记，返回的是 <code>pre</code> 节点。</li>
+<li>思路1：自上而下的归并排序（对应参考解答1）</li>
 </ul>
+<p>要使用自底向上的归并排序，就要找到链表中间的那个元素，一个宝贵的经验就是：维护两个指针，一快一慢。快指针每次后移两个位置，慢指针每次只移动一个位置。当快指针移动到链表的结尾或者最后一个有效结点时，慢指针就指向了中间的节点。</p>
+<ul>
+<li>思路2：自下而上的归并排序（对应参考解答2）
+下面的图展示了自下而上进行单链表的归并排序的过程：</li>
+</ul>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/148-1.jpg" width="600"></p>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/148-2.jpg" width="600"></p>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/148-3.jpg" width="600"></p>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/148-4.jpg" width="600"></p>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/148-5.jpg" width="600"></p>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/148-6.jpg" width="600"></p>
 <h2 id="_3">参考解答</h2>
 <h3 id="1">参考解答1</h3>
-<pre><code class="java">// https://leetcode-cn.com/problems/reverse-linked-list/description/
-class ListNode {
+<pre><code class="java">class ListNode {
     int val;
     ListNode next;
 
@@ -292,66 +294,155 @@ class ListNode {
         val = x;
     }
 
-    public ListNode(int[] nums) {
-        if (nums == null || nums.length == 0) {
-            throw new IllegalArgumentException(&quot;arr can not be empty&quot;);
-        }
-        this.val = nums[0];
-        ListNode curr = this;
+    ListNode(int[] nums) {
+        ListNode currNode = this;
+        currNode.val = nums[0];
         for (int i = 1; i &lt; nums.length; i++) {
-            curr.next = new ListNode(nums[i]);
-            curr = curr.next;
+            currNode.next = new ListNode(nums[i]);
+            currNode = currNode.next;
         }
     }
 
     @Override
     public String toString() {
+        ListNode currNode = this;
         StringBuilder s = new StringBuilder();
-        ListNode cur = this;
-        while (cur != null) {
-            s.append(cur.val + &quot; -&gt; &quot;);
-            cur = cur.next;
+        while (currNode != null) {
+            s.append(currNode.val);
+            s.append(&quot; -&gt; &quot;);
+            currNode = currNode.next;
         }
         s.append(&quot;NULL&quot;);
         return s.toString();
     }
 }
 
-// 很常规的一道问题，关键在于画图分析
-// 每一次遍历都要保证设立的 3 个指针的相对关系
-// 注意，最后应该把 pre 指针返回
-
-// 这个解法的时间复杂度是 O(n)，因为它仅仅遍历了一次链表，空间复杂度是 O(1)，因为这里仅仅使用了有限个的“指针”，帮助我们完成了链表的反转操作。
 public class Solution {
 
-    public ListNode reverseList(ListNode head) {
-        // 初始化上一个指针
-        ListNode pre = null;
-        // 初始化当前指针
-        ListNode cur = head;
-        ListNode next;
-        while (cur != null) {
-            // 第 1 步：初始化 next 指针
-            next = cur.next;
-            // 第 2 步：实现当前节点的 next 指针的反转
-            cur.next = pre;
-            // 第 3 步：重新定义下一轮迭代的循环变量
-            pre = cur;
-            cur = next;
+    public ListNode sortList(ListNode head) {
+        // 递归终止的条件，即满足下面条件就不用找中点，可以直接返回
+        if (head == null || head.next == null) {
+            return head;
         }
-        // 遍历完成以后，原来的最后一个节点就成为了 pre
-        // 这个 pre 就是反转以后的新的链表的头指针
-        return pre;
+        // 使用归并排序、分治思想，先要找到链表的中间结点
+        ListNode fast = head;
+        ListNode slow = head;
+        // 下面这段代码是找链表中间结点的一般做法
+        while (fast.next != null &amp;&amp; fast.next.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        // 定义位于中间结点的下一个结点，从它那里将一个链表切开
+        ListNode midNext = slow.next;
+        // 这里一定要记得从中间切开，分割成两个链表
+        slow.next = null;
+        ListNode listNodeLeft = sortList(head);
+        ListNode listNodeRight = sortList(midNext);
+        // 合并两个已经排序的单链表，这是我们很熟悉的操作了
+        return mergeOfTwoSortListNode(listNodeLeft, listNodeRight);
+    }
+
+    private ListNode mergeOfTwoSortListNode(ListNode l1, ListNode l2) {
+        if (l1 == null) {
+            return l2;
+        }
+        if (l2 == null) {
+            return l1;
+        }
+        if (l1.val &lt; l2.val) {
+            l1.next = mergeOfTwoSortListNode(l1.next, l2);
+            return l1;
+        } else {
+            l2.next = mergeOfTwoSortListNode(l1, l2.next);
+            return l2;
+        }
     }
 
     public static void main(String[] args) {
-        int[] nums = {1, 2, 3, 4, 5};
-        ListNode head = new  ListNode(nums);
-        System.out.println(head);
+        int[] nums = new int[]{4, 2, 1, 3};
+        ListNode head = new ListNode(nums);
         Solution solution = new Solution();
-        ListNode reverseList = solution.reverseList(head);
-        System.out.println(&quot;反转之后&quot;);
-        System.out.println(reverseList);
+        ListNode sortList = solution.sortList(head);
+        System.out.println(sortList);
+    }
+}
+</code></pre>
+
+<h2 id="_4">参考解答</h2>
+<h3 id="2">参考解答2</h3>
+<pre><code class="java">/**
+ * 自下而上进行归并
+ *
+ * @author liwei
+ */
+public class Solution2 {
+
+    public ListNode sortList(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        // 这里设置 64 ，是一个戳戳有余的数字，可以满足结点数量为 2^64 这么多的单链表的排序
+        ListNode[] counter = new ListNode[64];
+        ListNode curNode = head;
+        // 遍历到的最大的 counter 数组的索引
+        int maxIndex = 0;
+        while (curNode != null) {
+            // 先把当前元素暂存起来，稍候要把它放到 counter 数组合适的位置上
+            ListNode carryNode = curNode;
+            // curNode 指针马上后移，方便下次处理
+            curNode = curNode.next;
+            // 拿出的节点就和原来的链表没有关系了，我们在 counter 数组中完成排序，所以要切断它和原链表的关系
+            carryNode.next = null;
+            // 尝试从 counter 数组 0 号索引开始放置
+            int i = 0;
+            // 只要非空当前位置非空，就进行一次 merge，merge 以后尝试放到下一格，如果下一格非空就继续合并
+            // 合并以后再尝试放到下一格，直到下一格为空，直接放在那个为空的下一格就好
+            while (counter[i] != null) {
+                ListNode newMergeNode = mergeOfTwoSortedListNode(carryNode, counter[i]);
+                counter[i] = null;
+                i++;
+                carryNode = newMergeNode;
+            }
+            // 遇到了空，就把 carryNode 放在数组的这个位置上
+            counter[i] = carryNode;
+            // 记录最多使用到 counter 数组的第几位，最后合并的时候要用上
+            if (i &gt; maxIndex) {
+                maxIndex = i;
+            }
+        }
+        // 遍历整个 count 数组，将它们全部归并，这个操作就和归并 n 个有序单链表是一样的了，我们这里采用两两归并
+        // 还可以采用 LeetCode 第 23 题的办法完成这一步
+        // 参考：https://liweiwei1419.github.io/leetcode-solution/leetcode-0023-merge-k-sorted-lists/
+        ListNode res = null;
+        for (int i = 0; i &lt;= maxIndex; i++) {
+            if (counter[i] != null) {
+                res = mergeOfTwoSortedListNode(res, counter[i]);
+            }
+        }
+        return res;
+    }
+
+    /**
+     * 归并两个已经排好序的单链表，是我们非常熟悉的操作了，可以递归完成，也可以穿针引线，这里我们递归完成
+     *
+     * @param l1 顺序存放的单链表1
+     * @param l2 顺序存放的单链表2
+     * @return 合并以后的单链表
+     */
+    private ListNode mergeOfTwoSortedListNode(ListNode l1, ListNode l2) {
+        if (l1 == null) {
+            return l2;
+        }
+        if (l2 == null) {
+            return l1;
+        }
+        if (l1.val &lt; l2.val) {
+            l1.next = mergeOfTwoSortedListNode(l1.next, l2);
+            return l1;
+        } else {
+            l2.next = mergeOfTwoSortedListNode(l1, l2.next);
+            return l2;
+        }
     }
 }
 </code></pre>
@@ -362,10 +453,10 @@ public class Solution {
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../leetcode-0208-implement-trie-prefix-tree/" class="btn btn-neutral float-right" title="Leetcode 0208 implement trie prefix tree">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../leetcode-0203-remove-linked-list-elements/" class="btn btn-neutral float-right" title="Leetcode 0203 remove linked list elements">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../leetcode-0203-remove-linked-list-elements/" class="btn btn-neutral" title="203. Remove Linked List Elements"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../leetcode-0147-insertion-sort-list/" class="btn btn-neutral" title="147. Insertion Sort List"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -393,10 +484,10 @@ public class Solution {
           <a href="https://github.com/liweiwei1419/leetcode-solution.git/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../leetcode-0203-remove-linked-list-elements/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../leetcode-0147-insertion-sort-list/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
-        <span style="margin-left: 15px"><a href="../leetcode-0208-implement-trie-prefix-tree/" style="color: #fcfcfc">Next &raquo;</a></span>
+        <span style="margin-left: 15px"><a href="../leetcode-0203-remove-linked-list-elements/" style="color: #fcfcfc">Next &raquo;</a></span>
       
     </span>
 </div>

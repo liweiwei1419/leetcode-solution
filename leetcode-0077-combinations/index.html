@@ -82,6 +82,11 @@
     <a class="" href="../leetcode-0046-permutations/">46. Permutations</a>
 	    </li>
           
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0047-permutations-ii/">47. Permutations II</a>
+	    </li>
+          
             <li class="toctree-l1 current">
 		
     <a class="current" href="./">77. Combinations</a>
@@ -141,6 +146,16 @@
             <li class="toctree-l1">
 		
     <a class="" href="../leetcode-0111-minimum-depth-of-binary-tree/">Leetcode 0111 minimum depth of binary tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0147-insertion-sort-list/">Leetcode 0147 insertion sort list</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0148-sort-list/">Leetcode 0148 sort list</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -254,7 +269,7 @@
 <h2 id="_2">思路分析</h2>
 <p>求解关键：按顺序查找，已经用过的数字就不会再使用，因此不用设置 marked 数组。重点分析出遍历的 i 的上界是 <code>n - (k - stack.size()) + 1</code>。</p>
 <p><img src="https://liweiwei1419.github.io/images/leetcode-solution/77-1.jpg" width="600"></p>
-<p>下面的图展示了如何分析出循环变量中 <code>i</code> 的上界。 </p>
+<p>下面的图展示了如何分析出循环变量中 <code>i</code> 的上界。 （如果下面的图片太小，可以在图片上右键，选择“在新标签页中打开图片”，以查看大图。）</p>
 <p><img src="https://liweiwei1419.github.io/images/leetcode-solution/77-2.jpg" width="600"></p>
 <h2 id="_3">参考解答</h2>
 <h3 id="1">参考解答1</h3>
@@ -309,7 +324,7 @@ public class Solution {
         <a href="../leetcode-0083-remove-duplicates-from-sorted-list/" class="btn btn-neutral float-right" title="Leetcode 0083 remove duplicates from sorted list">Next <span class="icon icon-circle-arrow-right"></span></a>
       
       
-        <a href="../leetcode-0046-permutations/" class="btn btn-neutral" title="46. Permutations"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../leetcode-0047-permutations-ii/" class="btn btn-neutral" title="47. Permutations II"><span class="icon icon-circle-arrow-left"></span> Previous</a>
       
     </div>
   
@@ -337,7 +352,7 @@ public class Solution {
           <a href="https://github.com/liweiwei1419/leetcode-solution.git/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
       
-        <span><a href="../leetcode-0046-permutations/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+        <span><a href="../leetcode-0047-permutations-ii/" style="color: #fcfcfc;">&laquo; Previous</a></span>
       
       
         <span style="margin-left: 15px"><a href="../leetcode-0083-remove-duplicates-from-sorted-list/" style="color: #fcfcfc">Next &raquo;</a></span>

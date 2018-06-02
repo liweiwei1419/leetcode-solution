@@ -59,6 +59,14 @@
 
     
     <url>
+     <loc>/leetcode-0047-permutations-ii/</loc>
+     <lastmod>2018-06-02</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
      <loc>/leetcode-0077-combinations/</loc>
      <lastmod>2018-06-02</lastmod>
      <changefreq>daily</changefreq>
@@ -124,6 +132,22 @@
     
     <url>
      <loc>/leetcode-0111-minimum-depth-of-binary-tree/</loc>
+     <lastmod>2018-06-02</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/leetcode-0147-insertion-sort-list/</loc>
+     <lastmod>2018-06-02</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/leetcode-0148-sort-list/</loc>
      <lastmod>2018-06-02</lastmod>
      <changefreq>daily</changefreq>
     </url>
