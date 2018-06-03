@@ -19,6 +19,14 @@
 
     
     <url>
+     <loc>/leetcode-0019-remove-nth-node-from-end-of-list/</loc>
+     <lastmod>2018-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
      <loc>/leetcode-0021-merge-two-sorted-lists/</loc>
      <lastmod>2018-06-03</lastmod>
      <changefreq>daily</changefreq>
@@ -196,6 +204,14 @@
     
     <url>
      <loc>/leetcode-0230-kth-smallest-element-in-a-bst/</loc>
+     <lastmod>2018-06-03</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/leetcode-0237-delete-node-in-a-linked-list/</loc>
      <lastmod>2018-06-03</lastmod>
      <changefreq>daily</changefreq>
     </url>

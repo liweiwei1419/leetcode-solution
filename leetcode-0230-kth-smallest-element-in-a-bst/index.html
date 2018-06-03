@@ -1,728 +1,273 @@
-
-
-
-
 <!DOCTYPE html>
-<html lang="en" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
-      
-      
-      
-      
-        <meta name="lang:clipboard.copy" content="Copy to clipboard">
-      
-        <meta name="lang:clipboard.copied" content="Copied to clipboard">
-      
-        <meta name="lang:search.language" content="en">
-      
-        <meta name="lang:search.result.none" content="No matching documents">
-      
-        <meta name="lang:search.result.one" content="1 matching document">
-      
-        <meta name="lang:search.result.other" content="# matching documents">
-      
-        <meta name="lang:search.tokenizer" content="[\s\-]+">
-      
-      <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-0.17.3, mkdocs-material-2.5.5">
-    
-    
-      
-        <title>230. Kth Smallest Element in a BST - LeetCode Solution</title>
-      
-    
-    
-      <link rel="stylesheet" href="../assets/stylesheets/application.aa3de92b.css">
-      
-    
-    
-      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
-    
-    
-      
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
-        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
-      
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    
-    
-    
-  </head>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   
-    <body dir="ltr">
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>230. Kth Smallest Element in a BST - LeetCode Solution</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
   
-    <svg class="md-svg">
-      <defs>
-        
-        
-          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" id="github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
-        
-      </defs>
-    </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
-    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+  <script>
+    // Current page data
+    var mkdocs_page_name = "230. Kth Smallest Element in a BST";
+    var mkdocs_page_input_path = "leetcode-0230-kth-smallest-element-in-a-bst.md";
+    var mkdocs_page_url = "/leetcode-0230-kth-smallest-element-in-a-bst/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
     
-      <a href="#230-kth-smallest-element-in-a-bst" tabindex="1" class="md-skip">
-        Skip to content
-      </a>
-    
-    
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header-nav md-grid">
-    <div class="md-flex">
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <a href=".." title="LeetCode Solution" class="md-header-nav__button md-logo">
-          
-            <i class="md-icon"></i>
-          
-        </a>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
-      </div>
-      <div class="md-flex__cell md-flex__cell--stretch">
-        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
-          
-            
-              <span class="md-header-nav__topic">
-                LeetCode Solution
-              </span>
-              <span class="md-header-nav__topic">
-                230. Kth Smallest Element in a BST
-              </span>
-            
-          
-        </div>
-      </div>
-      <div class="md-flex__cell md-flex__cell--shrink">
-        
-          
-            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
-            
-<div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="search"></label>
-      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
-        &#xE5CD;
-      </button>
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="result">
-          <div class="md-search-result__meta">
-            Type to start searching
-          </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> LeetCode Solution</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
 </div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
           
-        
-      </div>
-      
-        <div class="md-flex__cell md-flex__cell--shrink">
-          <div class="md-header-nav__source">
-            
-
-
-  
-
-
-  <a href="https://github.com/liweiwei1419/leetcode-solution.git/" title="Go to repository" class="md-source" data-md-source="github">
-    
-      <div class="md-source__icon">
-        <svg viewBox="0 0 24 24" width="24" height="24">
-          <use xlink:href="#github" width="24" height="24"></use>
-        </svg>
-      </div>
-    
-    <div class="md-source__repository">
-      GitHub
-    </div>
-  </a>
-
-          </div>
-        </div>
-      
-    </div>
-  </nav>
-</header>
-    
-    <div class="md-container">
-      
-        
-      
-      
-      <main class="md-main">
-        <div class="md-main__inner md-grid" data-md-component="container">
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Welcome to MkDocs</a>
+	    </li>
           
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0017-letter-combinations-of-a-phone-number/">17. Letter Combinations of a Phone Number</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0019-remove-nth-node-from-end-of-list/">19. Remove Nth Node From End of List</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0021-merge-two-sorted-lists/">21. Merge Two Sorted Lists</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0023-merge-k-sorted-lists/">23. Merge k Sorted Lists</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0039-combination-sum/">39. Combination Sum</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0040-combination-sum-ii/">40. Combination Sum II</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0046-permutations/">46. Permutations</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0047-permutations-ii/">47. Permutations II</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0077-combinations/">77. Combinations</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0083-remove-duplicates-from-sorted-list/">83. Remove Duplicates from Sorted List</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0086-partition-list/">86. Partition List</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0092-reverse-linked-list-ii/">92. Reverse Linked List II</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0093-restore-ip-addresses/">93. Restore IP Addresses</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0100-same-tree/">100. Same Tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0101-symmetric-tree/">101. Symmetric Tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0104-maximum-depth-of-binary-tree/">104. Maximum Depth of Binary Tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0111-minimum-depth-of-binary-tree/">111. Minimum Depth of Binary Tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0147-insertion-sort-list/">147. Insertion Sort List</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0148-sort-list/">148. Sort List</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0203-remove-linked-list-elements/">203. Remove Linked List Elements</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0206-reverse-linked-list/">206. reverse-linked-list</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0208-implement-trie-prefix-tree/">208. Implement Trie (Prefix Tree)</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0211-add-and-search-word-data-structure-design/">211. Add and Search Word - Data structure design</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0226-invert-binary-tree/">226. Invert Binary Tree</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">230. Kth Smallest Element in a BST</a>
+    <ul class="subnav">
             
-              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="drawer">
-    <span class="md-nav__button md-logo">
-      
-        <i class="md-icon"></i>
-      
-    </span>
-    LeetCode Solution
-  </label>
-  
-    <div class="md-nav__source">
-      
-
-
-  
-
-
-  <a href="https://github.com/liweiwei1419/leetcode-solution.git/" title="Go to repository" class="md-source" data-md-source="github">
+    <li class="toctree-l2"><a href="#230-kth-smallest-element-in-a-bst">230. Kth Smallest Element in a BST</a></li>
     
-      <div class="md-source__icon">
-        <svg viewBox="0 0 24 24" width="24" height="24">
-          <use xlink:href="#github" width="24" height="24"></use>
-        </svg>
-      </div>
-    
-    <div class="md-source__repository">
-      GitHub
-    </div>
-  </a>
-
-    </div>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href=".." title="Welcome to MkDocs" class="md-nav__link">
-      Welcome to MkDocs
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0017-letter-combinations-of-a-phone-number/" title="17. Letter Combinations of a Phone Number" class="md-nav__link">
-      17. Letter Combinations of a Phone Number
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0021-merge-two-sorted-lists/" title="21. Merge Two Sorted Lists" class="md-nav__link">
-      21. Merge Two Sorted Lists
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0023-merge-k-sorted-lists/" title="23. Merge k Sorted Lists" class="md-nav__link">
-      23. Merge k Sorted Lists
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0039-combination-sum/" title="39. Combination Sum" class="md-nav__link">
-      39. Combination Sum
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0040-combination-sum-ii/" title="40. Combination Sum II" class="md-nav__link">
-      40. Combination Sum II
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0046-permutations/" title="46. Permutations" class="md-nav__link">
-      46. Permutations
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0047-permutations-ii/" title="47. Permutations II" class="md-nav__link">
-      47. Permutations II
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0077-combinations/" title="77. Combinations" class="md-nav__link">
-      77. Combinations
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0083-remove-duplicates-from-sorted-list/" title="83. Remove Duplicates from Sorted List" class="md-nav__link">
-      83. Remove Duplicates from Sorted List
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0086-partition-list/" title="86. Partition List" class="md-nav__link">
-      86. Partition List
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0092-reverse-linked-list-ii/" title="92. Reverse Linked List II" class="md-nav__link">
-      92. Reverse Linked List II
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0093-restore-ip-addresses/" title="93. Restore IP Addresses" class="md-nav__link">
-      93. Restore IP Addresses
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0100-same-tree/" title="100. Same Tree" class="md-nav__link">
-      100. Same Tree
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0101-symmetric-tree/" title="101. Symmetric Tree" class="md-nav__link">
-      101. Symmetric Tree
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0104-maximum-depth-of-binary-tree/" title="104. Maximum Depth of Binary Tree" class="md-nav__link">
-      104. Maximum Depth of Binary Tree
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0111-minimum-depth-of-binary-tree/" title="111. Minimum Depth of Binary Tree" class="md-nav__link">
-      111. Minimum Depth of Binary Tree
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0147-insertion-sort-list/" title="147. Insertion Sort List" class="md-nav__link">
-      147. Insertion Sort List
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0148-sort-list/" title="148. Sort List" class="md-nav__link">
-      148. Sort List
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0203-remove-linked-list-elements/" title="203. Remove Linked List Elements" class="md-nav__link">
-      203. Remove Linked List Elements
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0206-reverse-linked-list/" title="206. reverse-linked-list" class="md-nav__link">
-      206. reverse-linked-list
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0208-implement-trie-prefix-tree/" title="208. Implement Trie (Prefix Tree)" class="md-nav__link">
-      208. Implement Trie (Prefix Tree)
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0211-add-and-search-word-data-structure-design/" title="211. Add and Search Word - Data structure design" class="md-nav__link">
-      211. Add and Search Word - Data structure design
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0226-invert-binary-tree/" title="226. Invert Binary Tree" class="md-nav__link">
-      226. Invert Binary Tree
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-  
-
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        230. Kth Smallest Element in a BST
-      </label>
-    
-    <a href="./" title="230. Kth Smallest Element in a BST" class="md-nav__link md-nav__link--active">
-      230. Kth Smallest Element in a BST
-    </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="题目描述和难度" class="md-nav__link">
-    题目描述和难度
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="思路分析" class="md-nav__link">
-    思路分析
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" title="参考解答" class="md-nav__link">
-    参考解答
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
+        <ul>
         
-          <li class="md-nav__item">
-  <a href="#1" title="参考解答1" class="md-nav__link">
-    参考解答1
-  </a>
-  
-</li>
+            <li><a class="toctree-l3" href="#_1">题目描述和难度</a></li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-      
-      
+            <li><a class="toctree-l3" href="#_2">思路分析</a></li>
+        
+            <li><a class="toctree-l3" href="#_3">参考解答</a></li>
+        
+        </ul>
+    
+
     </ul>
-  
-</nav>
-    
-  </li>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0237-delete-node-in-a-linked-list/">Leetcode 0237 delete node in a linked list</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0300-longest-increasing-subsequence/">Leetcode 0300 longest increasing subsequence</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0328-odd-even-linked-list/">Leetcode 0328 odd even linked list</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0377-combination-sum-iv/">Leetcode 0377 combination sum iv</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0677-map-sum-pairs/">Leetcode 0677 map sum pairs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-algorithm-notes/">Leetcode algorithm notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-articles-template/">Leetcode articles template</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-summarize/">Leetcode summarize</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
 
-    
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
       
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LeetCode Solution</a>
+      </nav>
+
       
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0300-longest-increasing-subsequence/" title="Leetcode 0300 longest increasing subsequence" class="md-nav__link">
-      Leetcode 0300 longest increasing subsequence
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0328-odd-even-linked-list/" title="Leetcode 0328 odd even linked list" class="md-nav__link">
-      Leetcode 0328 odd even linked list
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0377-combination-sum-iv/" title="Leetcode 0377 combination sum iv" class="md-nav__link">
-      Leetcode 0377 combination sum iv
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-0677-map-sum-pairs/" title="Leetcode 0677 map sum pairs" class="md-nav__link">
-      Leetcode 0677 map sum pairs
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-algorithm-notes/" title="Leetcode algorithm notes" class="md-nav__link">
-      Leetcode algorithm notes
-    </a>
-  </li>
-
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
     
       
-      
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-articles-template/" title="Leetcode articles template" class="md-nav__link">
-      Leetcode articles template
-    </a>
-  </li>
-
     
+    <li>230. Kth Smallest Element in a BST</li>
+    <li class="wy-breadcrumbs-aside">
       
+        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0230-kth-smallest-element-in-a-bst.md"
+          class="icon icon-github"> Edit on GitHub</a>
       
-      
-
-
-  <li class="md-nav__item">
-    <a href="../leetcode-summarize/" title="Leetcode summarize" class="md-nav__link">
-      Leetcode summarize
-    </a>
-  </li>
-
-    
+    </li>
   </ul>
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-            
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" title="题目描述和难度" class="md-nav__link">
-    题目描述和难度
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" title="思路分析" class="md-nav__link">
-    思路分析
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" title="参考解答" class="md-nav__link">
-    参考解答
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1" title="参考解答1" class="md-nav__link">
-    参考解答1
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          <div class="md-content">
-            <article class="md-content__inner md-typeset">
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
               
-                
-                  <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0230-kth-smallest-element-in-a-bst.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
-                
-                
                 <h1 id="230-kth-smallest-element-in-a-bst">230. Kth Smallest Element in a BST</h1>
 <h2 id="_1">题目描述和难度</h2>
 <ul>
@@ -777,82 +322,55 @@ public class Solution {
     }
 }
 </code></pre>
-                
-                  
-                
               
-              
-                
-              
-            </article>
+            </div>
           </div>
-        </div>
-      </main>
-      
-        
-<footer class="md-footer">
+          <footer>
   
-    <div class="md-footer-nav">
-      <nav class="md-footer-nav__inner md-grid">
-        
-          <a href="../leetcode-0226-invert-binary-tree/" title="226. Invert Binary Tree" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
-            </div>
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Previous
-                </span>
-                226. Invert Binary Tree
-              </span>
-            </div>
-          </a>
-        
-        
-          <a href="../leetcode-0300-longest-increasing-subsequence/" title="Leetcode 0300 longest increasing subsequence" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
-                Leetcode 0300 longest increasing subsequence
-              </span>
-            </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
-          </a>
-        
-      </nav>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../leetcode-0237-delete-node-in-a-linked-list/" class="btn btn-neutral float-right" title="Leetcode 0237 delete node in a linked list">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../leetcode-0226-invert-binary-tree/" class="btn btn-neutral" title="226. Invert Binary Tree"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
     </div>
   
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-        powered by
-        <a href="http://www.mkdocs.org">MkDocs</a>
-        and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
-          Material for MkDocs</a>
-      </div>
-      
-        
-      
-    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
   </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
       
-    </div>
-    
-      <script src="../assets/javascripts/application.f041762f.js"></script>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
       
-      <script>app.initialize({version:"0.17.3",url:{base:".."}})</script>
+          <a href="https://github.com/liweiwei1419/leetcode-solution.git/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
       
-    
-    
       
-    
-  </body>
+        <span><a href="../leetcode-0226-invert-binary-tree/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../leetcode-0237-delete-node-in-a-linked-list/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
 </html>
