@@ -752,9 +752,9 @@
 （2）每一次队首的 3 名同学，请出最矮的同学出列到“队伍4”（即我们最终认为排好序的队列），出列的这一列的后一名同学向前走一步；<br />
 （3）重复第（2）步，直到 3 个班的同学全部出列完毕。  </p>
 <p>具体实现的时候，“每一次队首的 3 名同学，请出最矮的同学”这件事情可以交给优先队列去完成。在连续的两次出队之间完成“穿针引线”的工作，是不是很酷！下面的图说明了这样的过程。</p>
-<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/23-1.jpg" width="900"></p>
-<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/23-2.jpg" width="900"></p>
-<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/23-3.jpg" width="900"></p>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/23-1.png" width="900"></p>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/23-2.png" width="900"></p>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/23-3.png" width="900"></p>
 <p>以上是思路1，对应参考解答1。下面介绍思路2，对应参考解答2：
 根据之前处理链表的经验，如果我们不想“穿针引线”，那么递归方法是一个不错的选择，既然是数组的“排序”问题，我们不妨借助归并排序的<strong>分治思想</strong>来解决，代码结构和归并排序可以说是同出一辙。
 1、先一分为二地解决了这个问题；
@@ -865,8 +865,8 @@ public class Solution {
     }
 
     private ListNode mergeKLists(ListNode[] lists, int l, int r) {
-        // // 思考这里为什么取等于？这是因为根据下文对 sort 的递归调用情况，区间最窄的时候，只可能是左右端点重合
-        if (l &gt;= r) {
+        // 思考这里为什么取等于？这是因为根据下文对 sort 的递归调用情况，区间最窄的时候，只可能是左右端点重合
+        if (l == r) {
             return lists[l];
         }
         int mid = l + (r - l) / 2;
