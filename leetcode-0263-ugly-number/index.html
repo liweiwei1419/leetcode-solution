@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>263. Ugly Number - LeetCode Solution</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "263. Ugly Number";
+    var mkdocs_page_input_path = "leetcode-0263-ugly-number.md";
+    var mkdocs_page_url = "/leetcode-0263-ugly-number/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> LeetCode Solution</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Welcome to MkDocs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0005-longest-palindromic-substring/">5. Longest Palindromic Substring</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0007-reverse-integer/">7. Reverse Integer</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0009-palindrome-number/">9. Palindrome Number</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0017-letter-combinations-of-a-phone-number/">17. Letter Combinations of a Phone Number</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0019-remove-nth-node-from-end-of-list/">19. Remove Nth Node From End of List</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0021-merge-two-sorted-lists/">21. Merge Two Sorted Lists</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0023-merge-k-sorted-lists/">23. Merge k Sorted Lists</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0026-remove-duplicates-from-sorted-array/">26. Remove Duplicates from Sorted Array</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0027-remove-element/">27. Remove Element</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0039-combination-sum/">39. Combination Sum</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0040-combination-sum-ii/">40. Combination Sum II</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0046-permutations/">46. Permutations</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0047-permutations-ii/">47. Permutations II</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0077-combinations/">77. Combinations</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0083-remove-duplicates-from-sorted-list/">83. Remove Duplicates from Sorted List</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0086-partition-list/">86. Partition List</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0088-merge-sorted-array/">88. Merge Sorted Array</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0092-reverse-linked-list-ii/">92. Reverse Linked List II</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0093-restore-ip-addresses/">93. Restore IP Addresses</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0098-validate-binary-search-tree/">98. Validate Binary Search Tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0100-same-tree/">100. Same Tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0101-symmetric-tree/">101. Symmetric Tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0104-maximum-depth-of-binary-tree/">104. Maximum Depth of Binary Tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0110-balanced-binary-tree/">110. Balanced Binary Tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0111-minimum-depth-of-binary-tree/">111. Minimum Depth of Binary Tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0136-single-number/">136. Single Number</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0147-insertion-sort-list/">147. Insertion Sort List</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0148-sort-list/">148. Sort List</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0203-remove-linked-list-elements/">203. Remove Linked List Elements</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0204-count-primes/">204. Count Primes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0206-reverse-linked-list/">206. reverse-linked-list</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0207-course-schedule/">207. Course Schedule</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0208-implement-trie-prefix-tree/">208. Implement Trie (Prefix Tree)</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0210-course-schedule-ii/">210. Course Schedule II</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0211-add-and-search-word-data-structure-design/">211. Add and Search Word - Data structure design</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0215-kth-largest-element-in-an-array/">215. Kth Largest Element in an Array</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0226-invert-binary-tree/">226. Invert Binary Tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0230-kth-smallest-element-in-a-bst/">230. Kth Smallest Element in a BST</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0235-lowest-common-ancestor-of-a-binary-search-tree/">235. Lowest Common Ancestor of a Binary Search Tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0236-lowest-common-ancestor-of-a-binary-tree/">236. Lowest Common Ancestor of a Binary Tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0237-delete-node-in-a-linked-list/">237. Delete Node in a Linked List</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">263. Ugly Number</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#263-ugly-number">263. Ugly Number</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#_1">题目描述和难度</a></li>
+        
+            <li><a class="toctree-l3" href="#_2">思路分析</a></li>
+        
+            <li><a class="toctree-l3" href="#_3">参考解答</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0297-serialize-and-deserialize-binary-tree/">Leetcode 0297 serialize and deserialize binary tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0300-longest-increasing-subsequence/">Leetcode 0300 longest increasing subsequence</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0328-odd-even-linked-list/">Leetcode 0328 odd even linked list</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0342-power-of-four/">Leetcode 0342 power of four</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0343-integer-break/">Leetcode 0343 integer break</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0344-reverse-string/">Leetcode 0344 reverse string</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0345-reverse-vowels-of-a-string/">Leetcode 0345 reverse vowels of a string</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0377-combination-sum-iv/">Leetcode 0377 combination sum iv</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0392-is-subsequence/">Leetcode 0392 is subsequence</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0435-non-overlapping-intervals/">Leetcode 0435 non overlapping intervals</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0450-delete-node-in-a-bst/">Leetcode 0450 delete node in a bst</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0541-reverse-string-ii/">Leetcode 0541 reverse string ii</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0557-reverse-words-in-a-string-iii/">Leetcode 0557 reverse words in a string iii</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0677-map-sum-pairs/">Leetcode 0677 map sum pairs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0720-longest-word-in-dictionary/">Leetcode 0720 longest word in dictionary</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-algorithm-notes/">Leetcode algorithm notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-articles-template/">Leetcode articles template</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-summarize/">Leetcode summarize</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LeetCode Solution</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>263. Ugly Number</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0263-ugly-number.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="263-ugly-number">263. Ugly Number</h1>
+<h2 id="_1">题目描述和难度</h2>
+<ul>
+<li>题目描述：</li>
+</ul>
+<div class="question-description__3U1T" style="padding-top: 10px;"><div class="translation-tool__3Ffj"><span aria-hidden="true" class="" data-original-title="显示英文" data-placement="left" data-toggle="tooltip" style="cursor: pointer;"><div class="switch-base__1Zql" data-on="false"><div class="toggle__3ZBJ"></div></div></span></div><div><p>编写一个程序判断给定的数是否为丑数。</p>
+<p>丑数就是只包含质因数 <code>2, 3, 5</code> 的<strong>正整数</strong>。</p>
+<p><strong>示例 1:</strong></p>
+<pre><strong>输入:</strong> 6
+<strong>输出:</strong> true
+<strong>解释: </strong>6 = 2 × 3</pre>
+<p><strong>示例 2:</strong></p>
+<pre><strong>输入:</strong> 8
+<strong>输出:</strong> true
+<strong>解释: </strong>8 = 2 × 2 × 2
+</pre>
+<p><strong>示例 3:</strong></p>
+<pre><strong>输入:</strong> 14
+<strong>输出:</strong> false 
+<strong>解释: </strong><code>14</code> 不是丑数，因为它包含了另外一个质因数 <code>7</code>。</pre>
+<p><strong>说明：</strong></p>
+<ol>
+<li><code>1</code> 是丑数。</li>
+<li>输入不会超过 32 位有符号整数的范围: [−2<sup>31</sup>,  2<sup>31 </sup>− 1]。</li>
+</ol>
+</div></div>
+
+<ul>
+<li>题目难度：<span class="label label-success">简单</span>。</li>
+<li>英文网址：<a href="https://leetcode.com/problems/ugly-number/description/">263. Ugly Number</a>  。</li>
+<li>中文网址：<a href="https://leetcode-cn.com/problems/ugly-number/description/">263. 丑数</a>  。</li>
+</ul>
+<h2 id="_2">思路分析</h2>
+<p>求解关键：看似简单的问题可能不容易一下子写对，也很可能把问题想得比较复杂，或许这类问题见得多了就懂了基本的套路了。或许模仿是第 1 步。</p>
+<h2 id="_3">参考解答</h2>
+<h3 id="1">参考解答1</h3>
+<pre><code class="java">public class Solution {
+    // 编写一个程序判断给定的数是否为丑数。
+    // 丑数就是只包含质因数 2, 3, 5 的正整数。
+    public boolean isUgly(int num) {
+        if (num &lt;= 0) {
+            return false;
+        }
+        while (num % 5 == 0) {
+            num /= 5;
+        }
+        while (num % 3 == 0) {
+            num /= 3;
+        }
+        while (num % 2 == 0) {
+            num /= 2;
+        }
+        return num == 1;
+    }
+}
+</code></pre>
+
+<h3 id="2">参考解答2：更简洁的写法。</h3>
+<pre><code class="java">public class Solution2 {
+
+    public boolean isUgly(int num) {
+        if (num &lt;= 0) {
+            return false;
+        }
+        int[] factors = new int[]{2, 3, 5};
+        for (int factor : factors) {
+            while (num % factor == 0) {
+                num /= factor;
+            }
+        }
+        return num == 1;
+    }
+}
+</code></pre>
+
+<p>本篇文章的地址为 <a href="https://liweiwei1419.github.io/leetcode-solution/leetcode-0263-ugly-number">https://liweiwei1419.github.io/leetcode-solution/leetcode-0263-ugly-number</a> ，如果我的题解有错误，或者您有更好的解法，欢迎您告诉我 <a href="../liweiwei1419@gmail.com">liweiwei1419@gmail.com</a>  。</p>
+<style type="text/css">
+    .label-warning {
+        background-color: #f0ad4e;
+    }
+
+    .label-success {
+        background-color: #5cb85c;
+    }
+
+    .label-danger {
+        background-color: #d9534f;
+    }
+
+    .label {
+        display: inline;
+        padding: .2em .6em .3em;
+        font-size: 75%;
+        font-weight: 700;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: .25em;
+    }
+</style>
+
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../leetcode-0297-serialize-and-deserialize-binary-tree/" class="btn btn-neutral float-right" title="Leetcode 0297 serialize and deserialize binary tree">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../leetcode-0237-delete-node-in-a-linked-list/" class="btn btn-neutral" title="237. Delete Node in a Linked List"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/liweiwei1419/leetcode-solution.git/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../leetcode-0237-delete-node-in-a-linked-list/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../leetcode-0297-serialize-and-deserialize-binary-tree/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>
