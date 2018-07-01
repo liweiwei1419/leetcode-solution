@@ -499,11 +499,11 @@
 <h2 id="_2">思路分析</h2>
 <p>求解关键：</p>
 <p>1、列出 $4^1$、$4^1$、$4^2$、$4^3$ 等等，找出规律；</p>
-<p>$4^1 = 2^2 = 2^2$，表示成二进制就是 $100$，$1$ 后面 $2$ 个“$0$”；
-$4^2 = (2^2)^2 = 2^4$，表示成二进制就是 $10000$，$1$ 后面 $4$ 个“$0$”；
-$4^3 = (2^2)^3 = 2^6$，表示成二进制就是 $1000000$，$1$ 后面 $6$ 个“$0$”；
-$4^4 = (2^2)^4 = 2^8$，表示成二进制就是 $100000000$，$1$ 后面 $8$ 个“$0$”；
-$4^5 = (2^2)^5 = 2^10$，表示成二进制就是 $10000000000$，$1$ 后面 $10$ 个“$0$”。</p>
+<p>$4^1 = 2^2 = 2^2$，表示成二进制就是 $100$，$1$ 后面 $2$ 个“$0$”；<br />
+$4^2 = (2^2)^2 = 2^4$，表示成二进制就是 $10000$，$1$ 后面 $4$ 个“$0$”；<br />
+$4^3 = (2^2)^3 = 2^6$，表示成二进制就是 $1000000$，$1$ 后面 $6$ 个“$0$”；<br />
+$4^4 = (2^2)^4 = 2^8$，表示成二进制就是 $100000000$，$1$ 后面 $8$ 个“$0$”；<br />
+$4^5 = (2^2)^5 = 2^10$，表示成二进制就是 $10000000000$，$1$ 后面 $10$ 个“$0$”。  </p>
 <p>2、如果是负数，直接返回 false；
 3、使用位运算的与运算去做判断；
 4、不要忘记转换成二进制以后，后面跟的 0 是偶数，所以原来的位数一定是奇数。</p>
@@ -514,8 +514,8 @@ $4^5 = (2^2)^5 = 2^10$，表示成二进制就是 $10000000000$，$1$ 后面 $10
 </code></pre>
 
 <p>简单解释一下：
-1、<code>num &gt; 0</code> 很好理解，4 的整数方幂一定是正数；
-2、<code>num &amp; (num - 1)</code> 这个运算能够将 num 二进制表示中最右边的那个 "1" 变成 "0"，根据 4 的方幂的二进制表示的特点，这个数一定只有一个数位上是“1”，并且这个数位是最高位，因此 <code>num &amp; (num - 1)</code> 一定是 0；
+1、<code>num &gt; 0</code> 很好理解，4 的整数方幂一定是正数；<br />
+2、<code>num &amp; (num - 1)</code> 这个运算能够将 num 二进制表示中最右边的那个 "1" 变成 "0"，根据 4 的方幂的二进制表示的特点，这个数一定只有一个数位上是“1”，并且这个数位是最高位，因此 <code>num &amp; (num - 1)</code> 一定是 0；<br />
 3、<strong>在满足只有最高位是 1 的前提下</strong>， $num - 1$ 全部数位上只有 1 (并且是偶数个)，并且每隔两个数位一定可以提取公因式，且一定会有因子 "11"（十进制为 3 ），因此一定可以提取出公因子 3，例如二进制数 $111111$ ，本来可以表示成：</p>
 <p>$$
 (111111)_2 = 1 \times 2^5 +  1 \times 2^4 + 1 \times 2^3 +  1 \times 2^2 +  1 \times 2^1 +  1 \times 2^0 
@@ -530,12 +530,16 @@ $$</p>
 $$</p>
 <p>这种做法可以递归下去，得到</p>
 <p>$$
-\begin{align}
-(111111)_2 &amp; = 1 \times 2^5 +  1 \times 2^4 + 1 \times 2^3 +  1 \times 2^2 +  (1 \times 2^1 +  1 \times 2^0) \
-&amp; = 2^2 \times [2^2 \times (1 \times 2^1 +  1 \times 2^0)] +  2^2 \times (1 \times 2^1 +  1 \times 2^0)  +  (1 \times 2^1 +  1 \times 2^0) \
-&amp; = [2^2 \times 2^2 + 2^2 + 1]  \times (1 \times 2^1 +  1 \times 2^0) \
-&amp; = [2^2 \times 2^2 + 2^2 + 1] \times 3
-\end{align}
+(111111)_2 = 1 \times 2^5 +  1 \times 2^4 + 1 \times 2^3 +  1 \times 2^2 +  (1 \times 2^1 +  1 \times 2^0) 
+$$</p>
+<p>$$
+(111111)_2 =  2^2 \times [2^2 \times (1 \times 2^1 +  1 \times 2^0)] +  2^2 \times (1 \times 2^1 +  1 \times 2^0)  +  (1 \times 2^1 +  1 \times 2^0)
+$$</p>
+<p>$$
+(111111)_2 =  [2^2 \times 2^2 + 2^2 + 1]  \times (1 \times 2^1 +  1 \times 2^0) 
+$$</p>
+<p>$$
+(111111)_2 =  [2^2 \times 2^2 + 2^2 + 1] \times 3
 $$</p>
 <p>以上的 3 个条件均为一个整数为 4 的方幂的必要条件，因此它们同时成立就成为了充分必要条件了。</p>
 <h2 id="_3">参考解答</h2>
@@ -608,6 +612,48 @@ $$</p>
         border-radius: .25em;
     }
 </style>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+  inlineMath: [['$','$'], ['\\(','\\)']],
+  processEscapes: true
+  },
+displayAlign : "left",
+TeX: {
+        equationNumbers: {
+            autoNumber: "all",
+            useLabelIds: true
+        }
+    },
+    "HTML-CSS": {
+        linebreaks: {
+            automatic: true
+        },
+        scale: 100,
+        styles: {
+          ".MathJax_Display": {
+            "text-align": "left",
+            "width" : "auto",
+            "margin": "10px 0px 10px 0px !important",
+            "background-color": "#f5f5f5 !important",
+            "border-radius": "3px !important",
+            border:  "1px solid #ccc !important",
+            padding: "5px 5px 5px 5px !important"
+          },
+          ".MathJax": {
+            "background-color": "#f5f5f5 !important",
+            padding: "2px 2px 2px 2px !important"
+          }
+        }
+    },
+    SVG: {
+        linebreaks: {
+            automatic: true
+        }
+    }
+});
+</script>
 
 <script type="text/javascript"
   src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
