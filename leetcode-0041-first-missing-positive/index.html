@@ -144,17 +144,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../leetcode-0026-remove-duplicates-from-sorted-array副本/">26. Remove Duplicates from Sorted Array</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
     <a class="" href="../leetcode-0027-remove-element/">27. Remove Element</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-0027-remove-element副本/">27. Remove Element</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -246,6 +236,11 @@
             <li class="toctree-l1">
 		
     <a class="" href="../leetcode-0078-subsets/">Leetcode 0078 subsets</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0080-remove-duplicates-from-sorted-array-ii/">Leetcode 0080 remove duplicates from sorted array ii</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -451,6 +446,11 @@
             <li class="toctree-l1">
 		
     <a class="" href="../leetcode-0187-repeated-dna-sequences/">Leetcode 0187 repeated dna sequences</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0189-rotate-array/">Leetcode 0189 rotate array</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -981,25 +981,33 @@
 <li>中文网址：<a href="https://leetcode-cn.com/problems/first-missing-positive/description/">41. 缺失的第一个正数</a>  。</li>
 </ul>
 <h2 id="_2">思路分析</h2>
-<p>求解关键：虽然是一个标注为“困难”的问题，但是只要明白了其中的套路，就不难解开这个问题和相关的问题。</p>
+<p>求解关键：理解“桶排序”，元素放在它应该放的位置上，其它位置宁可空着。<font color="#ff0000">可以找其它相关的桶排序的问题来做。</font></p>
 <h2 id="_3">参考解答</h2>
 <h3 id="1">参考解答1</h3>
+<p>Java 写法：</p>
 <pre><code class="java">import java.util.Arrays;
 
 public class Solution {
 
+    // 关键字：桶排序，什么数字就要放在对应的索引上，其它空着就空着
+    // 最好的例子：[3,4,-1,1]
+    // 整理好应该是这样：[1,-1,3,4]，
+    // 这里 1，3，4 都在正确的位置上，
+    // -1 不在正确的位置上，索引是 1 ，所以返回 2
+
+    // [4,3,2,1] 要变成 [1,2,3,4]，剑指 Offer 上有类似的问题。
+
+    // 这里负数和大于数组长度的数都是&quot;捣乱项&quot;。
+
     public int firstMissingPositive(int[] nums) {
-
         int len = nums.length;
-        if (len == 0) {
-            return 1;
-        }
-
-        // 1 2 3 4
-        // 2 3 1 4 ： 2 应该在索引为 1 的位置，3 应该在索引为 2 的位置，以此类推
 
         for (int i = 0; i &lt; len; i++) {
+            // 前两个是在判断是否成为索引
+            // 后一个是在判断，例如 3 在不在索引 2 上
+            // 即 nums[i] ?= nums[nums[i]-1] 这里要特别小心
             while (nums[i] &gt; 0 &amp;&amp; nums[i] &lt;= len &amp;&amp; nums[nums[i] - 1] != nums[i]) {
+                // 第 3 个条件不成立的索引的部分是 i 和 nums[i]-1
                 swap(nums, nums[i] - 1, i);
             }
         }
@@ -1008,6 +1016,8 @@ public class Solution {
         // System.out.println(Arrays.toString(nums));
 
         for (int i = 0; i &lt; len; i++) {
+            // [1,-2,3,4]
+            // 除了 -2 其它都满足： i+1 = num[i]
             if (nums[i] - 1 != i) {
                 return i + 1;
             }
@@ -1027,11 +1037,59 @@ public class Solution {
 
     public static void main(String[] args) {
         Solution solution = new Solution();
-        int[] nums = {3, 4, -1, 5};
+        // int[] nums = {3, 4, -1, 5};
+        int[] nums = {4, 3, 2, 1};
         int firstMissingPositive = solution.firstMissingPositive(nums);
         System.out.println(firstMissingPositive);
     }
 }
+</code></pre>
+
+<p>Python 写法：</p>
+<pre><code class="Python">class Solution:
+
+    def firstMissingPositive(self, nums):
+        &quot;&quot;&quot;
+        :type nums: List[int]
+        :rtype: int
+        &quot;&quot;&quot;
+
+        # 题目中给出的例子，就是最好的例子
+        # [3,4,-1,1]
+        # [-1,4,3,1]
+        # [-1,1,3,4]
+        # 3 应该放在索引为 2 的地方
+        # 4 应该放在索引为 3 的地方
+
+        for i in range(len(nums)):
+
+            # nums[i] &gt; 0 and nums[i] &lt;= len(nums) 的意思是：只要是符合索引的数字
+            # 这里的索引应该认为从 1 开始
+            # 就要把它放到正确的地方上去，这一步叫 hash
+            # nums[i] == nums[nums[i]-1]，叫放到了正确的地方
+            # 例如，3 应该放在索引为 2 的地方，如果不理解，这句话多读几遍
+            # 例如，3 应该放在索引为 2 的地方，如果不理解，这句话多读几遍
+            # 例如，3 应该放在索引为 2 的地方，如果不理解，这句话多读几遍
+
+            # 所以，先判断这个数字是不是索引
+            # 然后判断这个数字是不是放在了正确的地方
+
+            while 1 &lt;= nums[i] &lt;= len(nums) and nums[i] != nums[nums[i] - 1]:
+                # 交换
+                self.__swap(nums, i, nums[i] - 1)
+
+        # 再遍历一次，没有放对的就是你要找的
+
+        for i in range(len(nums)):
+            # value： [1,2,3,4]
+            # index： [0,1,2,3]
+            if i + 1 != nums[i]:
+                return i + 1
+
+        return len(nums) + 1
+
+    def __swap(self, nums, index1, index2):
+        nums[index1], nums[index2] = nums[index2], nums[index1]
 </code></pre>
 
 <p>本篇文章的地址为 <a href="https://liweiwei1419.github.io/leetcode-solution/leetcode-0041-first-missing-positive">https://liweiwei1419.github.io/leetcode-solution/leetcode-0041-first-missing-positive</a> ，如果我的题解有错误，或者您有更好的解法，欢迎您告诉我 <a href="../liweiwei1419@gmail.com">liweiwei1419@gmail.com</a>  。</p>

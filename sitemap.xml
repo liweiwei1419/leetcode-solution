@@ -155,23 +155,7 @@
 
     
     <url>
-     <loc>/leetcode-0026-remove-duplicates-from-sorted-array副本/</loc>
-     <lastmod>2018-11-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    
-
-    
-    <url>
      <loc>/leetcode-0027-remove-element/</loc>
-     <lastmod>2018-11-13</lastmod>
-     <changefreq>daily</changefreq>
-    </url>
-    
-
-    
-    <url>
-     <loc>/leetcode-0027-remove-element副本/</loc>
      <lastmod>2018-11-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -292,6 +276,14 @@
     
     <url>
      <loc>/leetcode-0078-subsets/</loc>
+     <lastmod>2018-11-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/leetcode-0080-remove-duplicates-from-sorted-array-ii/</loc>
      <lastmod>2018-11-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
@@ -620,6 +612,14 @@
     
     <url>
      <loc>/leetcode-0187-repeated-dna-sequences/</loc>
+     <lastmod>2018-11-13</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>/leetcode-0189-rotate-array/</loc>
      <lastmod>2018-11-13</lastmod>
      <changefreq>daily</changefreq>
     </url>
