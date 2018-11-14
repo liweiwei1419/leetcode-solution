@@ -8,7 +8,7 @@
   <meta name="description" content="None">
   
   <link rel="shortcut icon" href="./img/favicon.ico">
-  <title>Welcome to MkDocs - LeetCode Solution</title>
+  <title>我编写的 LeetCode 算法题解和《剑指 Offer 》题解 - LeetCode Solution</title>
   <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
 
   <link rel="stylesheet" href="./css/theme.css" type="text/css" />
@@ -17,7 +17,7 @@
   
   <script>
     // Current page data
-    var mkdocs_page_name = "Welcome to MkDocs";
+    var mkdocs_page_name = "\u6211\u7f16\u5199\u7684 LeetCode \u7b97\u6cd5\u9898\u89e3\u548c\u300a\u5251\u6307 Offer \u300b\u9898\u89e3";
     var mkdocs_page_input_path = "index.md";
     var mkdocs_page_url = "/";
   </script>
@@ -49,9 +49,20 @@
           
             <li class="toctree-l1 current">
 		
-    <a class="current" href=".">Welcome to MkDocs</a>
+    <a class="current" href=".">我编写的 LeetCode 算法题解和《剑指 Offer 》题解</a>
     <ul class="subnav">
             
+    <li class="toctree-l2"><a href="#leetcode-offer">我编写的 LeetCode 算法题解和《剑指 Offer 》题解</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#2018-11-13">2018 年 11 月 13 日星期二总结</a></li>
+        
+            <li><a class="toctree-l3" href="#2018-11-14">2018 年 11 月 14 日星期三总结</a></li>
+        
+        </ul>
+    
+
     <li class="toctree-l2"><a href="#welcome-to-mkdocs">Welcome to MkDocs</a></li>
     
         <ul>
@@ -940,7 +951,7 @@
     
       
     
-    <li>Welcome to MkDocs</li>
+    <li>我编写的 LeetCode 算法题解和《剑指 Offer 》题解</li>
     <li class="wy-breadcrumbs-aside">
       
         <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/index.md"
@@ -953,7 +964,60 @@
           <div role="main">
             <div class="section">
               
-                <h1 id="welcome-to-mkdocs">Welcome to MkDocs</h1>
+                <h1 id="leetcode-offer">我编写的 LeetCode 算法题解和《剑指 Offer 》题解</h1>
+<p>《LeetCode 题解》地址：https://liweiwei1419.github.io/leetcode-solution</p>
+<h2 id="2018-11-13">2018 年 11 月 13 日星期二总结</h2>
+<table>
+<thead>
+<tr>
+<th>题号</th>
+<th>要求</th>
+<th>技巧</th>
+<th>关键字</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>189</td>
+<td>数组向右旋转 $k$ 步。</td>
+<td>$3$ 次逆转即可，别忘了极端条件判断。</td>
+<td>rotate</td>
+</tr>
+<tr>
+<td>26</td>
+<td>移除<strong>有序</strong>数组的重复元素。</td>
+<td>注意数组是<strong>有序</strong>的。</td>
+<td>可以直接覆盖。</td>
+</tr>
+<tr>
+<td>27</td>
+<td>原地移除数组指定 val 的元素。</td>
+<td>快排 partition 的技巧。</td>
+<td><strong>扫过数组一遍，就把数组划分成一边小于等于一个数，一边大于一个数。</strong></td>
+</tr>
+<tr>
+<td>283</td>
+<td>移动数组元素，使得前面元素非 0 ，后面元素全 0，保持非零元素的相对顺序。</td>
+<td><strong>partition 就能保持相对顺序</strong>。</td>
+<td>理解 partition 保持相对顺序。</td>
+</tr>
+<tr>
+<td>80</td>
+<td>排序数组，保留重复元素不超过 2 个。</td>
+<td>分类讨论，临界值判断。</td>
+<td>做了几遍，已经变成了一道非常容易的题目了。</td>
+</tr>
+<tr>
+<td>41</td>
+<td>找 1 到正无穷大中，第 1 个缺失的数。</td>
+<td>如果不在正确的位置，就要交换，直到对了为止。所以是 for 循环里面用 while，注意判断边界条件。</td>
+<td><font color='#ff0000'>特别留意，要会背下来。</font> <strong>桶排序。</strong> 这是一道 hard 级别的题，不看答案，很难想到用桶排序去做。并且要注意很多细节。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2018-11-14">2018 年 11 月 14 日星期三总结</h2>
+<hr />
+<h1 id="welcome-to-mkdocs">Welcome to MkDocs</h1>
 <p>For full documentation visit <a href="http://mkdocs.org">mkdocs.org</a>.</p>
 <h2 id="commands">Commands</h2>
 <ul>
@@ -992,6 +1056,9 @@ git remote add origin &lt;GitHub 仓库链接&gt;
 <p>3、执行 <code>mkdocs gh-deploy</code> 命令，就可以将 site 目录下的内容发布到 GitHub 仓库的 <strong>gh-pages 分支</strong>；<br />
 4、通过地址 <code>https://&lt;GitHub 用户名&gt;.github.io/&lt;GitHub 仓库名&gt;/</code> 可以访问。
 例如我的地址就是：<a href="https://liweiwei1419.github.io/leetcode-solution/">https://liweiwei1419.github.io/leetcode-solution/</a>。</p>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
               
             </div>
           </div>
@@ -1043,5 +1110,5 @@ git remote add origin &lt;GitHub 仓库链接&gt;
 
 <!--
 MkDocs version : 0.17.3
-Build Date UTC : 2018-11-13 09:42:44
+Build Date UTC : 2018-11-14 03:16:56
 -->
