@@ -979,10 +979,76 @@
 </ul>
 <h2 id="_2">思路分析</h2>
 <p>求解关键：</p>
-<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/" width="900"></p>
+<p>1、典型的使用贪心算法来做的题，因为局部最优解就等于全局最优解，我们首先给区间排序；</p>
+<p>2、然后我们将 res 初始化为 1 ，因为气球数量不为 0 ，所以怎么也得先来一发啊，然后这一箭能覆盖的最远位置就是第一个气球的结束点，用变量 end 来表示；</p>
+<p>3、然后我们开始遍历剩下的气球，如果当前气球的开始点小于等于 end ，说明跟之前的气球有重合，之前那一箭也可以照顾到当前的气球，此时我们要更新 end 的位置， end 更新为两个气球结束点之间较小的那个，这也是当前气球和之前气球的重合点，然后继续看后面的气球；</p>
+<p>4、如果某个气球的起始点大于 end 了，说明前面的箭无法覆盖到当前的气球，那么就得再来一发，既然又来了一发，那么我们此时就要把 end 设为当前气球的结束点了，这样贪婪算法遍历结束后就能得到最少的箭数了。
+画图可以帮助理解。</p>
+<p>参考资料：http://www.cnblogs.com/grandyang/p/6050562.html
+http://bgmeow.xyz/2016/12/30/LeetCode-452/</p>
 <h2 id="_3">参考解答</h2>
-<h3 id="1">参考解答1</h3>
-<pre><code class="java">
+<h3 id="1">参考解答1：按照区间的左侧端点进行升序排序。</h3>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/452-1.jpg" width="900"></p>
+<p>Python 的写法：</p>
+<pre><code class="python3">class Solution:
+    def findMinArrowShots(self, points):
+        &quot;&quot;&quot;
+        :type points: List[List[int]]
+        :rtype: int
+        &quot;&quot;&quot;
+        if len(points) &lt; 2:
+            return len(points)
+        # 按照区间的左侧端点进行升序排序
+        points = sorted(points, key=lambda x: x[0])
+        min_arrow_shots = 1
+        end = points[0][1]
+        for point in points[1:]:
+            if point[0] &lt;= end:
+                end = min(end, point[1])
+            else:
+                min_arrow_shots += 1
+                end = point[1]
+        return min_arrow_shots
+
+
+if __name__ == '__main__':
+    points = [[10, 16], [2, 8], [1, 6], [7, 12]]
+
+    s = Solution()
+
+    result = s.findMinArrowShots(points)
+    print(result)
+</code></pre>
+
+<h3 id="2">参考解答2：按照区间的右侧端点升序排序，使用这种方式，讨论能够少一些。</h3>
+<p>参考了花花酱的解答。</p>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/452-2.jpg" width="900"></p>
+<p>Python 的写法：</p>
+<pre><code class="python3">class Solution:
+    def findMinArrowShots(self, points):
+        &quot;&quot;&quot;
+        :type points: List[List[int]]
+        :rtype: int
+        &quot;&quot;&quot;
+        if len(points) &lt; 2:
+            return len(points)
+        # 按照区间的右侧端点升序排序
+        points = sorted(points, key=lambda x: x[1])
+        min_arrow_shots = 1
+        end = points[0][1]
+        for point in points[1:]:
+            if point[0] &gt; end:
+                end = point[1]
+                min_arrow_shots += 1
+        return min_arrow_shots
+
+if __name__ == '__main__':
+    points = [[10, 16], [2, 8], [1, 6], [7, 12]]
+
+    s = Solution()
+
+    result = s.findMinArrowShots(points)
+    print(result)
 </code></pre>
 
 <p>本篇文章的地址为 <a href="https://liweiwei1419.github.io/leetcode-solution/leetcode-0452-minimum-number-of-arrows-to-burst-balloons">https://liweiwei1419.github.io/leetcode-solution/leetcode-0452-minimum-number-of-arrows-to-burst-balloons</a> ，如果我的题解有错误，或者您有更好的解法，欢迎您告诉我 <a href="../liweiwei1419@gmail.com">liweiwei1419@gmail.com</a>  。</p>
