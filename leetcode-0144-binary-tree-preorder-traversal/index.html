@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>144. Binary Tree Preorder Traversal - LeetCode Solution</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "144. Binary Tree Preorder Traversal";
+    var mkdocs_page_input_path = "leetcode-0144-binary-tree-preorder-traversal.md";
+    var mkdocs_page_url = "/leetcode-0144-binary-tree-preorder-traversal/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> LeetCode Solution</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0001-two-sum/">1. Two Sum</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0002-add-two-numbers/">2. Add Two Numbers</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0003-longest-substring-without-repeating-characters/">3. Longest Substring Without Repeating Characters</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0004-median-of-two-sorted-arrays/">4. Median of Two Sorted Arrays</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0005-longest-palindromic-substring/">5. Longest Palindromic Substring</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0006-zigzag-conversion/">6. ZigZag Conversion</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0007-reverse-integer/">7. Reverse Integer</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0008-string-to-integer-atoi/">8. String to Integer (atoi)</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0009-palindrome-number/">9. Palindrome Number</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0010-regular-expression-matching/">10. Regular Expression Matching</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0011-container-with-most-water/">11. Container With Most Water</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0012-integer-to-roman/">12. Integer to Roman</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0013-roman-to-integer/">13. Roman to Integer</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0014-longest-common-prefix/">14. Longest Common Prefix</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0015-3sum/">15. 3Sum</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0016-3sum-closest/">16. 3Sum Closest</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0017-letter-combinations-of-a-phone-number/">17. Letter Combinations of a Phone Number</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0018-4sum/">18. 4Sum</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0019-remove-nth-node-from-end-of-list/">19. Remove Nth Node From End of List</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0020-valid-parentheses/">20. Valid Parentheses</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0021-merge-two-sorted-lists/">21. Merge Two Sorted Lists</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0022-generate-parentheses/">22. Generate Parentheses</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0023-merge-k-sorted-lists/">23. Merge k Sorted Lists</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0024-swap-nodes-in-pairs/">24. Swap Nodes in Pairs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0025-reverse-nodes-in-k-group/">25. Reverse Nodes in k-Group</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0026-remove-duplicates-from-sorted-array/">26. Remove Duplicates from Sorted Array</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0027-remove-element/">27. Remove Element</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0028-implement-strstr/">28. Implement strStr()</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0029-divide-two-integers/">29. Divide Two Integers</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0030-substring-with-concatenation-of-all-words/">30. Substring with Concatenation of All Words</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0031-next-permutation/">31. Next Permutation</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0032-longest-valid-parentheses/">32. Longest Valid Parentheses</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0033-search-in-rotated-sorted-array/">33. Search in Rotated Sorted Array</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0034-search-for-a-range/">34. Search for a Range</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0035-search-insert-position/">35. Search Insert Position</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0036-valid-sudoku/">36. Valid Sudoku</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0037-sudoku-solver/">37. Sudoku Solver</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0038-count-and-say/">38. Count and Say</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0039-combination-sum/">39. Combination Sum</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0040-combination-sum-ii/">40. Combination Sum II</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0041-first-missing-positive/">41. First Missing Positive</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0042-trapping-rain-water/">42. Trapping Rain Water</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0043-multiply-strings/">43. Multiply Strings</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0044-wildcard-matching/">44. Wildcard Matching</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0045-jump-game-ii/">45. Jump Game II</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0046-permutations/">46. Permutations</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0047-permutations-ii/">47. Permutations II</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0048-rotate-image/">48. Rotate Image</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0049-group-anagrams/">49. Group Anagrams</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0050-powx-n/">50. Pow(x, n)</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0051-n-queens/">51. N-Queens</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0052-n-queens-ii/">52. N-Queens II</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0053-maximum-subarray/">53. Maximum Subarray（连续子数组的最大和问题）</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0054-spiral-matrix/">54. Spiral Matrix</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0055-jump-game/">55. Jump Game</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0056-merge-intervals/">56. Merge Intervals</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0057-insert-interval/">57. Insert Interval</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0058-length-of-last-word/">58. Length of Last Word</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0059-spiral-matrix-ii/">59. Spiral Matrix II</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0060-permutation-sequence/">60. Permutation Sequence</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0061-rotate-list/">61. Rotate List</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0062-unique-paths/">62. Unique Paths</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0063-unique-paths-ii/">63. Unique Paths II</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0064-minimum-path-sum/">64. Minimum Path Sum</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0065-valid-number/">65. Valid Number</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0066-plus-one/">66. Plus One</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0067-add-binary/">67. Add Binary</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0068-text-justification/">68. Text Justification</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0069-sqrtx/">69. Sqrt(x)</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0070-climbing-stairs/">70. Climbing Stairs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0076-minimum-window-substring/">76. Minimum Window Substring</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0077-combinations/">77. Combinations</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0078-subsets/">78. Subsets</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0080-remove-duplicates-from-sorted-array-ii/">80. Remove Duplicates from Sorted Array II</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0081-search-in-rotated-sorted-array-ii/">81. Search in Rotated Sorted Array II</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0082-remove-duplicates-from-sorted-list-ii/">82. Remove Duplicates from Sorted List II</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0083-remove-duplicates-from-sorted-list/">83. Remove Duplicates from Sorted List</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0086-partition-list/">86. Partition List</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0088-merge-sorted-array/">88. Merge Sorted Array</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0090-subsets-ii/">90. Subsets II</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0092-reverse-linked-list-ii/">92. Reverse Linked List II</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0093-restore-ip-addresses/">93. Restore IP Addresses</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0094-binary-tree-inorder-traversal/">94. Binary Tree Inorder Traversal</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0095-unique-binary-search-trees-ii/">95. Unique Binary Search Trees II</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0096-unique-binary-search-trees/">96. Unique Binary Search Trees</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0098-validate-binary-search-tree/">98. Validate Binary Search Tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0100-same-tree/">100. Same Tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0101-symmetric-tree/">101. Symmetric Tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0104-maximum-depth-of-binary-tree/">104. Maximum Depth of Binary Tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0105-construct-binary-tree-from-preorder-and-inorder-traversal/">105. Construct Binary Tree from Preorder and Inorder Traversal</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0109-convert-sorted-list-to-binary-search-tree/">109. Convert Sorted List to Binary Search Tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0110-balanced-binary-tree/">110. Balanced Binary Tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0111-minimum-depth-of-binary-tree/">111. Minimum Depth of Binary Tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0113-path-sum-ii/">113. Path Sum II</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0121-best-time-to-buy-and-sell-stock/">121. Best Time to Buy and Sell Stock</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0122-best-time-to-buy-and-sell-stock-ii/">122. Best Time to Buy and Sell Stock II</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0123-best-time-to-buy-and-sell-stock-iii/">123. Best Time to Buy and Sell Stock III</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0125-valid-palindrome/">125. Valid Palindrome</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0136-single-number/">136. Single Number</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0137-single-number-ii/">137. Single Number II</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0141-linked-list-cycle/">141. Linked List Cycle</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0142-linked-list-cycle-ii/">142. Linked List Cycle II</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">144. Binary Tree Preorder Traversal</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#144-binary-tree-preorder-traversal">144. Binary Tree Preorder Traversal</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#_1">题目描述和难度</a></li>
+        
+            <li><a class="toctree-l3" href="#_2">思路分析</a></li>
+        
+            <li><a class="toctree-l3" href="#_3">参考解答</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0145-binary-tree-postorder-traversal/">Leetcode 0145 binary tree postorder traversal</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0146-lru-cache/">Leetcode 0146 lru cache</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0147-insertion-sort-list/">Leetcode 0147 insertion sort list</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0148-sort-list/">Leetcode 0148 sort list</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0153-find-minimum-in-rotated-sorted-array/">Leetcode 0153 find minimum in rotated sorted array</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0154-find-minimum-in-rotated-sorted-array-ii/">Leetcode 0154 find minimum in rotated sorted array ii</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0168-excel-sheet-column-title/">Leetcode 0168 excel sheet column title</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0171-excel-sheet-column-number/">Leetcode 0171 excel sheet column number</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0173-binary-search-tree-iterator/">Leetcode 0173 binary search tree iterator</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0175-combine-two-tables/">Leetcode 0175 combine two tables</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0181-employees-earning-more-than-their-managers/">Leetcode 0181 employees earning more than their managers</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0182-duplicate-emails/">Leetcode 0182 duplicate emails</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0187-repeated-dna-sequences/">Leetcode 0187 repeated dna sequences</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0189-rotate-array/">Leetcode 0189 rotate array</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0190-reverse-bits/">Leetcode 0190 reverse bits</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0191-number-of-1-bits/">Leetcode 0191 number of 1 bits</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0201-bitwise-and-of-numbers-range/">Leetcode 0201 bitwise and of numbers range</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0203-remove-linked-list-elements/">Leetcode 0203 remove linked list elements</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0204-count-primes/">Leetcode 0204 count primes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0205-isomorphic-strings/">Leetcode 0205 isomorphic strings</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0206-reverse-linked-list/">Leetcode 0206 reverse linked list</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0207-course-schedule/">Leetcode 0207 course schedule</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0208-implement-trie-prefix-tree/">Leetcode 0208 implement trie prefix tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0209-minimum-size-subarray-sum/">Leetcode 0209 minimum size subarray sum</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0210-course-schedule-ii/">Leetcode 0210 course schedule ii</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0211-add-and-search-word-data-structure-design/">Leetcode 0211 add and search word data structure design</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0212-word-search-ii/">Leetcode 0212 word search ii</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0215-kth-largest-element-in-an-array/">Leetcode 0215 kth largest element in an array</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0219-contains-duplicate-ii/">Leetcode 0219 contains duplicate ii</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0226-invert-binary-tree/">Leetcode 0226 invert binary tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0230-kth-smallest-element-in-a-bst/">Leetcode 0230 kth smallest element in a bst</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0231-power-of-two/">Leetcode 0231 power of two</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0234-palindrome-linked-list/">Leetcode 0234 palindrome linked list</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0235-lowest-common-ancestor-of-a-binary-search-tree/">Leetcode 0235 lowest common ancestor of a binary search tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0236-lowest-common-ancestor-of-a-binary-tree/">Leetcode 0236 lowest common ancestor of a binary tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0237-delete-node-in-a-linked-list/">Leetcode 0237 delete node in a linked list</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0240-search-a-2d-matrix-ii/">Leetcode 0240 search a 2d matrix ii</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0242-valid-anagram/">Leetcode 0242 valid anagram</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0257-binary-tree-paths/">Leetcode 0257 binary tree paths</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0260-single-number-iii/">Leetcode 0260 single number iii</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0263-ugly-number/">Leetcode 0263 ugly number</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0264-ugly-number-ii/">Leetcode 0264 ugly number ii</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0268-missing-number/">Leetcode 0268 missing number</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0283-move-zeroes/">Leetcode 0283 move zeroes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0284-peeking-iterator/">Leetcode 0284 peeking iterator</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0290-word-pattern/">Leetcode 0290 word pattern</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0297-serialize-and-deserialize-binary-tree/">Leetcode 0297 serialize and deserialize binary tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0300-longest-increasing-subsequence/">Leetcode 0300 longest increasing subsequence</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0307-range-sum-query-mutable/">Leetcode 0307 range sum query mutable</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0313-super-ugly-number/">Leetcode 0313 super ugly number</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0326-power-of-three/">Leetcode 0326 power of three</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0328-odd-even-linked-list/">Leetcode 0328 odd even linked list</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0336-palindrome-pairs/">Leetcode 0336 palindrome pairs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0337-house-robber-iii/">Leetcode 0337 house robber iii</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0341-flatten-nested-list-iterator/">Leetcode 0341 flatten nested list iterator</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0342-power-of-four/">Leetcode 0342 power of four</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0344-reverse-string/">Leetcode 0344 reverse string</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0345-reverse-vowels-of-a-string/">Leetcode 0345 reverse vowels of a string</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0367-valid-perfect-square/">Leetcode 0367 valid perfect square</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0371-sum-of-two-integers/">Leetcode 0371 sum of two integers</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0377-combination-sum-iv/">Leetcode 0377 combination sum iv</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0389-find-the-difference/">Leetcode 0389 find the difference</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0392-is-subsequence/">Leetcode 0392 is subsequence</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0397-integer-replacement/">Leetcode 0397 integer replacement</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0398-random-pick-index/">Leetcode 0398 random pick index</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0405-convert-a-number-to-hexadecimal/">Leetcode 0405 convert a number to hexadecimal</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0415-add-strings/">Leetcode 0415 add strings</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0421-maximum-xor-of-two-numbers-in-an-array/">Leetcode 0421 maximum xor of two numbers in an array</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0435-non-overlapping-intervals/">Leetcode 0435 non overlapping intervals</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0438-find-all-anagrams-in-a-string/">Leetcode 0438 find all anagrams in a string</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0442-find-all-duplicates-in-an-array/">Leetcode 0442 find all duplicates in an array</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0445-add-two-numbers-ii/">Leetcode 0445 add two numbers ii</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0448-find-all-numbers-disappeared-in-an-array/">Leetcode 0448 find all numbers disappeared in an array</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0450-delete-node-in-a-bst/">Leetcode 0450 delete node in a bst</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0452-minimum-number-of-arrows-to-burst-balloons/">Leetcode 0452 minimum number of arrows to burst balloons</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0454-4sum-ii/">Leetcode 0454 4sum ii</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0459-repeated-substring-pattern/">Leetcode 0459 repeated substring pattern</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0460-lfu-cache/">Leetcode 0460 lfu cache</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0461-hamming-distance/">Leetcode 0461 hamming distance</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0476-number-complement/">Leetcode 0476 number complement</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0477-total-hamming-distance/">Leetcode 0477 total hamming distance</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0515-find-largest-value-in-each-tree-row/">Leetcode 0515 find largest value in each tree row</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0538-convert-bst-to-greater-tree/">Leetcode 0538 convert bst to greater tree</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0541-reverse-string-ii/">Leetcode 0541 reverse string ii</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0542-01-matrix/">Leetcode 0542 01 matrix</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0557-reverse-words-in-a-string-iii/">Leetcode 0557 reverse words in a string iii</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0566-reshape-the-matrix/">Leetcode 0566 reshape the matrix</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0620-not-boring-movies/">Leetcode 0620 not boring movies</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0627-swap-salary/">Leetcode 0627 swap salary</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0633-sum-of-square-numbers/">Leetcode 0633 sum of square numbers</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0648-replace-words/">Leetcode 0648 replace words</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0653-two-sum-iv-input-is-a-bst/">Leetcode 0653 two sum iv input is a bst</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0677-map-sum-pairs/">Leetcode 0677 map sum pairs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0686-repeated-string-match/">Leetcode 0686 repeated string match</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0687-longest-univalue-path/">Leetcode 0687 longest univalue path</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0690-employee-importance/">Leetcode 0690 employee importance</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0693-binary-number-with-alternating-bits/">Leetcode 0693 binary number with alternating bits</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0717-1-bit-and-2-bit-characters/">Leetcode 0717 1 bit and 2 bit characters</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0720-longest-word-in-dictionary/">Leetcode 0720 longest word in dictionary</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0746-min-cost-climbing-stairs/">Leetcode 0746 min cost climbing stairs</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0762-prime-number-of-set-bits-in-binary-representation/">Leetcode 0762 prime number of set bits in binary representation</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0783-minimum-distance-between-bst-nodes/">Leetcode 0783 minimum distance between bst nodes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0784-letter-case-permutation/">Leetcode 0784 letter case permutation</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0792-number-of-matching-subsequences/">Leetcode 0792 number of matching subsequences</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0819-most-common-word/">Leetcode 0819 most common word</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0824-goat-latin/">Leetcode 0824 goat latin</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0840-magic-squares-in-grid/">Leetcode 0840 magic squares in grid</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-algorithm-notes/">Leetcode algorithm notes</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-articles-template/">Leetcode articles template</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-summarize/">Leetcode summarize</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">LeetCode Solution</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>144. Binary Tree Preorder Traversal</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/liweiwei1419/leetcode-solution.git/edit/master/docs/leetcode-0144-binary-tree-preorder-traversal.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="144-binary-tree-preorder-traversal">144. Binary Tree Preorder Traversal</h1>
+<h2 id="_1">题目描述和难度</h2>
+<ul>
+<li>题目描述：</li>
+</ul>
+<div class="question-description__3U1T" style="padding-top: 10px;"><div class="translation-tool__3Ffj"><span aria-hidden="true" class="" data-original-title="显示英文" data-placement="left" data-toggle="tooltip" style="cursor: pointer;"><div class="switch-base__1Zql" data-on="false"><div class="toggle__3ZBJ"></div></div></span></div><div><p>给定一个二叉树，返回它的 <em>前序 </em>遍历。</p>
+<p> <strong>示例:</strong></p>
+<pre><strong>输入:</strong> [1,null,2,3]  
+   1
+    \
+     2
+    /
+   3
+
+<strong>输出:</strong> [1,2,3]
+</pre>
+<p><strong>进阶:</strong> 递归算法很简单，你可以通过迭代算法完成吗？</p>
+</div></div>
+
+<ul>
+<li>题目难度：<span class="label label-warning">中等</span>。</li>
+<li>英文网址：<a href="https://leetcode.com/problems/binary-tree-preorder-traversal/description/">144. Binary Tree Preorder Traversal</a>  。</li>
+<li>中文网址：<a href="https://leetcode-cn.com/problems/binary-tree-preorder-traversal/description/">144. 二叉树的前序遍历</a>  。</li>
+</ul>
+<h2 id="_2">思路分析</h2>
+<p>求解关键：</p>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/" width="900"></p>
+<h2 id="_3">参考解答</h2>
+<h3 id="1">参考解答1</h3>
+<pre><code class="java">
+</code></pre>
+
+<p>本篇文章的地址为 <a href="https://liweiwei1419.github.io/leetcode-solution/leetcode-0144-binary-tree-preorder-traversal">https://liweiwei1419.github.io/leetcode-solution/leetcode-0144-binary-tree-preorder-traversal</a> ，如果我的题解有错误，或者您有更好的解法，欢迎您告诉我 <a href="../liweiwei1419@gmail.com">liweiwei1419@gmail.com</a>  。</p>
+<style type="text/css">
+    .label-warning {
+        background-color: #f0ad4e;
+    }
+
+    .label-success {
+        background-color: #5cb85c;
+    }
+
+    .label-danger {
+        background-color: #d9534f;
+    }
+
+    .label {
+        display: inline;
+        padding: .2em .6em .3em;
+        font-size: 75%;
+        font-weight: 700;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: .25em;
+    }
+</style>
+
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../leetcode-0145-binary-tree-postorder-traversal/" class="btn btn-neutral float-right" title="Leetcode 0145 binary tree postorder traversal">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../leetcode-0142-linked-list-cycle-ii/" class="btn btn-neutral" title="142. Linked List Cycle II"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/liweiwei1419/leetcode-solution.git/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../leetcode-0142-linked-list-cycle-ii/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../leetcode-0145-binary-tree-postorder-traversal/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js"></script>
+      <script src="../search/require.js"></script>
+      <script src="../search/search.js"></script>
+
+</body>
+</html>
