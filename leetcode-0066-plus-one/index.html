@@ -49,7 +49,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="..">Home</a>
+    <a class="" href="..">目录</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -615,6 +615,11 @@
           
             <li class="toctree-l1">
 		
+    <a class="" href="../leetcode-0160-intersection-of-two-linked-lists/">Leetcode 0160 intersection of two linked lists</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
     <a class="" href="../leetcode-0168-excel-sheet-column-title/">Leetcode 0168 excel sheet column title</a>
 	    </li>
           
@@ -875,6 +880,16 @@
           
             <li class="toctree-l1">
 		
+    <a class="" href="../leetcode-0349-intersection-of-two-arrays/">Leetcode 0349 intersection of two arrays</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0350-intersection-of-two-arrays-ii/">Leetcode 0350 intersection of two arrays ii</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
     <a class="" href="../leetcode-0367-valid-perfect-square/">Leetcode 0367 valid perfect square</a>
 	    </li>
           
@@ -1120,17 +1135,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../leetcode-algorithm-notes/">Leetcode algorithm notes</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
     <a class="" href="../leetcode-articles-template/">Leetcode articles template</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-summarize/">Leetcode summarize</a>
 	    </li>
           
         </ul>
@@ -1194,10 +1199,32 @@
 <li>中文网址：<a href="https://leetcode-cn.com/problems/plus-one/description/">66. 加一</a>  。</li>
 </ul>
 <h2 id="_2">思路分析</h2>
-<p>求解关键：</p>
+<p>求解关键：使用进位的写法，是比较通用的，我先写了这样的写法，但其实我们注意到，题目只是让我们加 1，如果加 1 不产生进位，后面的循环就没有必要继续做下去了。</p>
 <h2 id="_3">参考解答</h2>
-<h3 id="1">参考解答1</h3>
-<p>Java 写法：</p>
+<h3 id="1">参考解答1：</h3>
+<p>Python 写法：（推荐写法）</p>
+<pre><code class="python3">class Solution(object):
+    def plusOne(self, digits):
+        &quot;&quot;&quot;
+        :type digits: List[int]
+        :rtype: List[int]
+        &quot;&quot;&quot;
+
+        n = len(digits)
+        if n == 0:
+            return None
+        # 从后向前
+        for index in range(n - 1, -1, -1):
+            if digits[index] &lt; 9:
+                digits[index] += 1
+                return digits
+            else:
+                digits[index] = 0
+        return [1] + digits
+</code></pre>
+
+<h3 id="2">参考解答2</h3>
+<p>Java 写法：（参考写法）</p>
 <pre><code class="java">import java.util.Arrays;
 
 public class Solution {
@@ -1239,7 +1266,7 @@ public class Solution {
 }
 </code></pre>
 
-<p>Python 写法：</p>
+<p>Python 写法：（参考写法）</p>
 <pre><code class="python3">class Solution(object):
     def plusOne(self, digits):
         &quot;&quot;&quot;

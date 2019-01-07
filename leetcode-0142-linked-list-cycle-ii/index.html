@@ -49,7 +49,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="..">Home</a>
+    <a class="" href="..">目录</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -615,6 +615,11 @@
           
             <li class="toctree-l1">
 		
+    <a class="" href="../leetcode-0160-intersection-of-two-linked-lists/">Leetcode 0160 intersection of two linked lists</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
     <a class="" href="../leetcode-0168-excel-sheet-column-title/">Leetcode 0168 excel sheet column title</a>
 	    </li>
           
@@ -875,6 +880,16 @@
           
             <li class="toctree-l1">
 		
+    <a class="" href="../leetcode-0349-intersection-of-two-arrays/">Leetcode 0349 intersection of two arrays</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0350-intersection-of-two-arrays-ii/">Leetcode 0350 intersection of two arrays ii</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
     <a class="" href="../leetcode-0367-valid-perfect-square/">Leetcode 0367 valid perfect square</a>
 	    </li>
           
@@ -1120,17 +1135,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../leetcode-algorithm-notes/">Leetcode algorithm notes</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
     <a class="" href="../leetcode-articles-template/">Leetcode articles template</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-summarize/">Leetcode summarize</a>
 	    </li>
           
         </ul>
@@ -1186,10 +1191,50 @@
 </ul>
 <h2 id="_2">思路分析</h2>
 <p>求解关键：</p>
-<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/" width="900"></p>
+<p><img src="https://liweiwei1419.github.io/images/leetcode-solution/leetcode-142.png" width="900"></p>
 <h2 id="_3">参考解答</h2>
-<h3 id="1">参考解答1</h3>
-<pre><code class="java">
+<h3 id="1">参考解答1：</h3>
+<pre><code class="python3"># Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution(object):
+    # If there is no cycle, return null.
+
+    def detectCycle(self, head):
+        &quot;&quot;&quot;
+        :type head: ListNode
+        :rtype: ListNode
+        &quot;&quot;&quot;
+
+        if head is None:
+            return None
+
+        slow = head
+        fast = head
+
+        while fast:
+            fast = fast.next
+            if fast:
+                fast = fast.next
+                slow = slow.next
+            else:
+                return None
+            if fast == slow:
+                break
+
+        # 走到这里有两种情况，都要判断
+        if fast:
+            # 此时 fast == slow 为 True
+            point = head
+            while slow != point:
+                slow = slow.next
+                point = point.next
+            return point
+        else:
+            return None
 </code></pre>
 
 <p>本篇文章的地址为 <a href="https://liweiwei1419.github.io/leetcode-solution/leetcode-0142-linked-list-cycle-ii">https://liweiwei1419.github.io/leetcode-solution/leetcode-0142-linked-list-cycle-ii</a> ，如果我的题解有错误，或者您有更好的解法，欢迎您告诉我 <a href="../liweiwei1419@gmail.com">liweiwei1419@gmail.com</a>  。</p>

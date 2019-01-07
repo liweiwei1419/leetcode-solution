@@ -49,7 +49,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="..">Home</a>
+    <a class="" href="..">目录</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -470,7 +470,7 @@
         
             <li><a class="toctree-l3" href="#_2">思路分析</a></li>
         
-            <li><a class="toctree-l3" href="#_3">参考解答</a></li>
+            <li><a class="toctree-l3" href="#_7">参考解答</a></li>
         
         </ul>
     
@@ -611,6 +611,11 @@
             <li class="toctree-l1">
 		
     <a class="" href="../leetcode-0154-find-minimum-in-rotated-sorted-array-ii/">Leetcode 0154 find minimum in rotated sorted array ii</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0160-intersection-of-two-linked-lists/">Leetcode 0160 intersection of two linked lists</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -875,6 +880,16 @@
           
             <li class="toctree-l1">
 		
+    <a class="" href="../leetcode-0349-intersection-of-two-arrays/">Leetcode 0349 intersection of two arrays</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0350-intersection-of-two-arrays-ii/">Leetcode 0350 intersection of two arrays ii</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
     <a class="" href="../leetcode-0367-valid-perfect-square/">Leetcode 0367 valid perfect square</a>
 	    </li>
           
@@ -1120,17 +1135,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../leetcode-algorithm-notes/">Leetcode algorithm notes</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
     <a class="" href="../leetcode-articles-template/">Leetcode articles template</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-summarize/">Leetcode summarize</a>
 	    </li>
           
         </ul>
@@ -1181,7 +1186,22 @@
 <p>1、IP 地址一共 4 段，每一段的最大值是 255，最小值是 0，我们采用搜索的办法来得到有效的 ip 段；
 2、每一次循环判断接下来读进来的 3 个数字字符是有可能成为一个 ip 段，如果可以，加到已经形成的 ip 段后面（特别要注意，截取字符串的时候不能越界）；
 3、接下来递归终止的条件就得分析清楚了，但是也不是难事，把握好总共分 4 段，当画上第 4 个点，并且下一个考察的下标已经“刚刚好”越界的时候，此时，我们就找到了一个有效的 ip 段分割。</p>
-<h2 id="_3">参考解答</h2>
+<h4 id="_3">题目大意</h4>
+<p>给出一个数字字符串，为这个数字字符串加上三个点（.），使其成为一个合法的IP地址，返回所有的合法的 IP 地址。</p>
+<h4 id="_4">补充说明</h4>
+<ul>
+<li>如给定字符串 "25525511135",</li>
+<li>返回 ["255.255.11.135", "255.255.111.35"]</li>
+</ul>
+<p>我们再想想，我们递归到底，无非就是给一串数字加上三个"."，不管能不能成为 IP ，分割次数增加和之前的 IP 段积累我们都有操作，只不过没有成为 IP 地址的 list 最后没有被 result 收进去，递归走到底之后，我们都应该把分割次数减少，并且把 IP 段积累恢复。</p>
+<h4 id="_5">我的解答</h4>
+<h4 id="_6">总结</h4>
+<ul>
+<li>这里要注意一些细节：1、通过完善测试用例的方式来发现一些坑；2、提交给 LeetCode ，就可以发现一些自己可能没有想到的情况；</li>
+<li>第 1 遍写出来的代码肯定是有诸多问题的，需要一些耐心，打印一些输出语句，来分析程序的走向。</li>
+<li>树形问题使用回溯算法的一个套路是：在循环中使用递归，状态在递归前后进行恢复。</li>
+</ul>
+<h2 id="_7">参考解答</h2>
 <h3 id="1">参考解答1</h3>
 <pre><code class="java">import java.util.ArrayList;
 import java.util.List;

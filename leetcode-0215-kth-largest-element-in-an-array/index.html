@@ -49,7 +49,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="..">Home</a>
+    <a class="" href="..">目录</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -599,6 +599,11 @@
           
             <li class="toctree-l1">
 		
+    <a class="" href="../leetcode-0160-intersection-of-two-linked-lists/">160. Intersection of Two Linked Lists</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
     <a class="" href="../leetcode-0168-excel-sheet-column-title/">168. Excel Sheet Column Title</a>
 	    </li>
           
@@ -875,6 +880,16 @@
           
             <li class="toctree-l1">
 		
+    <a class="" href="../leetcode-0349-intersection-of-two-arrays/">Leetcode 0349 intersection of two arrays</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0350-intersection-of-two-arrays-ii/">Leetcode 0350 intersection of two arrays ii</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
     <a class="" href="../leetcode-0367-valid-perfect-square/">Leetcode 0367 valid perfect square</a>
 	    </li>
           
@@ -1120,17 +1135,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../leetcode-algorithm-notes/">Leetcode algorithm notes</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
     <a class="" href="../leetcode-articles-template/">Leetcode articles template</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-summarize/">Leetcode summarize</a>
 	    </li>
           
         </ul>
@@ -1191,7 +1196,8 @@
 <li>中文网址：<a href="https://leetcode-cn.com/problems/kth-largest-element-in-an-array/description/">215. 数组中的第K个最大元素</a>  。</li>
 </ul>
 <h2 id="_2">思路分析</h2>
-<p>求解关键：这是一个常规问题，使用借用快速排序的 partition 的思想完成。关键在于理解 partition 的返回值，返回值是拉通了整个数组的索引值，这一点是非常重要的，不要把问题想得复杂了。</p>
+<p>求解关键：这是一个常见的问题。其实把数组排个序（升序），返回倒数第 $k$ 个数就可以了。但是如果出现在笔试的时候，这个答案肯定不能过关的，我看到过的解答中，使用 partition 和堆也是需要掌握的。</p>
+<p>首先，借用快速排序的 partition 的思想完成。关键在于理解 partition 的返回值，返回值是拉通了整个数组的索引值。</p>
 <ul>
 <li>partition 这个函数返回的是整个数组的第 k 个最小元素（从 0 开始计算）。</li>
 <li>如果找第 k 个最小元素，即第 n - k 个最大元素。</li>
@@ -1353,7 +1359,8 @@ class Solution(object):
         return L[0]
 </code></pre>
 
-<h3 id="3">参考解答3：最小堆更简单的写法。</h3>
+<p>最小堆更简单的写法。</p>
+<p>Java 写法：</p>
 <pre><code class="java">public class Solution3 {
 
     public int findKthLargest(int[] nums, int k) {
@@ -1369,6 +1376,7 @@ class Solution(object):
 }
 </code></pre>
 
+<h3 id="3">参考解答3：使用最大堆，这里要做一些简单的处理。</h3>
 <p>本篇文章的地址为 <a href="https://liweiwei1419.github.io/leetcode-solution/leetcode-0215-kth-largest-element-in-an-array">https://liweiwei1419.github.io/leetcode-solution/leetcode-0215-kth-largest-element-in-an-array</a> ，如果我的题解有错误，或者您有更好的解法，欢迎您告诉我 <a href="../liweiwei1419@gmail.com">liweiwei1419@gmail.com</a>  。</p>
 <style type="text/css">
     .label-warning {

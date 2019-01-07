@@ -49,7 +49,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="..">Home</a>
+    <a class="" href="..">目录</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -615,6 +615,11 @@
           
             <li class="toctree-l1">
 		
+    <a class="" href="../leetcode-0160-intersection-of-two-linked-lists/">Leetcode 0160 intersection of two linked lists</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
     <a class="" href="../leetcode-0168-excel-sheet-column-title/">Leetcode 0168 excel sheet column title</a>
 	    </li>
           
@@ -875,6 +880,16 @@
           
             <li class="toctree-l1">
 		
+    <a class="" href="../leetcode-0349-intersection-of-two-arrays/">Leetcode 0349 intersection of two arrays</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0350-intersection-of-two-arrays-ii/">Leetcode 0350 intersection of two arrays ii</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
     <a class="" href="../leetcode-0367-valid-perfect-square/">Leetcode 0367 valid perfect square</a>
 	    </li>
           
@@ -1120,17 +1135,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../leetcode-algorithm-notes/">Leetcode algorithm notes</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
     <a class="" href="../leetcode-articles-template/">Leetcode articles template</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-summarize/">Leetcode summarize</a>
 	    </li>
           
         </ul>
@@ -1193,6 +1198,38 @@
 <p><img src="https://liweiwei1419.github.io/images/leetcode-solution/" width="900"></p>
 <h2 id="_3">参考解答</h2>
 <h3 id="1">参考解答1</h3>
+<p>Python 写法：</p>
+<pre><code class="python3">class Solution(object):
+    def addBinary(self, a, b):
+        &quot;&quot;&quot;
+        :type a: str
+        :type b: str
+        :rtype: str
+        &quot;&quot;&quot;
+        res = ''
+        # 分别表示两个数从后向前的索引，后对齐
+        i = len(a) - 1
+        j = len(b) - 1
+        # 表示进位标志
+        carry = 0
+        while i &gt;= 0 or j &gt;= 0:
+            s = carry
+            if i &gt;= 0:
+                s += ord(a[i]) - ord('0')
+                i -= 1
+            if j &gt;= 0:
+                s += ord(b[j]) - ord('0')
+                j -= 1
+
+            res = str(s % 2) + res
+            carry = s // 2
+        if carry == 1:
+            return '1' + res
+        return res
+</code></pre>
+
+<h3 id="2">参考解答2</h3>
+<p>Java 写法：</p>
 <pre><code class="java">public class Solution {
 
     public String addBinary(String a, String b) {
@@ -1282,7 +1319,7 @@ if __name__ == '__main__':
     print(result)
 </code></pre>
 
-<h3 id="2">参考解答2</h3>
+<h3 id="2_1">参考解答2</h3>
 <p>Python 写法：</p>
 <pre><code class="python3">class Solution:
     def addBinary(self, a, b):

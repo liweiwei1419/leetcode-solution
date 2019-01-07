@@ -49,7 +49,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="..">Home</a>
+    <a class="" href="..">目录</a>
 	    </li>
           
             <li class="toctree-l1">
@@ -615,6 +615,11 @@
           
             <li class="toctree-l1">
 		
+    <a class="" href="../leetcode-0160-intersection-of-two-linked-lists/">Leetcode 0160 intersection of two linked lists</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
     <a class="" href="../leetcode-0168-excel-sheet-column-title/">Leetcode 0168 excel sheet column title</a>
 	    </li>
           
@@ -875,6 +880,16 @@
           
             <li class="toctree-l1">
 		
+    <a class="" href="../leetcode-0349-intersection-of-two-arrays/">Leetcode 0349 intersection of two arrays</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../leetcode-0350-intersection-of-two-arrays-ii/">Leetcode 0350 intersection of two arrays ii</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
     <a class="" href="../leetcode-0367-valid-perfect-square/">Leetcode 0367 valid perfect square</a>
 	    </li>
           
@@ -1120,17 +1135,7 @@
           
             <li class="toctree-l1">
 		
-    <a class="" href="../leetcode-algorithm-notes/">Leetcode algorithm notes</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
     <a class="" href="../leetcode-articles-template/">Leetcode articles template</a>
-	    </li>
-          
-            <li class="toctree-l1">
-		
-    <a class="" href="../leetcode-summarize/">Leetcode summarize</a>
 	    </li>
           
         </ul>
@@ -1178,7 +1183,9 @@
 
 与 target 最接近的三个数的和为 2. (-1 + 2 + 1 = 2).
 </pre>
-</div></div>
+</div>
+
+</div>
 
 <ul>
 <li>题目难度：<span class="label label-warning">中等</span>。</li>
@@ -1189,6 +1196,48 @@
 <p>求解关键：这道题和二分查找没有什么关系，就是双指针对撞，前提是要先将数组排序。</p>
 <h2 id="_3">参考解答</h2>
 <h3 id="1">参考解答1</h3>
+<p>Python 写法：</p>
+<pre><code class="python3">class Solution(object):
+    def threeSumClosest(self, nums, target):
+        &quot;&quot;&quot;
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
+        &quot;&quot;&quot;
+
+        if len(nums) &lt; 3:
+            return []
+        # 初始化
+        diff = float('inf')
+        nums.sort()
+        for index in range(len(nums) - 2):
+            if index &gt; 0 and nums[index] == nums[index - 1]:
+                continue
+            l = index + 1
+            r = len(nums) - 1
+            while l &lt; r:
+                s = nums[index] + nums[l] + nums[r]
+                if abs(s - target) &lt; diff:
+                    diff = abs(s - target)
+                    res = s
+                if s &gt; target:
+                    r -= 1
+                elif s &lt; target:
+                    l += 1
+                else:
+                    return target
+        return res
+
+
+if __name__ == '__main__':
+    nums = [-1, 0, 1, 1, 55]
+    target = 3
+    solution = Solution()
+    result = solution.threeSumClosest(nums, target)
+    print(result)
+</code></pre>
+
+<p>Java 写法：</p>
 <pre><code class="java">import java.util.Arrays;
 
 /**
